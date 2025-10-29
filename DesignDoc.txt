@@ -1,0 +1,29 @@
+
+Twitch app design doc
+
+goals:
+    * connect db with api
+    * add a front end framework (Functional react)
+    * confirm security of web app 
+        * docker containers?
+    * single page app style
+    
+
+features:
+    * connect with wled and provide control functions
+        * interact with user input (buttons) to control 
+        * full interface for custom lighting schema
+    * apply for multiworld sessions
+        * fill forms for joining
+        * upload .yaml files for their choice of game
+    * personal features
+        * alert when a new multiworld form is submitted
+            * email?
+        * yaml distribution
+    * connect to my discord for alerts/info
+        * alerts for when multiworld starts (probably not nn's annoying methods....)
+        * bot connections for alerts and such
+
+
+basic features for testing?
+
