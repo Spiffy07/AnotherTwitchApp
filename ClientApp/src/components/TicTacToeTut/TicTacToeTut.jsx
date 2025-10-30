@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./style.css";
+import "./TTTstyle.css";
 
 function FlipList({ onFlipListClick }) {
   return (

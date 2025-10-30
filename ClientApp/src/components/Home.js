@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MyComponent from './Test';
-import Board from './TicTacToeTut/TicTacToeTut';
+import Game from './TicTacToeTut/TicTacToeTut';
+import GameTs from './TicTacToeTut/TicTacToeTs';
 
 
 export class Home extends Component {
@@ -24,7 +25,8 @@ export class Home extends Component {
         </ul>
         <p>The <code>ClientApp</code> subdirectory is a standard React application based on the <code>create-react-app</code> template. If you open a command prompt in that directory, you can run <code>npm</code> commands such as <code>npm test</code> or <code>npm install</code>.</p>
         <MyComponent />
-        <Board />
+        <Game />
+        <GameTs />
       </div>
     );
   }
