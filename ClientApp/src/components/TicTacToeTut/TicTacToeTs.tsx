@@ -17,12 +17,14 @@ function Square({ value, onSquareClick }: SquareProps) {
 interface BoardProps {
   onPlay: Function;
   xIsNext: boolean;
-  squares: Array<string>;
+  squares: Array<string> | undefined;
 }
 
 function Board({ onPlay, xIsNext, squares }: BoardProps) {
+  if (typeof squares === 'undefined') return;
   function handleClick(index: number) {
-    if (squares[index] !== '') return;
+    if (typeof squares === 'undefined') return;
+    if (squares[index] !== null) return;
 
     const nextSquares = squares.slice();
     xIsNext ? (nextSquares[index] = "X") : (nextSquares[index] = "O");
@@ -48,10 +50,10 @@ function Board({ onPlay, xIsNext, squares }: BoardProps) {
 
 export default function Game() {
   const [currentMove, setCurrentMove] = useState<number>(0);
-  const [history, setHistory] = useState<string[][]>([Array(9).fill('')]);
+  const [history, setHistory] = useState<string[][]>([Array(9).fill(null)]); // == but not ===
   const [squareIndex, setSquareIndex] = useState<number[]>([]);
 
-  const currentSquares: string[] = history[currentMove] || Array<string>(9).fill('');
+  const currentSquares: string[] | undefined = history[currentMove];
   let xIsNext: boolean = currentMove % 2 === 0;
 
   function handlePlay(nextSquares: string[], nextSquareIndex: number) {
