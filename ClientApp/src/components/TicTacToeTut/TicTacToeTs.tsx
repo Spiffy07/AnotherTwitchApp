@@ -53,7 +53,7 @@ export default function Game() {
   const [squareIndex, setSquareIndex] = useState<number[]>([]);
 
   const currentSquares: string[] | undefined = history[currentMove];
-  if (currentSquares !== undefined) {
+  if (currentSquares === undefined) {
     // Type guard
     return (
       <Error outputMessage="Error from TicTacToeTs"/>
@@ -69,7 +69,7 @@ export default function Game() {
     setCurrentMove(nextHistory.length - 1);
   }
 
-  // return (
-  //   <Board onPlay={handlePlay} xIsNext={xIsNext} squares={currentSquares} />
-  // );
+  return (
+    <Board onPlay={handlePlay} xIsNext={xIsNext} squares={currentSquares} />
+  );
 }
