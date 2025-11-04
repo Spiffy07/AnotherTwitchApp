@@ -37,6 +37,7 @@ function Board({ xIsNext, squares, onPlay, winningSquares }) {
     for (let j = 0; j < 3; j++) {
       row.push(
         <Square
+          key={i + j}
           value={squares[i + j]}
           onSquareClick={() => handleClick(i + j)}
           isWinner={
@@ -46,7 +47,7 @@ function Board({ xIsNext, squares, onPlay, winningSquares }) {
       );
     }
 
-    board.push(<div className="board-row">{row}</div>);
+    board.push(<div key={row[0].key} className="board-row">{row}</div>);
   }
 
   return <>{board}</>;

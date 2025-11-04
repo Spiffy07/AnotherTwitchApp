@@ -1,8 +1,9 @@
 import { JSX, MouseEventHandler, useState } from "react";
 import "./TTTstyle.module.css";
+import Error from "../Error/Error";
 
 interface SquareProps {
-  value: string | undefined,
+  value: string | undefined;
   onSquareClick: MouseEventHandler;
 }
 
@@ -17,13 +18,11 @@ function Square({ value, onSquareClick }: SquareProps) {
 interface BoardProps {
   onPlay: Function;
   xIsNext: boolean;
-  squares: Array<string> | undefined;
+  squares: Array<string>;
 }
 
 function Board({ onPlay, xIsNext, squares }: BoardProps) {
-  if (typeof squares === 'undefined') return;
   function handleClick(index: number) {
-    if (typeof squares === 'undefined') return;
     if (squares[index] !== null) return;
 
     const nextSquares = squares.slice();
@@ -50,10 +49,16 @@ function Board({ onPlay, xIsNext, squares }: BoardProps) {
 
 export default function Game() {
   const [currentMove, setCurrentMove] = useState<number>(0);
-  const [history, setHistory] = useState<string[][]>([Array(9).fill(null)]); // == but not ===
+  const [history, setHistory] = useState<string[][]>([Array(9).fill(null)]); 
   const [squareIndex, setSquareIndex] = useState<number[]>([]);
 
   const currentSquares: string[] | undefined = history[currentMove];
+  if (currentSquares !== undefined) {
+    // Type guard
+    return (
+      <Error outputMessage="Error from TicTacToeTs"/>
+    )
+  }
   let xIsNext: boolean = currentMove % 2 === 0;
 
   function handlePlay(nextSquares: string[], nextSquareIndex: number) {
@@ -64,7 +69,7 @@ export default function Game() {
     setCurrentMove(nextHistory.length - 1);
   }
 
-  return (
-    <Board onPlay={handlePlay} xIsNext={xIsNext} squares={currentSquares} />
-  );
+  // return (
+  //   <Board onPlay={handlePlay} xIsNext={xIsNext} squares={currentSquares} />
+  // );
 }
