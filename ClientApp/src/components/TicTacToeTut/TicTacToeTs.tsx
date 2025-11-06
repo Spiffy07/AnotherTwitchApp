@@ -36,12 +36,17 @@ function Board({ onPlay, xIsNext, squares }: BoardProps) {
     for (let j: number = 0; j < 3; j++) {
       row.push(
         <Square
+          key={i + j}
           value={squares[i + j]}
           onSquareClick={() => handleClick(i + j)}
         />
       );
     }
-    board.push(<div className="board-row">{row}</div>);
+    board.push(
+      <div key={i} className="board-row">
+        {row}
+      </div>
+    );
   }
 
   return <div className="board">{board}</div>;
@@ -49,15 +54,13 @@ function Board({ onPlay, xIsNext, squares }: BoardProps) {
 
 export default function Game() {
   const [currentMove, setCurrentMove] = useState<number>(0);
-  const [history, setHistory] = useState<string[][]>([Array(9).fill(null)]); 
+  const [history, setHistory] = useState<string[][]>([Array(9).fill(null)]);
   const [squareIndex, setSquareIndex] = useState<number[]>([]);
 
   const currentSquares: string[] | undefined = history[currentMove];
   if (currentSquares === undefined) {
     // Type guard
-    return (
-      <Error outputMessage="Error from TicTacToeTs"/>
-    )
+    return <Error outputMessage="Error from TicTacToeTs" />;
   }
   let xIsNext: boolean = currentMove % 2 === 0;
 
