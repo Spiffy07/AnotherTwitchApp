@@ -44,7 +44,7 @@ function ProductTable({
         />
       );
     }
-    if (product.name.toLowerCase().startsWith(filterText.toLowerCase())) {
+    if (product.name.toLowerCase().startsWith(filterText.toLowerCase().trim())) {
         if (!inStockOnly) rows.push(<ProductRow product={product} key={product.name} />);
         else if (product.stocked) rows.push(<ProductRow product={product} key={product.name} />);
     }

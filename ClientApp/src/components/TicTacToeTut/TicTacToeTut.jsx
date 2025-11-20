@@ -202,6 +202,6 @@ function indexToRowColumn(index) {
     case 8:
       return " (3, 3)";
     default:
-      throw new RangeError;
+      throw new RangeError();
   }
 }
