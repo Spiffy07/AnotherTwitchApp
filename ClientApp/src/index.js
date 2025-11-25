@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -9,6 +9,26 @@ import reportWebVitals from './reportWebVitals';
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
+
+if (window.matchMedia) {
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+  // Check initial preference
+  if (prefersDarkScheme.matches) {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+  }
+
+  // Listen for changes in preference
+  prefersDarkScheme.addEventListener("change", (e) => {
+    if (e.matches) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  });
+}
 
 root.render(
   <BrowserRouter basename={baseUrl}>

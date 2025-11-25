@@ -8,18 +8,18 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
+  navigationMenuTriggerStyle,
 } from "../ui/navigation-menu";
 
 export default function MyNavMenu() {
   return (
-    <div>
+    <div className="dark">
       <NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList className="flex-wrap">
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <NavigationMenuLink>Link</NavigationMenuLink>
-            </NavigationMenuContent>
+            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+              <a href="/">Home</a>
+            </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
