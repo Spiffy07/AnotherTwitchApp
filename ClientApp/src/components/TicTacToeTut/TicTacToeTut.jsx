@@ -1,23 +1,24 @@
 import { useState } from "react";
-import "./TTTstyle.css";
+import "./TTTstyle.css"
+import { Button } from "@/components/ui/button"
 
 function FlipList({ onFlipListClick }) {
   return (
-    <button class="btn btn-primary" onClick={onFlipListClick}>
+    <Button variant="secondary" onClick={onFlipListClick}>
       Flip Move List
-    </button>
+    </Button>
   );
 }
 
 function Square({ value, onSquareClick, isWinner }) {
   return isWinner ? (
-    <button className="square winner" onClick={onSquareClick}>
+    <Button className="square winner" onClick={onSquareClick}>
       {value}
-    </button>
+    </Button>
   ) : (
-    <button className="square" onClick={onSquareClick}>
+    <Button className="square" onClick={onSquareClick}>
       {value}
-    </button>
+    </Button>
   );
 }
 
@@ -114,11 +115,11 @@ export default function Game() {
     if (move !== history.length - 1 || move === 0) {
       return (
         <li key={move}>
-          <button onClick={() => jumpToMove(move)}>
+          <Button className="bg-[#258cfb]" onClick={() => jumpToMove(move)}>
             {move === 0
               ? "Start Game"
               : "Jump to Move " + move + indexToRowColumn(squareIndex[move])}
-          </button>
+          </Button>
           <p></p>
         </li>
       );

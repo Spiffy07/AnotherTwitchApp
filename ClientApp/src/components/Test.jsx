@@ -1,5 +1,6 @@
 // java script here
 import { useState } from 'react';
+import { Button } from "@/components/ui/button"
 
 let random = Math.random() * 100 % 2;
 let content;
@@ -10,15 +11,12 @@ if (random === 1) {
     content = <h1>Even Number</h1>
 }
 
-
 function MyButton({count, onClick }) {
-    return (
-        <div>
-            <button class="btn btn-primary" onClick={onClick}>
-                Click Me  count: {count}
-            </button>
-        </div>
-    )
+  return (
+    <div className="flex flex-wrap items-center gap-2 md:flex-row">
+      <Button variant="secondary" onClick={onClick}>Click Me! count: {count}</Button>
+    </div>
+  )
 }
 
 export default function MyComponent() {

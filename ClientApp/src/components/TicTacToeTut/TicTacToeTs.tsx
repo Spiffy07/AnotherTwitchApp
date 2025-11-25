@@ -1,6 +1,7 @@
 import { JSX, MouseEventHandler, useState } from "react";
 import "./TTTstyle.module.css";
-import Error from "../Error/Error";
+import Error from "@/components/Error/Error";
+import { Button } from "@/components/ui/button"
 
 interface SquareProps {
   value: string | undefined;
@@ -9,9 +10,9 @@ interface SquareProps {
 
 function Square({ value, onSquareClick }: SquareProps) {
   return (
-    <button className="square" onClick={onSquareClick}>
+    <Button className="square" onClick={onSquareClick}>
       {value}
-    </button>
+    </Button>
   );
 }
 

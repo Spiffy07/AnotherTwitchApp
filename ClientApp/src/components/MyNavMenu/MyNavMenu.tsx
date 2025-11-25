@@ -9,16 +9,43 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
-} from "../ui/navigation-menu";
+} from "@/components/ui/navigation-menu";
+
+//import "@/output.module.css"
 
 export default function MyNavMenu() {
   return (
-    <div className="dark">
+    <div className="[dark]:dark">
       <NavigationMenu>
         <NavigationMenuList className="flex-wrap">
           <NavigationMenuItem>
-            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <a href="/">Home</a>
+            <NavigationMenuLink
+              asChild
+              className={navigationMenuTriggerStyle()}
+            >
+              <a color="color-my-color" href="/">
+                Home
+              </a>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              asChild
+              className={navigationMenuTriggerStyle()}
+            >
+              <a href="/counter">
+                Counter
+              </a>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              asChild
+              className={navigationMenuTriggerStyle()}
+            >
+              <a href="/fetch-data">
+                Weather Data
+              </a>
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
