@@ -1,6 +1,7 @@
-import { Counter } from "./components/Counter";
-import { FetchData } from "./components/FetchData";
-import { Home } from "./components/Home";
+import { Counter } from "./pages/Counter";
+import { FetchData } from "./pages/FetchData";
+import { Home } from "./pages/Home";
+import { Multiworld } from "./pages/Multiworld";
 
 const AppRoutes = [
   {
@@ -14,6 +15,10 @@ const AppRoutes = [
   {
     path: '/fetch-data',
     element: <FetchData />
+  },
+  {
+    path: '/multiworld',
+    element: <Multiworld />
   }
 ];
 

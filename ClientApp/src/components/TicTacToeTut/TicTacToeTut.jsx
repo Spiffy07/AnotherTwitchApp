@@ -12,11 +12,11 @@ function FlipList({ onFlipListClick }) {
 
 function Square({ value, onSquareClick, isWinner }) {
   return isWinner ? (
-    <Button className="square winner" onClick={onSquareClick}>
+    <Button variant="tictactoe" className="square winner" onClick={onSquareClick}>
       {value}
     </Button>
   ) : (
-    <Button className="square" onClick={onSquareClick}>
+    <Button variant="tictactoe" className="square" onClick={onSquareClick}>
       {value}
     </Button>
   );

@@ -10,7 +10,7 @@ interface SquareProps {
 
 function Square({ value, onSquareClick }: SquareProps) {
   return (
-    <Button className="square" onClick={onSquareClick}>
+    <Button variant="tictactoe" className="square" onClick={onSquareClick}>
       {value}
     </Button>
   );
