@@ -1,2 +1,2 @@
-npx tailwindcss -i ./src/custom.css -o ./src/output.module.css --watch  // runs css output watching and auto updates
+npx tailwindcss -i ./src/custom.css -o ./src/output.css --watch  // runs css output watching and auto updates
 dotnet run // duh
