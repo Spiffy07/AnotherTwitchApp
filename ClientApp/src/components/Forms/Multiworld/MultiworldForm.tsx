@@ -39,7 +39,7 @@ export default function MultiworldForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      session: "",
+      session: "0",
       username: "",
       additionalComments: "",
     },
@@ -66,7 +66,7 @@ export default function MultiworldForm() {
                   <FieldLabel>Multiworld Session</FieldLabel>
                   <Select
                     name={field.name}
-                    value={field.value = "0"}
+                    value={field.value}
                     onValueChange={field.onChange}
                   >
                     <SelectTrigger aria-invalid={fieldState.invalid}>
