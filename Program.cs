@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ChatterDb>(options => options.UseInMemoryDatabase("items"));
+builder.Services.AddDbContext<TwitchDb>(options => options.UseInMemoryDatabase("items"));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -35,6 +35,7 @@ else
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Chat API V1");
+        c.RoutePrefix = "";
         c.InjectStylesheet("/swagger-ui/SwaggerDark.css");
     });
     app.MapGet("/swagger-ui/SwaggerDark.css", async (CancellationToken cancellationToken) =>
@@ -49,7 +50,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.MapGet("/chatters", async (ChatterDb db) => await db.Chatters.ToListAsync());
+app.MapGet("/chatters", async (TwitchDb db) => await db.Chatters.ToListAsync());
 
 app.MapControllerRoute(
     name: "default",

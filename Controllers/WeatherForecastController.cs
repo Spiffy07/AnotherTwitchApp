@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AnotherTwitchApp.Controllers;
 
@@ -31,8 +32,10 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
     }
 
     [HttpGet("test")]
-    public void test()
+    public string test()
     {
         Console.WriteLine(" Working forecast tester function");
+
+        return JsonSerializer.Serialize("Forecast tester function executed successfully");
     }
 }

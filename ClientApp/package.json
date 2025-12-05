@@ -26,6 +26,7 @@
     "react-router-dom": "^6.11.0",
     "reactstrap": "^9.1.9",
     "rimraf": "^5.0.0",
+    "sonner": "^2.0.7",
     "spa-proxy": "^1.0.8",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.17",

@@ -4,6 +4,7 @@ import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import * as z from "zod";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -39,14 +40,46 @@ export default function MultiworldForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      session: "0",
+      session: "",
       username: "",
       additionalComments: "",
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    toast("You submitted the following values:", {
+      description: (
+        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+          <code>{JSON.stringify(data, null, 2)}</code>
+        </pre>
+      ),
+      position: "bottom-right",
+      classNames: {
+        content: "flex flex-col gap-2",
+      },
+      style: {
+        "--border-radius": "calc(var(--radius)  + 4px)",
+      } as React.CSSProperties,
+    });
+
     console.log(data);
+
+    try {
+      const response = await fetch("test/test", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error(`Response Status: ${response.status}`);
+
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -73,7 +106,6 @@ export default function MultiworldForm() {
                       <SelectValue placeholder="Choose Session" />
                     </SelectTrigger>
                     <SelectContent {...field}>
-                      <SelectItem value="0">Choose a Session</SelectItem>
                       <SelectItem value="12-13-25">
                         December 13th, 2025 (7:00pm CST)
                       </SelectItem>
