@@ -2,7 +2,7 @@
 
 using Multiworld.Models;
 
-namespace AnotherTwitchApp.Services;
+namespace Multiworld.Services;
 
 public static class PlayerFormService
 {

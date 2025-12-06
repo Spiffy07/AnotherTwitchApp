@@ -21,6 +21,8 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,7 +37,6 @@ else
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Chat API V1");
-        c.RoutePrefix = "";
         c.InjectStylesheet("/swagger-ui/SwaggerDark.css");
     });
     app.MapGet("/swagger-ui/SwaggerDark.css", async (CancellationToken cancellationToken) =>

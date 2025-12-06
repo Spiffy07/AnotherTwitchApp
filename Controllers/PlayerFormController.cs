@@ -1,7 +1,7 @@
 
 
 using Multiworld.Models;
-using AnotherTwitchApp.Services;
+using Multiworld.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnotherTwitchApp.Controllers;
