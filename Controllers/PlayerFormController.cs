@@ -1,8 +1,8 @@
 
 
-using Multiworld.Models;
-using Multiworld.Services;
 using Microsoft.AspNetCore.Mvc;
+
+using Multiworld.Models;
 
 namespace AnotherTwitchApp.Controllers;
 
@@ -15,7 +15,12 @@ public class PlayerFormController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<List<PlayerForm>> GetAll() => PlayerFormService.GetAll();
+    public ActionResult<List<PlayerForm>> GetAll(TwitchDbContext db)
+    {
+        //return db.PlayerForms.ToList();  // TODO: switch to database storage
+
+        return PlayerFormService.GetAll(); // Using the service to get all player forms from PlayerFormService for now
+    }
 
     [HttpGet("{id}")]
     public ActionResult<PlayerForm> Get(int id)
@@ -67,7 +72,4 @@ public class PlayerFormController : ControllerBase
         PlayerFormService.Delete(id);
         return NoContent();
     }
-
-
-
 }

@@ -53,7 +53,7 @@ export default function MultiworldForm() {
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-      position: "bottom-right",
+      position: "bottom-center",
       classNames: {
         content: "flex flex-col gap-2",
       },

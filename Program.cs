@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<TwitchDb>(options => options.UseInMemoryDatabase("items"));
+builder.Services.AddDbContext<TwitchDbContext>(options => options.UseInMemoryDatabase("TwitchUsers"));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -51,7 +51,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.MapGet("/chatters", async (TwitchDb db) => await db.Chatters.ToListAsync());
+app.MapGet("/chatters", async (TwitchDbContext db) => await db.Chatters.ToListAsync());
 
 app.MapControllerRoute(
     name: "default",

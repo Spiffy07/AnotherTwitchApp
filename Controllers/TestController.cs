@@ -8,12 +8,12 @@ namespace AnotherTwitchApp.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class TestController(ILogger<TestController> _logger, TwitchDb _db, string version = "v1.0") : ControllerBase    // this works the same as the constructor with DI
+public class TestController(ILogger<TestController> _logger, TwitchDbContext _db, string version = "v1.0") : ControllerBase    // this works the same as the constructor with DI
 {
     // private readonly ILogger<TestController> _logger;
-    // private TwitchDb _db;
+    // private TwitchDbContext _db;
 
-    // public TestController(ILogger<TestController> logger, TwitchDb db)
+    // public TestController(ILogger<TestController> logger, TwitchDbContext db)
     // {
     //     _logger = logger;
     //     _db = db;
