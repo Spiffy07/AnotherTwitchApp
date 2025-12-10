@@ -1,10 +1,10 @@
 
+using Microsoft.EntityFrameworkCore;
 
 using Chatroom.Models;
 using Multiworld.Models;
 
-using Microsoft.EntityFrameworkCore;
-
+namespace AnotherTwitchApp.DbContexts;
 public class TwitchDbContext : DbContext
 {
     public TwitchDbContext(DbContextOptions options) : base(options) { }

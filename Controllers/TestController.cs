@@ -1,8 +1,10 @@
 using System.Text.Json;
-using Chatroom.Models;
-using Multiworld.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
+using Chatroom.Models;
+using Multiworld.Models;
+using AnotherTwitchApp.DbContexts;
 
 namespace AnotherTwitchApp.Controllers;
 
@@ -40,7 +42,7 @@ public class TestController(ILogger<TestController> _logger, TwitchDbContext _db
             return JsonSerializer.Serialize("No data received");
         }
 
-        Console.WriteLine($"Username: {data.username} Session: {data.session} Comments: {data.additionalComments} Id: {data.id = -1}");
+        Console.WriteLine($"Username: {data.username} Session: {data.session} Comments: {data.additionalComments} Id: {data.Id = -1}");
 
         return JsonSerializer.Serialize("Data received successfully");
     }

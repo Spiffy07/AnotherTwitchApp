@@ -1,54 +1,71 @@
 
+using Microsoft.EntityFrameworkCore;
+
+using AnotherTwitchApp.DbContexts;
 
 namespace Multiworld.Models
 {
     public class PlayerForm
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string username { get; set; }
         public string session { get; set; }
-        public string additionalComments { get; set; }
+        public string? additionalComments { get; set; }
     }
 
-    public static class PlayerFormService
+    public class PlayerFormService
     {
-        static List<PlayerForm> PlayerForms { get; }
+
+        private readonly TwitchDbContext _db;
         static int nextId = 2;
-        static PlayerFormService()
+
+        public PlayerFormService(TwitchDbContext db)
         {
-            PlayerForms = new List<PlayerForm>
+            _db = db;
+        }
+
+        public async Task<List<PlayerForm>> GetAll()
+        {
+            return await _db.PlayerForms.ToListAsync();
+        }
+
+        public async Task<PlayerForm?> Get(int Id)
+        {
+            return await _db.PlayerForms.AsNoTracking().FirstOrDefaultAsync(p => p.Id == Id);
+        }
+
+        public async Task<IResult> Add(PlayerForm playerForm)
+        {
+            PlayerForm? getResult = await Get(playerForm.Id);
+            if (getResult != null)
             {
-                new PlayerForm { id = 0, username = "testuser", session = "session1", additionalComments = "No comments" },     // TODO: change session to DateTime type
-                new PlayerForm { id = 1, username = "player2", session = "session2", additionalComments = "Looking forward to it!" }
-            };
+                return Results.Conflict($"PlayerForm with Id {playerForm.Id} already exists.");
+            }
+
+
+            await _db.PlayerForms.AddAsync(playerForm);
+            await _db.SaveChangesAsync();
+
+            return Results.Created($"/PlayerForm/{playerForm.Id}", playerForm);
         }
 
-        public static List<PlayerForm> GetAll() => PlayerForms;
-
-        public static PlayerForm? Get(int id) => PlayerForms.FirstOrDefault(p => p.username.GetHashCode() == id);
-
-        public static void Add(PlayerForm playerForm)
+        public async Task<IResult> Delete(int Id)
         {
-            playerForm.id = nextId++;
-            PlayerForms.Add(playerForm);
+            PlayerForm? playerForm = await Get(Id);
+            if (playerForm == null)
+                return Results.NotFound();
+
+            _db.PlayerForms.Remove(playerForm);
+            int numberOfSavedEntries = await _db.SaveChangesAsync();
+            if (numberOfSavedEntries == 0)
+                return Results.InternalServerError();
+            return Results.Ok(playerForm);
         }
 
-        public static void Delete(int id)
+        public async Task<int> Update(PlayerForm playerForm)
         {
-            var playerForm = Get(id);
-            if (playerForm is null)
-                return;
-
-            PlayerForms.Remove(playerForm);
-        }
-
-        public static void Update(PlayerForm playerForm)
-        {
-            var index = PlayerForms.FindIndex(p => p.id == playerForm.id);
-            if (index == -1)
-                return;
-
-            PlayerForms[index] = playerForm;
+            _db.PlayerForms.Update(playerForm);
+            return await _db.SaveChangesAsync();
         }
     }
 }

@@ -1,7 +1,10 @@
+
+
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 
-using Chatroom.Models;
+using AnotherTwitchApp.DbContexts;
+using Multiworld.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<TwitchDbContext>(options => options.UseInMemoryDatabase("TwitchUsers"));
+builder.Services.AddScoped<PlayerFormService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -51,7 +55,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.MapGet("/chatters", async (TwitchDbContext db) => await db.Chatters.ToListAsync());
 
 app.MapControllerRoute(
     name: "default",

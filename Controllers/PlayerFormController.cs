@@ -3,6 +3,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 using Multiworld.Models;
+using AnotherTwitchApp.DbContexts;
 
 namespace AnotherTwitchApp.Controllers;
 
@@ -10,22 +11,22 @@ namespace AnotherTwitchApp.Controllers;
 [Route("[controller]")]
 public class PlayerFormController : ControllerBase
 {
-    public PlayerFormController()
+    public PlayerFormService _playerFormService { get; set; }
+    public PlayerFormController(PlayerFormService playerFormService)
     {
+        _playerFormService = playerFormService;
     }
 
     [HttpGet]
-    public ActionResult<List<PlayerForm>> GetAll(TwitchDbContext db)
+    public async Task<List<PlayerForm>> GetAll(TwitchDbContext db)
     {
-        //return db.PlayerForms.ToList();  // TODO: switch to database storage
-
-        return PlayerFormService.GetAll(); // Using the service to get all player forms from PlayerFormService for now
+        return await _playerFormService.GetAll();
     }
 
-    [HttpGet("{id}")]
-    public ActionResult<PlayerForm> Get(int id)
+    [HttpGet("{Id}")]
+    public async Task<ActionResult<PlayerForm>> Get(int Id)
     {
-        var playerForm = PlayerFormService.Get(id);
+        var playerForm = await _playerFormService.Get(Id);
 
         if (playerForm is null)
         {
@@ -36,40 +37,36 @@ public class PlayerFormController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create(PlayerForm playerForm)
+    public async Task<IResult> Create(PlayerForm playerForm)
     {
-        PlayerFormService.Add(playerForm);
-        return CreatedAtAction(nameof(Get), new { id = playerForm.id }, playerForm);
+        return await _playerFormService.Add(playerForm);
     }
 
-    [HttpPut("{id}")]
-    public IActionResult Update(int id, PlayerForm playerForm)
+    [HttpPut("{Id}")]
+    public async Task<IActionResult> Update(TwitchDbContext db, int Id, PlayerForm playerForm)
     {
-        if (id != playerForm.id)
+        if (Id != playerForm.Id)
         {
             return BadRequest();
         }
 
-        var existingPlayerForm = PlayerFormService.Get(id);
+        var existingPlayerForm = await _playerFormService.Get(Id);
         if (existingPlayerForm is null)
         {
             return NotFound();
         }
 
-        PlayerFormService.Update(playerForm);
+        if (await _playerFormService.Update(playerForm) > 0)
+        {
+            await db.SaveChangesAsync();
+            return Ok(playerForm);
+        }
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
-    public IActionResult Delete(int id)
+    [HttpDelete("{Id}")]
+    public async Task<IResult> Delete(int Id)
     {
-        var existingPlayerForm = PlayerFormService.Get(id);
-        if (existingPlayerForm is null)
-        {
-            return NotFound();
-        }
-
-        PlayerFormService.Delete(id);
-        return NoContent();
+        return await _playerFormService.Delete(Id);
     }
 }
