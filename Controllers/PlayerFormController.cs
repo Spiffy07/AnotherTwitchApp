@@ -37,7 +37,7 @@ public class PlayerFormController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IResult> Create(PlayerForm playerForm)
+    public async Task<IResult> Create([FromBody] PlayerForm playerForm)
     {
         return await _playerFormService.Add(playerForm);
     }

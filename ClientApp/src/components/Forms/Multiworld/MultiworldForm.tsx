@@ -65,7 +65,7 @@ export default function MultiworldForm() {
     console.log(data);
 
     try {
-      const response = await fetch("test/test", {
+      const response = await fetch("playerform", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
