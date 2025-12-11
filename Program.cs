@@ -12,10 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<TwitchDbContext>(options => options.UseInMemoryDatabase("TwitchUsers"));
+// builder.Services.AddDbContext<TwitchDbContext>(options => options.UseInMemoryDatabase("TwitchUsers"));
 
 var connectionString = builder.Configuration.GetConnectionString("TwitchDb") ?? "Data Source=TwitchDb";
-// builder.Services.AddSqlite<TwitchDbContext>(connectionString);
+builder.Services.AddSqlite<TwitchDbContext>(connectionString);
 
 builder.Services.AddScoped<PlayerFormService>();
 

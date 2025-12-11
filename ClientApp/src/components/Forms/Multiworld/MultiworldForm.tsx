@@ -170,9 +170,6 @@ export default function MultiworldForm() {
         </FieldSet>
         <br />
         <Button variant="outline">Submit</Button>
-        <FieldDescription>
-          This doesn't work yet, it only refreshes the page...
-        </FieldDescription>
       </form>
     </div>
   );
