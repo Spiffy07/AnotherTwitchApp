@@ -17,7 +17,7 @@ namespace Multiworld.Models
     {
 
         private readonly TwitchDbContext _db;
-        static int nextId = 2;
+        static int nextId = 1;
 
         public PlayerFormService(TwitchDbContext db)
         {

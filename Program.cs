@@ -1,10 +1,11 @@
 
 
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Microsoft.EntityFrameworkCore;
 
 using AnotherTwitchApp.DbContexts;
 using Multiworld.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<TwitchDbContext>(options => options.UseInMemoryDatabase("TwitchUsers"));
+
+var connectionString = builder.Configuration.GetConnectionString("TwitchDb") ?? "Data Source=TwitchDb";
+// builder.Services.AddSqlite<TwitchDbContext>(connectionString);
+
 builder.Services.AddScoped<PlayerFormService>();
 
 builder.Services.AddEndpointsApiExplorer();
