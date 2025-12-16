@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 using AnotherTwitchApp.DbContexts;
 using Multiworld.Models;
+using Microsoft.AspNetCore.Identity;
 
 const bool useInMemoryDatabase = true;
 
@@ -16,6 +17,13 @@ builder.Services.AddControllersWithViews();
 if (useInMemoryDatabase)
 {
     builder.Services.AddDbContext<TwitchDbContext>(options => options.UseInMemoryDatabase("TwitchUsers"));
+
+    // authentication db
+    builder.Services.AddDbContext<AuthDbContext>(options => options.UseInMemoryDatabase("AuthDb"));
+
+    builder.Services.AddAuthorization();
+
+    builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<AuthDbContext>();
 }
 else
 {
@@ -26,6 +34,8 @@ else
 builder.Services.AddScoped<PlayerFormService>();
 
 builder.Services.AddEndpointsApiExplorer();
+
+const string schemeId = "bearer";
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -34,11 +44,31 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Chatroom for the memes and luls",
         Version = "V1"
     });
+
+    c.AddSecurityDefinition(schemeId, new OpenApiSecurityScheme
+    {
+        // In = ParameterLocation.Header,
+        Description = "Please enter a valid token",
+        // Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "bearer"
+    });
+
+    c.AddSecurityRequirement(document =>
+    {
+        return new OpenApiSecurityRequirement
+        {
+            [new OpenApiSecuritySchemeReference(schemeId, document)] = []
+        };
+    });
 });
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
+
+app.MapIdentityApi<IdentityUser>();     // Map Identity API endpoints AUTH stuff again
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -61,10 +91,13 @@ else
     }).ExcludeFromDescription();
 
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
 app.UseRouting();
+app.UseStaticFiles();
+app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 
 
 app.MapControllerRoute(

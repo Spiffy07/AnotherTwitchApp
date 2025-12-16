@@ -106,11 +106,11 @@ export default function MultiworldForm() {
                       <SelectValue placeholder="Choose Session" />
                     </SelectTrigger>
                     <SelectContent {...field}>
-                      <SelectItem value="12-13-25">
-                        December 13th, 2025 (7:00pm CST)
-                      </SelectItem>
                       <SelectItem value="12-27-25">
                         December 27th, 2025 (7:00pm CST)
+                      </SelectItem>
+                      <SelectItem value="1-10-26">
+                        January 10th, 2026 (7:00pm CST)
                       </SelectItem>
                     </SelectContent>
                   </Select>

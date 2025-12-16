@@ -8,8 +8,8 @@ namespace Multiworld.Models
     public class PlayerForm
     {
         public int Id { get; set; }
-        public string username { get; set; }
-        public string session { get; set; }
+        public string? username { get; set; }
+        public string? session { get; set; }
         public string? additionalComments { get; set; }
     }
 
@@ -17,7 +17,7 @@ namespace Multiworld.Models
     {
 
         private readonly TwitchDbContext _db;
-        static int nextId = 1;
+        //static int nextId = 1;
 
         public PlayerFormService(TwitchDbContext db)
         {

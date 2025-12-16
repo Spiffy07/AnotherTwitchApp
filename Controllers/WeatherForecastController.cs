@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnotherTwitchApp.Controllers;
@@ -20,6 +21,7 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
     // }
 
     [HttpGet]
+    [Authorize]
     public IEnumerable<WeatherForecast> Get()
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
