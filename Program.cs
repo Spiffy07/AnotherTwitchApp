@@ -19,11 +19,11 @@ if (useInMemoryDatabase)
     builder.Services.AddDbContext<TwitchDbContext>(options => options.UseInMemoryDatabase("TwitchUsers"));
 
     // authentication db
-    builder.Services.AddDbContext<AuthDbContext>(options => options.UseInMemoryDatabase("AuthDb"));
+    //builder.Services.AddDbContext<AuthDbContext>(options => options.UseInMemoryDatabase("AuthDb"));
 
     builder.Services.AddAuthorization();
 
-    builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<AuthDbContext>();
+    builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<TwitchDbContext>();
 }
 else
 {
@@ -91,10 +91,10 @@ else
     }).ExcludeFromDescription();
 
 }
-app.UseRouting();
 app.UseStaticFiles();
 app.UseHttpsRedirection();
 
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
