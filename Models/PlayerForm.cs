@@ -2,56 +2,50 @@
 using Microsoft.EntityFrameworkCore;
 
 using AnotherTwitchApp.DbContexts;
+using System.ComponentModel.DataAnnotations;
 
 namespace Multiworld.Models
 {
     public class PlayerForm
     {
-        public int Id { get; set; }
-        public string? username { get; set; }
-        public string? session { get; set; }
-        public string? additionalComments { get; set; }
+        [Key]        
+        [Required]
+        public string username { get; set; } = string.Empty;
+        [Required]
+        public string session { get; set; } = string.Empty;
+        public string additionalComments { get; set; } = string.Empty;
     }
 
-    public class PlayerFormService
+    public class PlayerFormService(TwitchDbContext _db) 
     {
-
-        private readonly TwitchDbContext _db;
-        //static int nextId = 1;
-
-        public PlayerFormService(TwitchDbContext db)
-        {
-            _db = db;
-        }
-
-        public async Task<List<PlayerForm>> GetAll()
+        public async Task<List<PlayerForm>> GetAllPlayerForms()
         {
             return await _db.PlayerForms.ToListAsync();
         }
 
-        public async Task<PlayerForm?> Get(int Id)
+        public async Task<PlayerForm?> GetPlayerForm(string username)
         {
-            return await _db.PlayerForms.AsNoTracking().FirstOrDefaultAsync(p => p.Id == Id);
+            return await _db.PlayerForms.AsNoTracking().FirstOrDefaultAsync(p => p.username.ToLower() == username.ToLower());
         }
 
-        public async Task<IResult> Add(PlayerForm playerForm)
+        public async Task<IResult> AddPlayerForm(PlayerForm playerForm)
         {
-            PlayerForm? getResult = await Get(playerForm.Id);
+            PlayerForm? getResult = await GetPlayerForm(playerForm.username);
             if (getResult != null)
             {
-                return Results.Conflict($"PlayerForm with Id {playerForm.Id} already exists.");
+                return Results.Conflict($"PlayerForm with username {playerForm.username} already exists.");
             }
 
 
             await _db.PlayerForms.AddAsync(playerForm);
             await _db.SaveChangesAsync();
 
-            return Results.Created($"/PlayerForm/{playerForm.Id}", playerForm);
+            return Results.Created($"/PlayerForm/{playerForm.username}", playerForm);
         }
 
-        public async Task<IResult> Delete(int Id)
+        public async Task<IResult> DeletePlayerForm(string username)
         {
-            PlayerForm? playerForm = await Get(Id);
+            PlayerForm? playerForm = await GetPlayerForm(username);
             if (playerForm == null)
                 return Results.NotFound();
 
@@ -62,7 +56,7 @@ namespace Multiworld.Models
             return Results.Ok(playerForm);
         }
 
-        public async Task<int> Update(PlayerForm playerForm)
+        public async Task<int> UpdatePlayerForm(PlayerForm playerForm)
         {
             _db.PlayerForms.Update(playerForm);
             return await _db.SaveChangesAsync();

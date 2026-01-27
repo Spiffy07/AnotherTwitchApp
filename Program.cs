@@ -2,10 +2,12 @@
 
 using Microsoft.OpenApi;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 
 using AnotherTwitchApp.DbContexts;
 using Multiworld.Models;
-using Microsoft.AspNetCore.Identity;
+using Auth.Models;
 
 const bool useInMemoryDatabase = true;
 
@@ -16,14 +18,7 @@ builder.Services.AddControllersWithViews();
 
 if (useInMemoryDatabase)
 {
-    builder.Services.AddDbContext<TwitchDbContext>(options => options.UseInMemoryDatabase("TwitchUsers"));
-
-    // authentication db
-    //builder.Services.AddDbContext<AuthDbContext>(options => options.UseInMemoryDatabase("AuthDb"));
-
-    builder.Services.AddAuthorization();
-
-    builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<TwitchDbContext>();
+    builder.Services.AddDbContext<TwitchDbContext>(options => options.UseInMemoryDatabase("TwitchUserDb"));
 }
 else
 {
@@ -31,7 +26,16 @@ else
     builder.Services.AddSqlite<TwitchDbContext>(connectionString);
 }
 
+builder.Services.AddAuthentication().AddCookie("MyCookieAuth", Options =>
+{
+    Options.Cookie.Name = "MyCookieAuth";
+});
+builder.Services.AddAuthorization();
+
+builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<TwitchDbContext>();
+
 builder.Services.AddScoped<PlayerFormService>();
+builder.Services.AddScoped<IdentityService>();
 
 builder.Services.AddEndpointsApiExplorer();
 

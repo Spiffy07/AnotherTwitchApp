@@ -10,6 +10,7 @@ const context = [
   "/test",
   "/playerform",
   "/register",
+  "/registeruser",
   "/login",
 ];
 

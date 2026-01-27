@@ -9,24 +9,18 @@ namespace AnotherTwitchApp.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class PlayerFormController : ControllerBase
+public class PlayerFormController(PlayerFormService _playerFormService) : ControllerBase
 {
-    public PlayerFormService _playerFormService { get; set; }
-    public PlayerFormController(PlayerFormService playerFormService)
-    {
-        _playerFormService = playerFormService;
-    }
-
     [HttpGet]
     public async Task<List<PlayerForm>> GetAll(TwitchDbContext db)
     {
-        return await _playerFormService.GetAll();
+        return await _playerFormService.GetAllPlayerForms();
     }
 
-    [HttpGet("{Id}")]
-    public async Task<ActionResult<PlayerForm>> Get(int Id)
+    [HttpGet("{username}")]
+    public async Task<ActionResult<PlayerForm>> Get(string username)
     {
-        var playerForm = await _playerFormService.Get(Id);
+        var playerForm = await _playerFormService.GetPlayerForm(username);
 
         if (playerForm is null)
         {
@@ -39,24 +33,24 @@ public class PlayerFormController : ControllerBase
     [HttpPost]
     public async Task<IResult> Create([FromBody] PlayerForm playerForm)
     {
-        return await _playerFormService.Add(playerForm);
+        return await _playerFormService.AddPlayerForm(playerForm);
     }
 
-    [HttpPut("{Id}")]
-    public async Task<IActionResult> Update(TwitchDbContext db, int Id, PlayerForm playerForm)
+    [HttpPut("{username}")]
+    public async Task<IActionResult> Update(TwitchDbContext db, string username, PlayerForm playerForm)
     {
-        if (Id != playerForm.Id)
+        if (username.ToLower() != playerForm.username.ToLower())
         {
             return BadRequest();
         }
 
-        var existingPlayerForm = await _playerFormService.Get(Id);
+        var existingPlayerForm = await _playerFormService.GetPlayerForm(username);
         if (existingPlayerForm is null)
         {
             return NotFound();
         }
 
-        if (await _playerFormService.Update(playerForm) > 0)
+        if (await _playerFormService.UpdatePlayerForm(playerForm) > 0)
         {
             await db.SaveChangesAsync();
             return Ok(playerForm);
@@ -64,9 +58,9 @@ public class PlayerFormController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{Id}")]
-    public async Task<IResult> Delete(int Id)
+    [HttpDelete("{username}")]
+    public async Task<IResult> Delete(string username)
     {
-        return await _playerFormService.Delete(Id);
+        return await _playerFormService.DeletePlayerForm(username);
     }
 }

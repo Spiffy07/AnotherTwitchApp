@@ -42,7 +42,7 @@ public class TestController(ILogger<TestController> _logger, TwitchDbContext _db
             return JsonSerializer.Serialize("No data received");
         }
 
-        Console.WriteLine($"Username: {data.username} Session: {data.session} Comments: {data.additionalComments} Id: {data.Id = -1}");
+        Console.WriteLine($"Username: {data.username} Session: {data.session} Comments: {data.additionalComments}");
 
         return JsonSerializer.Serialize("Data received successfully");
     }

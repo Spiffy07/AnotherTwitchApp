@@ -4,8 +4,6 @@ import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import * as z from "zod";
-import { toast } from "sonner";
-
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -29,42 +27,38 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
-    session: z.string().nonempty("Choose a valid multiworld session"),
-    additionalComments: z.string(),
-    // .min(2, "Comments must be at least 2 characters long"),
-    username: z.string().min(2, "Username must be at least 2 characters long"),
+    email: z.email("Make sure you're using a valid email format (a@b.co)"),
+    username: z
+        .string()
+        .min(2, "Username length must be at least 2 characters")
+        .regex(/^[A-Za-z0-9-_]+$/),
+    password: z
+        .string()
+        .min(6, "Password must be at least 6 characters long")
+        .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+        .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+        .regex(/[0-9]/, "Password must contain at least one number")
+        .regex(
+            /[^A-Za-z0-9]/,
+            "Password must contain at least one special character",
+        ),
 });
 
-export default function MultiworldForm() {
+export default function RegisterForm() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            session: "",
+            email: "",
             username: "",
-            additionalComments: "",
+            password: "",
         },
     });
 
     async function onSubmit(data: z.infer<typeof formSchema>) {
-        toast("You submitted the following values:", {
-            description: (
-                <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
-                    <code>{JSON.stringify(data, null, 2)}</code>
-                </pre>
-            ),
-            position: "bottom-center",
-            classNames: {
-                content: "flex flex-col gap-2",
-            },
-            style: {
-                "--border-radius": "calc(var(--radius)  + 4px)",
-            } as React.CSSProperties,
-        });
-
         console.log(data);
 
         try {
-            const response = await fetch("playerform", {
+            const response = await fetch("register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -73,10 +67,12 @@ export default function MultiworldForm() {
             });
 
             if (!response.ok)
-                throw new Error(`Response Status: ${response.status}`);
-
-            const result = await response.json();
-            console.log(result);
+                {
+                    console.log('Resonse from completed registration of user: ' + response);
+                    throw new Error(`Response Status: ${response.status}`);
+                }
+            
+            console.log(response);
         } catch (error) {
             console.log(error);
         }
@@ -86,45 +82,27 @@ export default function MultiworldForm() {
         <div className="w-full max-w-md flex justify-center align-middle">
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
                 <FieldSet>
-                    <FieldLegend>Multiworld Signup</FieldLegend>
-                    <FieldDescription>
-                        Fill in the form below to join my multiworld sessions!
-                    </FieldDescription>
+                    <FieldLegend>Register User</FieldLegend>
+                    <FieldDescription>Sign up for an account!</FieldDescription>
                     <FieldGroup>
                         <Controller
-                            name="session"
+                            name="email"
                             control={form.control}
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel>Multiworld Session</FieldLabel>
-                                    <Select
-                                        name={field.name}
-                                        value={field.value}
-                                        onValueChange={field.onChange}
-                                    >
-                                        <SelectTrigger
-                                            aria-invalid={fieldState.invalid}
-                                        >
-                                            <SelectValue placeholder="Choose Session" />
-                                        </SelectTrigger>
-                                        <SelectContent {...field}>
-                                            <SelectItem value="2-7-26">        {/* TODO: variables for dates and Text */}
-                                                February 7th, 2026 (7:00pm CST)
-                                            </SelectItem>
-                                            <SelectItem value="2-21-26">
-                                                February 21st, 2026 (7:00pm CST)
-                                            </SelectItem>
-                                        </SelectContent>
-                                    </Select>
+                                    <FieldLabel>E-mail Address</FieldLabel>
+                                    <Input
+                                        {...field}
+                                        id={field.name}
+                                        type="text"
+                                        placeholder="Email"
+                                        aria-invalid={fieldState.invalid}
+                                    />
                                     {fieldState.invalid && (
                                         <FieldError
                                             errors={[fieldState.error]}
                                         />
                                     )}
-                                    <FieldDescription>
-                                        Select Which Multiworld session you
-                                        would like to participate in.
-                                    </FieldDescription>
                                 </Field>
                             )}
                         />
@@ -134,13 +112,14 @@ export default function MultiworldForm() {
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
                                     <FieldLabel htmlFor="username">
-                                        Username
+                                        Username to be displayed for multiworld
+                                        signups
                                     </FieldLabel>
                                     <Input
                                         {...field}
                                         id={field.name}
                                         type="text"
-                                        placeholder="Your Username Here"
+                                        placeholder="User Name"
                                         aria-invalid={fieldState.invalid}
                                     />
                                     {fieldState.invalid && (
@@ -157,16 +136,16 @@ export default function MultiworldForm() {
                         />
                         <FieldSeparator />
                         <Controller
-                            name="additionalComments"
+                            name="password"
                             control={form.control}
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel>Comments</FieldLabel>
-                                    <Textarea
+                                    <FieldLabel>Password</FieldLabel>
+                                    <Input
                                         {...field}
                                         id={field.name}
-                                        placeholder="Add any additional comments"
-                                        className="resize-none"
+                                        type="password"
+                                        placeholder="Password"
                                         aria-invalid={fieldState.invalid}
                                     />
                                     {fieldState.invalid && (
