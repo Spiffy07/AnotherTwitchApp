@@ -29,10 +29,6 @@ import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
     email: z.email("Make sure you're using a valid email format (a@b.co)"),
-    username: z
-        .string()
-        .min(2, "Username length must be at least 2 characters")
-        .regex(/^[A-Za-z0-9-_]+$/),
     password: z
         .string()
         .min(6, "Password must be at least 6 characters long")
@@ -45,14 +41,13 @@ const formSchema = z.object({
         ),
 });
 
-export default function RegisterForm() {
+export default function LoginForm() {
     const navigate = useNavigate();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             email: "",
-            username: "",
             password: "",
         },
     });
@@ -61,7 +56,7 @@ export default function RegisterForm() {
         console.log(data);
 
         try {
-            const response = await fetch("register", {
+            const response = await fetch("login?useCookies=true", {   // TODO: move to controller and actually use query string parameters correctly
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -71,7 +66,7 @@ export default function RegisterForm() {
 
             if (!response.ok)
                 {
-                    console.log('Response from completed registration of user: ' + response);
+                    console.log('Response from completed login of user: ' + response);
                     throw new Error(`Response Status: ${response.status}`);
                 }
             
@@ -86,8 +81,8 @@ export default function RegisterForm() {
         <div className="w-full max-w-md flex justify-center align-middle">
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
                 <FieldSet>
-                    <FieldLegend>Register User</FieldLegend>
-                    <FieldDescription>Sign up for an account!</FieldDescription>
+                    <FieldLegend>User Login</FieldLegend>
+                    <FieldDescription>Login using your E-mail address</FieldDescription>
                     <FieldGroup>
                         <Controller
                             name="email"
@@ -110,35 +105,6 @@ export default function RegisterForm() {
                                 </Field>
                             )}
                         />
-                        <Controller
-                            name="username"
-                            control={form.control}
-                            render={({ field, fieldState }) => (
-                                <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel htmlFor="username">
-                                        Username to be displayed for multiworld
-                                        signups
-                                    </FieldLabel>
-                                    <Input
-                                        {...field}
-                                        id={field.name}
-                                        type="text"
-                                        placeholder="User Name"
-                                        aria-invalid={fieldState.invalid}
-                                    />
-                                    {fieldState.invalid && (
-                                        <FieldError
-                                            errors={[fieldState.error]}
-                                        />
-                                    )}
-                                    <FieldDescription>
-                                        Choose a unique username joining the
-                                        multiworld.
-                                    </FieldDescription>
-                                </Field>
-                            )}
-                        />
-                        <FieldSeparator />
                         <Controller
                             name="password"
                             control={form.control}
@@ -163,7 +129,7 @@ export default function RegisterForm() {
                     </FieldGroup>
                 </FieldSet>
                 <br />
-                <Button variant="outline">Register</Button>
+                <Button variant="outline">Login</Button>
             </form>
         </div>
     );

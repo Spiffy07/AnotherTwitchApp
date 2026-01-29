@@ -3,6 +3,7 @@ import { FetchData } from "./pages/FetchData";
 import { Home } from "./pages/Home";
 import { Multiworld } from "./pages/Multiworld";
 import { RegisterUser } from "./pages/Auth/RegisterUser";
+import { LoginUser } from "./pages/Auth/Login";
 
 const AppRoutes = [
     {
@@ -22,9 +23,13 @@ const AppRoutes = [
         element: <Multiworld />,
     },
     {
-        path: "/registeruser",
-        element: <RegisterUser />,
+        path: "/new-registration",
+        element: <RegisterUser />,        
     },
+    {
+        path: "/user-login",
+        element: <LoginUser />,
+    }
 ];
 
 export default AppRoutes;

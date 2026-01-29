@@ -58,13 +58,23 @@ export default function MyNavMenu() {
               </a>
             </NavigationMenuLink>
           </NavigationMenuItem>
-          <NavigationMenuItem>
+          <NavigationMenuItem className="justify-end">
             <NavigationMenuLink
               asChild
               className={navigationMenuTriggerStyle()}
             >
-              <a href="/registeruser">
+              <a href="/new-registration">    {/* url *REQUIRES* an uppercase 'R' if url begins with "/register"  */}
                 Register
+              </a>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem className="justify-end">
+            <NavigationMenuLink
+              asChild
+              className={navigationMenuTriggerStyle()}
+            >
+              <a href="/user-login">
+                Login
               </a>
             </NavigationMenuLink>
           </NavigationMenuItem>

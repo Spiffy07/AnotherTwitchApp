@@ -10,8 +10,8 @@ const context = [
   "/test",
   "/playerform",
   "/register",
-  "/registeruser",
   "/login",
+  "/identity",
 ];
 
 const onError = (err, req, resp, target) => {

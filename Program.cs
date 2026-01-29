@@ -15,6 +15,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRouting(options => {
+     options.LowercaseUrls = true; 
+     options.LowercaseQueryStrings = true; 
+});
+
 
 if (useInMemoryDatabase)
 {
@@ -29,6 +34,8 @@ else
 builder.Services.AddAuthentication().AddCookie("MyCookieAuth", Options =>
 {
     Options.Cookie.Name = "MyCookieAuth";
+    Options.Cookie.Expiration = TimeSpan.FromDays(1);
+    Options.ExpireTimeSpan = TimeSpan.FromDays(1);
 });
 builder.Services.AddAuthorization();
 
@@ -68,7 +75,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
 
