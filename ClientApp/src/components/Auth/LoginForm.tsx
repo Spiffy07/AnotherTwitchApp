@@ -56,7 +56,7 @@ export default function LoginForm() {
         console.log(data);
 
         try {
-            const response = await fetch("login?useCookies=true", {   // TODO: move to controller and actually use query string parameters correctly
+            const response = await fetch("/api/login?useCookies=true", {   // TODO: move to controller and actually use query string parameters correctly
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

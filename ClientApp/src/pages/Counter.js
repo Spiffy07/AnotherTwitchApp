@@ -14,7 +14,7 @@ export class Counter extends Component {
     this.setState({
       currentCount: this.state.currentCount + 1
     });
-    fetch('weatherforecast/test');
+    fetch('/api/weatherforecast/test');
   }
 
   render() {

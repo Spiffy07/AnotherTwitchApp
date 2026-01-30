@@ -9,7 +9,7 @@ using AnotherTwitchApp.DbContexts;
 namespace AnotherTwitchApp.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class TestController(ILogger<TestController> _logger, TwitchDbContext _db, string version = "v1.0") : ControllerBase    // this works the same as the constructor with DI
 {
     // private readonly ILogger<TestController> _logger;

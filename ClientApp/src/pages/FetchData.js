@@ -62,7 +62,7 @@ export class FetchData extends Component {
     }
 
     async populateWeatherData() {
-        const response = await fetch("weatherforecast");
+        const response = await fetch("/api/weatherforecast");
 
         if (response.status == "401") {
             this.setState({ forecasts: [], loading: false });

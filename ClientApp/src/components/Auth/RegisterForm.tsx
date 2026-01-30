@@ -61,7 +61,7 @@ export default function RegisterForm() {
         console.log(data);
 
         try {
-            const response = await fetch("register", {
+            const response = await fetch("/api/register", {     // TODO: change url to identity controller
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -94,7 +94,7 @@ export default function RegisterForm() {
                             control={form.control}
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel>E-mail Address</FieldLabel>
+                                    <FieldLabel htmlFor="email">E-mail Address</FieldLabel>
                                     <Input
                                         {...field}
                                         id={field.name}
@@ -116,8 +116,7 @@ export default function RegisterForm() {
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
                                     <FieldLabel htmlFor="username">
-                                        Username to be displayed for multiworld
-                                        signups
+                                        User Name
                                     </FieldLabel>
                                     <Input
                                         {...field}
@@ -132,19 +131,18 @@ export default function RegisterForm() {
                                         />
                                     )}
                                     <FieldDescription>
-                                        Choose a unique username joining the
+                                        Choose a unique username. Used for joining the
                                         multiworld.
                                     </FieldDescription>
                                 </Field>
                             )}
                         />
-                        <FieldSeparator />
                         <Controller
                             name="password"
                             control={form.control}
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel>Password</FieldLabel>
+                                    <FieldLabel htmlFor="password">Password</FieldLabel>
                                     <Input
                                         {...field}
                                         id={field.name}

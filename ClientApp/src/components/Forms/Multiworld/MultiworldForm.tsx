@@ -46,25 +46,25 @@ export default function MultiworldForm() {
     });
 
     async function onSubmit(data: z.infer<typeof formSchema>) {
-        toast("You submitted the following values:", {
-            description: (
-                <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
-                    <code>{JSON.stringify(data, null, 2)}</code>
-                </pre>
-            ),
-            position: "bottom-center",
-            classNames: {
-                content: "flex flex-col gap-2",
-            },
-            style: {
-                "--border-radius": "calc(var(--radius)  + 4px)",
-            } as React.CSSProperties,
-        });
+        // toast("You submitted the following values:", {
+        //     description: (
+        //         <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+        //             <code>{JSON.stringify(data, null, 2)}</code>
+        //         </pre>
+        //     ),
+        //     position: "bottom-center",
+        //     classNames: {
+        //         content: "flex flex-col gap-2",
+        //     },
+        //     style: {
+        //         "--border-radius": "calc(var(--radius)  + 4px)",
+        //     } as React.CSSProperties,
+        // });
 
         console.log(data);
 
         try {
-            const response = await fetch("playerform", {
+            const response = await fetch("/api/playerform", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -73,12 +73,38 @@ export default function MultiworldForm() {
             });
 
             if (!response.ok)
-                throw new Error(`Response Status: ${response.status}`);
+                throw new Error(`Response Status: ${await response.text()}`);
 
             const result = await response.json();
             console.log(result);
+
+            toast.success("Form Submitted Successfully!", {
+                description: (
+                    <div className="bg-green-500 mt-2 w-[320px] overflow-x-visible rounded-md p-4">
+                        Username: {data.username}  Session: {data.session}
+                    </div>
+                ),
+                position: "bottom-center",
+                classNames: {
+                    content: "bg-green-500 flex flex-col gap-2",
+                },
+                style: {
+                    "--border-radius": "calc(var(--radius)  + 4px)",
+                } as React.CSSProperties,
+            });
         } catch (error) {
             console.log(error);
+            toast.error("Something went wrong...", {
+                description: (
+                    <div>
+                        {String(error)}
+                    </div>
+                ),
+                position: "bottom-center",
+                style: {
+                    "--border-radius": "calc(var(--radius) + 4px",
+                } as React.CSSProperties,
+            });
         }
     }
 
@@ -96,7 +122,9 @@ export default function MultiworldForm() {
                             control={form.control}
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel>Multiworld Session</FieldLabel>
+                                    <FieldLabel htmlFor="session">
+                                        Multiworld Session
+                                    </FieldLabel>
                                     <Select
                                         name={field.name}
                                         value={field.value}
@@ -108,7 +136,9 @@ export default function MultiworldForm() {
                                             <SelectValue placeholder="Choose Session" />
                                         </SelectTrigger>
                                         <SelectContent {...field}>
-                                            <SelectItem value="2-7-26">        {/* TODO: variables for dates and Text */}
+                                            <SelectItem value="2-7-26">
+                                                {" "}
+                                                {/* TODO: variables for dates and Text */}
                                                 February 7th, 2026 (7:00pm CST)
                                             </SelectItem>
                                             <SelectItem value="2-21-26">
@@ -149,19 +179,20 @@ export default function MultiworldForm() {
                                         />
                                     )}
                                     <FieldDescription>
-                                        Choose a unique username joining the
-                                        multiworld.
+                                        Choose a unique username. Used for
+                                        joining the multiworld.
                                     </FieldDescription>
                                 </Field>
                             )}
                         />
-                        <FieldSeparator />
                         <Controller
                             name="additionalComments"
                             control={form.control}
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel>Comments</FieldLabel>
+                                    <FieldLabel htmlFor="additionalComments">
+                                        Comments
+                                    </FieldLabel>
                                     <Textarea
                                         {...field}
                                         id={field.name}

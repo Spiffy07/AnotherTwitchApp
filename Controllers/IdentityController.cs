@@ -7,16 +7,16 @@ using Auth.Models;
 namespace AnotherTwitchApp.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class IdentityController(IdentityService _identityService) : ControllerBase
 {
-    [HttpGet]
-    public async Task<IResult> GetAll()
+    [HttpPost("{username})")]
+    public async Task<IResult> RegisterNewUser([FromBody] Identity identity)
     {
         // return await _identityService.GetAllIdentities();
         // return Results.Ok("Not implemented");
 
-        return await _identityService.RegisterIdentity(new Identity { UserName = "test", Password = "password" });
+        return await _identityService.RegisterIdentityToDb(identity);
     }
     
     
