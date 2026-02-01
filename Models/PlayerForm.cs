@@ -1,8 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 using AnotherTwitchApp.DbContexts;
-using System.ComponentModel.DataAnnotations;
 
 namespace Multiworld.Models
 {
@@ -18,20 +18,20 @@ namespace Multiworld.Models
 
     public class PlayerFormService(TwitchDbContext _db)
     {
-        public async Task<List<PlayerForm>> GetAllPlayerForms()
+        public async Task<List<PlayerForm>> GetAllPlayerFormsAsync()
         {
             return await _db.PlayerForms.ToListAsync();
         }
 
-        public async Task<PlayerForm?> GetPlayerForm(PlayerForm playerForm)
+        public async Task<PlayerForm?> GetPlayerFormFromDbAsync(PlayerForm playerForm)
         {
             return await _db.PlayerForms.AsNoTracking()
                 .FirstOrDefaultAsync(p => p.username.ToLower() == playerForm.username.ToLower() && p.session == playerForm.session);
         }
 
-        public async Task<IResult> AddPlayerForm(PlayerForm playerForm)
+        public async Task<IResult> AddPlayerFormToDbAsync(PlayerForm playerForm)
         {
-            PlayerForm? getResult = await GetPlayerForm(playerForm);
+            PlayerForm? getResult = await GetPlayerFormFromDbAsync(playerForm);
             if (getResult != null)
             {
                 return Results.Conflict($"{playerForm.username} is already signed up for {playerForm.session}.");
@@ -41,7 +41,7 @@ namespace Multiworld.Models
             await _db.PlayerForms.AddAsync(playerForm);
             await _db.SaveChangesAsync();
 
-            return Results.Created($"/PlayerForm/{playerForm.username}_{playerForm.session}", playerForm);
+            return Results.Created($"/api/PlayerForm/{playerForm.username}_{playerForm.session}", playerForm);
         }
 
         // public async Task<IResult> DeletePlayerForm(string username)
@@ -57,7 +57,7 @@ namespace Multiworld.Models
         //     return Results.Ok(playerForm);
         // }
 
-        public async Task<int> UpdatePlayerForm(PlayerForm playerForm)
+        public async Task<int> UpdatePlayerFormAsync(PlayerForm playerForm)
         {
             _db.PlayerForms.Update(playerForm);
             return await _db.SaveChangesAsync();

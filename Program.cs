@@ -49,8 +49,8 @@ try
     builder.Services.AddAuthentication().AddCookie("MyCookieAuth", Options =>
     {
         Options.Cookie.Name = "MyCookieAuth";
-        Options.Cookie.Expiration = TimeSpan.FromDays(1);
-        Options.ExpireTimeSpan = TimeSpan.FromDays(1);
+        // Options.Cookie.Expiration = TimeSpan.FromDays(1);
+        // Options.ExpireTimeSpan = TimeSpan.FromDays(1);
     });
     builder.Services.AddAuthorization();
 
@@ -90,6 +90,7 @@ try
         });
     });
 
+    builder.Services.AddHttpClient();
 
     var app = builder.Build();
 

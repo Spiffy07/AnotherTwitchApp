@@ -10,20 +10,16 @@ namespace AnotherTwitchApp.Controllers;
 [Route("api/[controller]")]
 public class IdentityController(IdentityService _identityService) : ControllerBase
 {
-    [HttpPost("{username})")]
+    [HttpGet]
+    public async Task<List<Identity>> GetAllAsync()
+    {
+        return await _identityService.GetAllIdentitiesAsync();
+    }
+    [HttpPost("register")]
     public async Task<IResult> RegisterNewUser([FromBody] Identity identity)
     {
-        // return await _identityService.GetAllIdentities();
-        // return Results.Ok("Not implemented");
-
-        return await _identityService.RegisterIdentityToDb(identity);
+        return await _identityService.AddIdentityToDbAsync(identity);
     }
     
-    
-    // [HttpPost("register")]
-    // public async Task<IResult> RegisterUser([FromBody] Identity identity)
-    // {
-    //     return await _identityService.RegisterIdentity(identity);
-    // }
 }
 

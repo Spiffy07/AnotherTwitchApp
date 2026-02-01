@@ -12,9 +12,9 @@ namespace AnotherTwitchApp.Controllers;
 public class PlayerFormController(PlayerFormService _playerFormService) : ControllerBase
 {
     [HttpGet]
-    public async Task<List<PlayerForm>> GetAll(TwitchDbContext db)
+    public async Task<List<PlayerForm>> GetAllAsync()
     {
-        return await _playerFormService.GetAllPlayerForms();
+        return await _playerFormService.GetAllPlayerFormsAsync();
     }
 
     // [HttpGet("{username}")]
@@ -31,9 +31,9 @@ public class PlayerFormController(PlayerFormService _playerFormService) : Contro
     // }
 
     [HttpPost]
-    public async Task<IResult> CreateSignup([FromBody] PlayerForm playerForm)
+    public async Task<IResult> CreateSignupAsync([FromBody] PlayerForm playerForm)
     {
-        return await _playerFormService.AddPlayerForm(playerForm);
+        return await _playerFormService.AddPlayerFormToDbAsync(playerForm);
     }
 
     // [HttpPut("{username}")]

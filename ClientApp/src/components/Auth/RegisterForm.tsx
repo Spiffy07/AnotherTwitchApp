@@ -26,6 +26,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
 
 const formSchema = z.object({
     email: z.email("Make sure you're using a valid email format (a@b.co)"),
@@ -61,7 +62,8 @@ export default function RegisterForm() {
         console.log(data);
 
         try {
-            const response = await fetch("/api/register", {     // TODO: change url to identity controller
+            const response = await fetch("/api/identity/register", {
+                // TODO: change url to identity controller
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -69,16 +71,32 @@ export default function RegisterForm() {
                 body: JSON.stringify(data),
             });
 
-            if (!response.ok)
-                {
-                    console.log('Response from completed registration of user: ' + response);
-                    throw new Error(`Response Status: ${response.status}`);
-                }
-            
+            if (!response.ok) {
+                throw new Error(`${await response.text()}`);
+            }
+
+            toast.success(`New User Created! Username: ${data.username}`, {
+                position: "bottom-center",
+                classNames: {
+                    content: "bg-green-500 flex flex-col gap-2",
+                },
+                style: {
+                    "--border-radius": "calc(var(--radius)  + 4px)",
+                } as React.CSSProperties,
+            });
             console.log(response);
-            navigate("/");
+            //navigate("/");
         } catch (error) {
             console.log(error);
+            toast.error(`User Creation failed: ${String(error)}`, {
+                position: "bottom-center",
+                classNames: {
+                    content: "bg-green-500 flex flex-col gap-2",
+                },
+                style: {
+                    "--border-radius": "calc(var(--radius)  + 4px)",
+                } as React.CSSProperties,
+            });
         }
     }
 
@@ -94,7 +112,9 @@ export default function RegisterForm() {
                             control={form.control}
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel htmlFor="email">E-mail Address</FieldLabel>
+                                    <FieldLabel htmlFor="email">
+                                        E-mail Address
+                                    </FieldLabel>
                                     <Input
                                         {...field}
                                         id={field.name}
@@ -107,6 +127,9 @@ export default function RegisterForm() {
                                             errors={[fieldState.error]}
                                         />
                                     )}
+                                    <FieldDescription>
+                                        Used only for Password Recovery (not yet implemented!).
+                                    </FieldDescription>
                                 </Field>
                             )}
                         />
@@ -116,7 +139,7 @@ export default function RegisterForm() {
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
                                     <FieldLabel htmlFor="username">
-                                        User Name
+                                        Username
                                     </FieldLabel>
                                     <Input
                                         {...field}
@@ -131,8 +154,8 @@ export default function RegisterForm() {
                                         />
                                     )}
                                     <FieldDescription>
-                                        Choose a unique username. Used for joining the
-                                        multiworld.
+                                        Choose a unique username. Used for
+                                        login and multiworld sessions.
                                     </FieldDescription>
                                 </Field>
                             )}
@@ -142,7 +165,9 @@ export default function RegisterForm() {
                             control={form.control}
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel htmlFor="password">Password</FieldLabel>
+                                    <FieldLabel htmlFor="password">
+                                        Password
+                                    </FieldLabel>
                                     <Input
                                         {...field}
                                         id={field.name}

@@ -73,7 +73,7 @@ export default function MultiworldForm() {
             });
 
             if (!response.ok)
-                throw new Error(`Response Status: ${await response.text()}`);
+                throw new Error(`${await response.text()}`);
 
             const result = await response.json();
             console.log(result);
