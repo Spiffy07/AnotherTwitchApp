@@ -63,7 +63,6 @@ export default function RegisterForm() {
 
         try {
             const response = await fetch("/api/identity/register", {
-                // TODO: change url to identity controller
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -85,7 +84,7 @@ export default function RegisterForm() {
                 } as React.CSSProperties,
             });
             console.log(response);
-            //navigate("/");
+            navigate("/");
         } catch (error) {
             console.log(error);
             toast.error(`User Creation failed: ${String(error)}`, {

@@ -56,7 +56,7 @@ export default function LoginForm() {
         console.log(data);
 
         try {
-            const response = await fetch("/api/login?useCookies=true", {   // TODO: move to controller and actually use query string parameters correctly
+            const response = await fetch("/api/identity/login?useCookies=true", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -64,12 +64,13 @@ export default function LoginForm() {
                 body: JSON.stringify(data),
             });
 
-            if (!response.ok)
-                {
-                    console.log('Response from completed login of user: ' + response);
-                    throw new Error(`Response Status: ${response.status}`);
-                }
-            
+            if (!response.ok) {
+                console.log(
+                    "Response from completed login of user: " + response,
+                );
+                throw new Error(`${await response.text()}`);
+            }
+
             console.log(response);
             navigate("/");
         } catch (error) {
@@ -82,7 +83,9 @@ export default function LoginForm() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
                 <FieldSet>
                     <FieldLegend>User Login</FieldLegend>
-                    <FieldDescription>Login using your E-mail address</FieldDescription>
+                    <FieldDescription>
+                        Login using your E-mail address
+                    </FieldDescription>
                     <FieldGroup>
                         <Controller
                             name="email"
