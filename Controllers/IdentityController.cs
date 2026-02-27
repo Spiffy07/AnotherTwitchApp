@@ -25,9 +25,9 @@ public class IdentityController(IdentityService _identityService) : ControllerBa
     }
     
     [HttpPost("login")]
-    public async Task<IResult> LoginUser([FromBody] LoginRequest login, [FromQuery] bool useCookies = true)
+    public async Task<IResult> LoginUser([FromBody] MyLoginRequest login, [FromQuery] bool useCookies = true)
     {
-        Log.Information("Hello for login controller");
+        //Log.Information("Hello for login controller");
         return await _identityService.LoginUserAsync(login.email, login.password, useCookies, HttpContext);
     }
 }

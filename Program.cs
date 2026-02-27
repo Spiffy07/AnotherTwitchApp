@@ -46,9 +46,9 @@ try
         builder.Services.AddSqlite<TwitchDbContext>(connectionString);
     }
 
-    builder.Services.AddAuthentication().AddCookie("MyCookieAuth", Options =>
+    builder.Services.AddAuthentication().AddCookie(TwitchDbContext.COOKIE_NAME, options =>
     {
-        Options.Cookie.Name = "MyCookieAuth";
+        options.Cookie.Name = TwitchDbContext.COOKIE_NAME;
         // Options.Cookie.Expiration = TimeSpan.FromDays(1);
         // Options.ExpireTimeSpan = TimeSpan.FromDays(1);
     });

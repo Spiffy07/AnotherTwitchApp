@@ -1,4 +1,4 @@
-import { Counter } from "./pages/Counter";
+import { MyComponents } from "./pages/MyComponents";
 import { FetchData } from "./pages/FetchData";
 import { Home } from "./pages/Home";
 import { Multiworld } from "./pages/Multiworld";
@@ -11,8 +11,8 @@ const AppRoutes = [
         element: <Home />,
     },
     {
-        path: "/counter",
-        element: <Counter />,
+        path: "/mycomponents",
+        element: <MyComponents />,
     },
     {
         path: "/fetch-data",

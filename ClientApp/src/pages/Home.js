@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import MyComponent from '../components/Test';
-import Game from '../components/TicTacToeTut/TicTacToeTut';
-import GameTs from '../components/TicTacToeTut/TicTacToeTs';
-import MyProductTable from '../components/ProductTableTutorial/ProductTable';
 
 
 export class Home extends Component {
@@ -25,13 +21,6 @@ export class Home extends Component {
           <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and your <code className='text-red-500'>dotnet publish</code> configuration produces minified, efficiently bundled JavaScript files.</li>
         </ul>
         <p>The <code className='text-red-500'>ClientApp</code> subdirectory is a standard React application based on the <code className='text-red-500'>create-react-app</code> template. If you open a command prompt in that directory, you can run <code className='text-red-500'>npm</code> commands such as <code className='text-red-500'>npm test</code> or <code className='text-red-500'>npm install</code>.</p>
-        <MyComponent />
-        <br/>
-        <Game />
-        <br/>
-        <GameTs />
-        <br/>
-        <MyProductTable/>
       </div>
     );
   }

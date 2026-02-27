@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Button } from "@/components/ui/button"
+import MyComponent from '../components/Test';
+import Game from '../components/TicTacToeTut/TicTacToeTut';
+import GameTs from '../components/TicTacToeTut/TicTacToeTs';
+import MyProductTable from '../components/ProductTableTutorial/ProductTable';
 
-export class Counter extends Component {
-  static displayName = Counter.name;
+export class MyComponents extends Component {
+  static displayName = MyComponents.name;
 
   constructor(props) {
     super(props);
@@ -27,7 +31,15 @@ export class Counter extends Component {
         <p aria-live="polite">Current count: <strong>{this.state.currentCount}</strong></p>
 
         <Button variant="secondary" onClick={this.incrementCounter}>Increment</Button>
-
+        <br/>
+        <br/>
+        <MyComponent />
+        <br/>
+        <Game />
+        <br/>
+        <GameTs />
+        <br/>
+        <MyProductTable/>
       </div>
     );
   }

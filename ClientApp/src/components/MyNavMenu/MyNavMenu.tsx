@@ -33,8 +33,8 @@ export default function MyNavMenu() {
               asChild
               className={navigationMenuTriggerStyle()}
             >
-              <a href="/counter">
-                Counter
+              <a href="/mycomponents">
+                My Components
               </a>
             </NavigationMenuLink>
           </NavigationMenuItem>

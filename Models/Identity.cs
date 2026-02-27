@@ -8,6 +8,8 @@ using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using System.Security.Claims;
 
 namespace Auth.Models
 {
@@ -24,7 +26,7 @@ namespace Auth.Models
         public string password { get; set; } = string.Empty;
     }
 
-    public class LoginRequest
+    public class MyLoginRequest
     {
         public string email { get; set; } = string.Empty;
         public string password { get; set; } = string.Empty;
@@ -137,6 +139,17 @@ namespace Auth.Models
                 {
                     httpContext.Response.Headers.Append("Set-Cookie", cookie);
                 }
+
+                // // TODO: claims and claims principal, add to identity
+                // var claims = new List<Claim>
+                // {
+                //     new Claim(ClaimTypes.Name, "user"),
+                //     new Claim(ClaimTypes.Email, getResult.email)
+                // };
+                // var identity = new ClaimsIdentity(claims, TwitchDbContext.COOKIE_NAME);
+                // ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
+                // //await httpContext.SignInAsync(TwitchDbContext.COOKIE_NAME, claimsPrincipal);
+
             }
             catch (Exception ex)
             {
