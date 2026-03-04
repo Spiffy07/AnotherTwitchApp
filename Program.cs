@@ -46,18 +46,25 @@ try
         builder.Services.AddSqlite<TwitchDbContext>(connectionString);
     }
 
-    builder.Services.AddAuthentication().AddCookie(TwitchDbContext.COOKIE_NAME, options =>
+    builder.Services.AddAuthentication(TwitchDbContext.COOKIE_NAME).AddCookie(TwitchDbContext.COOKIE_NAME, options =>
     {
         options.Cookie.Name = TwitchDbContext.COOKIE_NAME;
         // Options.Cookie.Expiration = TimeSpan.FromDays(1);
         // Options.ExpireTimeSpan = TimeSpan.FromDays(1);
     });
-    builder.Services.AddAuthorization();
+    builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("LoggedIn", policy =>
+        {
+            policy.RequireClaim("LoggedIn");
+        });
+    });
 
     builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<TwitchDbContext>();
 
     builder.Services.AddScoped<PlayerFormService>();
     builder.Services.AddScoped<IdentityService>();
+    builder.Services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, MyCustomClaimsFactory>();
 
     builder.Services.AddEndpointsApiExplorer();
 

@@ -23,11 +23,11 @@ const AppRoutes = [
         element: <Multiworld />,
     },
     {
-        path: "/user-registration",
+        path: "/account/registration",
         element: <RegisterUser />,        
     },
     {
-        path: "/user-login",
+        path: "/account/login",
         element: <LoginUser />,
     }
 ];

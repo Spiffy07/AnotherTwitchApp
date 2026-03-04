@@ -63,7 +63,7 @@ export default function MyNavMenu() {
               asChild
               className={navigationMenuTriggerStyle()}
             >
-              <a href="/user-registration">    {/* url *REQUIRES* an uppercase 'R' if url begins with "/register"  */}
+              <a href="/account/registration">    {/* url *REQUIRES* an uppercase 'R' if url begins with "/register"  */}
                 Register
               </a>
             </NavigationMenuLink>
@@ -73,7 +73,7 @@ export default function MyNavMenu() {
               asChild
               className={navigationMenuTriggerStyle()}
             >
-              <a href="/user-login">
+              <a href="/account/login">
                 Login
               </a>
             </NavigationMenuLink>

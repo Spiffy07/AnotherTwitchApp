@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 using AnotherTwitchApp.DbContexts;
 using Serilog;
-using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
-using System.Linq;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+
 
 namespace Auth.Models
 {
@@ -17,13 +17,18 @@ namespace Auth.Models
     [Index(nameof(username), IsUnique = true)]
     public class Identity
     {
-        [Key]
-        [Required]
+        [Key, Required]
         public string email { get; set; } = string.Empty;
         [Required]
         public string username { get; set; } = string.Empty;
         [Required]
         public string password { get; set; } = string.Empty;
+        public string test { get; set; } = string.Empty;
+    }
+
+    public class TestIdentity : IdentityUser
+    {
+        public string test { get; set; } = string.Empty;
     }
 
     public class MyLoginRequest
@@ -112,15 +117,9 @@ namespace Auth.Models
                 var loginUser = new Dictionary<string, string>
                 {
                     { "email", getResult.email },
-                    { "username", getResult.username },  
+                    { "username", "SpiffyTest" },  
                     { "password", getResult.password }
                 };
-
-                // var builder = new UriBuilder("https://localhost:44446/api/login");
-                // var query = HttpUtility.ParseQueryString("");
-                // query["useCookies"] = useCookies.ToString().ToLower();
-                // builder.Query = query.ToString();
-                // string url = builder.ToString();
                 
                 var httpResponse = await httpClient.PostAsJsonAsync($"https://localhost:44446/api/login?useCookies={useCookies.ToString().ToLower()}", loginUser);
                 var responseString = await httpResponse.Content.ReadAsStringAsync();
@@ -132,7 +131,6 @@ namespace Auth.Models
                     return Results.InternalServerError(responseString);
                 }
 
-                // httpContext.Response.Headers.Add("Set-Cookie", httpResponse.Headers.GetValues("Set-Cookie").ToArray());
                 var setCookies = httpResponse.Headers.TryGetValues("Set-Cookie", out var values) ? values : Enumerable.Empty<string>();
 
                 foreach (var cookie in setCookies)
@@ -140,15 +138,6 @@ namespace Auth.Models
                     httpContext.Response.Headers.Append("Set-Cookie", cookie);
                 }
 
-                // // TODO: claims and claims principal, add to identity
-                // var claims = new List<Claim>
-                // {
-                //     new Claim(ClaimTypes.Name, "user"),
-                //     new Claim(ClaimTypes.Email, getResult.email)
-                // };
-                // var identity = new ClaimsIdentity(claims, TwitchDbContext.COOKIE_NAME);
-                // ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
-                // //await httpContext.SignInAsync(TwitchDbContext.COOKIE_NAME, claimsPrincipal);
 
             }
             catch (Exception ex)
@@ -159,6 +148,21 @@ namespace Auth.Models
 
             return Results.Ok("Login successful.");
 
+        }
+    }
+
+    public class MyCustomClaimsFactory : UserClaimsPrincipalFactory<IdentityUser>
+    {
+        public MyCustomClaimsFactory(UserManager<IdentityUser> userManager, IOptions<IdentityOptions> options) 
+            : base(userManager, options)
+        {
+        }
+        
+        protected override async Task<ClaimsIdentity> GenerateClaimsAsync(IdentityUser user)
+        {
+            var identity = await base.GenerateClaimsAsync(user);
+            identity.AddClaim(new Claim("LoggedIn", "true"));
+            return identity;
         }
     }
 }

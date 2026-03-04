@@ -88,7 +88,7 @@ export default function RegisterForm() {
         } catch (error) {
             console.log(error);
             toast.error(`User Creation failed: ${String(error)}`, {
-                position: "bottom-center",
+                position: "bottom-right",
                 classNames: {
                     content: "bg-green-500 flex flex-col gap-2",
                 },
