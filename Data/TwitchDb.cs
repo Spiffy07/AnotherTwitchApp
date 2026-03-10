@@ -10,12 +10,13 @@ using Auth.Models;
 namespace AnotherTwitchApp.DbContexts;
 
 
-public class TwitchDbContext : IdentityDbContext<IdentityUser>
+public class TwitchDbContext : IdentityDbContext<MyIdentity>
 {
     public const string COOKIE_NAME = "MyCookieAuth";
     public TwitchDbContext(DbContextOptions<TwitchDbContext> options) : base(options) { }
     public DbSet<Chatter> Chatters { get; set; } = null!;
     public DbSet<PlayerForm> PlayerForms { get; set; } = null!;
-    public DbSet<Identity> Identity { get; set; } = null!;
+    public DbSet<Identity> Identity { get; set; } = null!; // for 'Identity'
+   
 }
 

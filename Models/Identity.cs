@@ -151,18 +151,18 @@ namespace Auth.Models
         }
     }
 
-    public class MyCustomClaimsFactory : UserClaimsPrincipalFactory<IdentityUser>
-    {
-        public MyCustomClaimsFactory(UserManager<IdentityUser> userManager, IOptions<IdentityOptions> options) 
-            : base(userManager, options)
-        {
-        }
+    // public class MyCustomClaimsFactory : UserClaimsPrincipalFactory<IdentityUser>
+    // {
+    //     public MyCustomClaimsFactory(UserManager<IdentityUser> userManager, IOptions<IdentityOptions> options) 
+    //         : base(userManager, options)
+    //     {
+    //     }
         
-        protected override async Task<ClaimsIdentity> GenerateClaimsAsync(IdentityUser user)
-        {
-            var identity = await base.GenerateClaimsAsync(user);
-            identity.AddClaim(new Claim("LoggedIn", "true"));
-            return identity;
-        }
-    }
+    //     protected override async Task<ClaimsIdentity> GenerateClaimsAsync(IdentityUser user)
+    //     {
+    //         var identity = await base.GenerateClaimsAsync(user);
+    //         identity.AddClaim(new Claim("LoggedIn", "true"));
+    //         return identity;
+    //     }
+    // }
 }

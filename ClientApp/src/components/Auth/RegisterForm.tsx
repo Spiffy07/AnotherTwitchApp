@@ -62,7 +62,7 @@ export default function RegisterForm() {
         console.log(data);
 
         try {
-            const response = await fetch("/api/identity/register", {
+            const response = await fetch("/api/aspidentity/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

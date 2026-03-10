@@ -60,11 +60,16 @@ try
         });
     });
 
-    builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<TwitchDbContext>();
+    builder.Services.AddIdentityApiEndpoints<MyIdentity>()
+        .AddRoles<IdentityRole>()
+        .AddEntityFrameworkStores<TwitchDbContext>();
 
     builder.Services.AddScoped<PlayerFormService>();
     builder.Services.AddScoped<IdentityService>();
-    builder.Services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, MyCustomClaimsFactory>();
+    builder.Services.AddScoped<AspIdentityService>();
+
+    builder.Services.AddScoped<IUserClaimsPrincipalFactory<MyIdentity>, MyCustomClaimsFactory>();
+    builder.Services.AddScoped<RoleManager<IdentityRole>>();
 
     builder.Services.AddEndpointsApiExplorer();
 
@@ -103,7 +108,7 @@ try
 
     app.UseSerilogRequestLogging();
 
-    app.MapGroup("/api").MapIdentityApi<IdentityUser>();     // Map Identity API endpoints AUTH stuff again
+    app.MapGroup("/api").MapIdentityApi<MyIdentity>();     // Map Identity API endpoints AUTH stuff again
 
     // Configure the HTTP request pipeline.
     if (!app.Environment.IsDevelopment())
