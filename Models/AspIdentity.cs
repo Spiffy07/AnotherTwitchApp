@@ -62,8 +62,23 @@ namespace Auth.Models
             return await _userManager.Users.ToListAsync();
         }
 
+        public async Task<MyIdentity?> GetAspIdentityAsync(FormIdentity identity)
+        {
+            return await _userManager.FindByNameAsync(identity.username);
+        }
+
         public async Task<IdentityResult> CreateIdentityAsync(FormIdentity newIdentity)
         {
+            if (string.IsNullOrWhiteSpace(newIdentity.username))
+                return IdentityResult.Failed(new IdentityError { Description = "Username is required." });
+            
+            if (string.IsNullOrWhiteSpace(newIdentity.email))
+                return IdentityResult.Failed(new IdentityError { Description = "Email is required." });
+            
+            if (string.IsNullOrWhiteSpace(newIdentity.password))
+                return IdentityResult.Failed(new IdentityError { Description = "Password is required." });
+            
+
             var AspIdentity = new MyIdentity
             {
                 UserName = newIdentity.username,  // this breaks using the /login enpoint, it compares email to username
@@ -89,14 +104,24 @@ namespace Auth.Models
             return IdentityResult.Success;
         }
 
-        public async Task<IdentityResult> CreateRoleAsync(string roleName)
+        public async Task<SignInResult> LoginAsync(FormIdentity loginIdentity)
         {
-            if (await _roleManager.RoleExistsAsync(roleName))
+            var aspIdentity = await GetAspIdentityAsync(loginIdentity);
+
+            if (aspIdentity == null || aspIdentity.UserName == null)
             {
-                return IdentityResult.Failed(new IdentityError { Description = "Role already exists" });
+                return SignInResult.Failed;
             }
-            return await _roleManager.CreateAsync(new IdentityRole(roleName));
+
+            return await _signInManager.PasswordSignInAsync(
+                aspIdentity.UserName,
+                loginIdentity.password,
+                isPersistent: false,    // set to false for testing, change to true for production
+                lockoutOnFailure: false // set to false for testing, change to true for production
+            );
         }
+
+
     }
 
     public class MyCustomClaimsFactory : UserClaimsPrincipalFactory<MyIdentity>

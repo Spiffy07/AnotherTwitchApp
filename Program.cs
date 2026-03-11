@@ -64,6 +64,11 @@ try
         .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<TwitchDbContext>();
 
+    builder.Services.Configure<IdentityOptions>(options =>
+    {
+        options.User.RequireUniqueEmail = true;
+    });
+
     builder.Services.AddScoped<PlayerFormService>();
     builder.Services.AddScoped<IdentityService>();
     builder.Services.AddScoped<AspIdentityService>();

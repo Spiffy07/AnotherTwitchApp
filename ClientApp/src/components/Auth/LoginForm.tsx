@@ -26,19 +26,15 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
 
 const formSchema = z.object({
-    email: z.email("Make sure you're using a valid email format (a@b.co)"),
+    username: z
+        .string()
+        .min(2, "Username length must be at least 2 characters")
+        .regex(/^[A-Za-z0-9-_]+$/),
     password: z
         .string()
-        .min(6, "Password must be at least 6 characters long")
-        .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-        .regex(/[a-z]/, "Password must contain at least one lowercase letter")
-        .regex(/[0-9]/, "Password must contain at least one number")
-        .regex(
-            /[^A-Za-z0-9]/,
-            "Password must contain at least one special character",
-        ),
 });
 
 export default function LoginForm() {
@@ -47,7 +43,7 @@ export default function LoginForm() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            email: "",
+            username: "",
             password: "",
         },
     });
@@ -56,7 +52,7 @@ export default function LoginForm() {
         console.log(data);
 
         try {
-            const response = await fetch("/api/identity/login?useCookies=true", {
+            const response = await fetch("/api/aspidentity/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -66,9 +62,16 @@ export default function LoginForm() {
             });
 
             if (!response.ok) {
-                console.log(
-                    "Response from completed login of user: " + response,
-                );
+                let errorResult = await response.json();
+                toast.error(`User Creation failed: ${errorResult.detail}`, {
+                    position: "bottom-right",
+                    classNames: {
+                        content: "bg-green-500 flex flex-col gap-2",
+                    },  
+                    style: {
+                        "--border-radius": "calc(var(--radius)  + 4px)",
+                    } as React.CSSProperties,
+                });
                 throw new Error(`${await response.text()}`);
             }
 
@@ -85,20 +88,20 @@ export default function LoginForm() {
                 <FieldSet>
                     <FieldLegend>User Login</FieldLegend>
                     <FieldDescription>
-                        Login using your E-mail address
+                        Login using your Username
                     </FieldDescription>
                     <FieldGroup>
                         <Controller
-                            name="email"
+                            name="username"
                             control={form.control}
                             render={({ field, fieldState }) => (
                                 <Field data-invalid={fieldState.invalid}>
-                                    <FieldLabel>E-mail Address</FieldLabel>
+                                    <FieldLabel>Username</FieldLabel>
                                     <Input
                                         {...field}
                                         id={field.name}
                                         type="text"
-                                        placeholder="Email"
+                                        placeholder="Username"
                                         aria-invalid={fieldState.invalid}
                                     />
                                     {fieldState.invalid && (
