@@ -1,6 +1,8 @@
 
 
+using System.Text.Json;
 using Auth.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
@@ -31,13 +33,14 @@ public class AspIdentityController(AspIdentityService aspIdentityService) : Cont
             }
             return Results.InternalServerError("Failed to create user. Please check the logs for more details.");
         }
+        await aspIdentityService.LoginAsync(newIdentity);
         return Results.Ok("User created successfully.");
     }
 
     [HttpPost("login")]
     public async Task<IResult> LoginAsync([FromBody] FormIdentity loginIdentity)
     {
-        switch(await aspIdentityService.LoginAsync(loginIdentity))
+        switch (await aspIdentityService.LoginAsync(loginIdentity))
         {
             case Microsoft.AspNetCore.Identity.SignInResult { Succeeded: true }:
                 return Results.Ok("Login successful.");
@@ -48,12 +51,26 @@ public class AspIdentityController(AspIdentityService aspIdentityService) : Cont
             case Microsoft.AspNetCore.Identity.SignInResult { RequiresTwoFactor: true }:
                 return Results.Problem("Two-factor authentication is required. Please complete the two-factor authentication process.", statusCode: 401);
             case Microsoft.AspNetCore.Identity.SignInResult { Succeeded: false }:
-                return Results.Problem("Invalid login attempt. Please check your username and password and try again.", statusCode: 401);            
+                return Results.Problem("Invalid login attempt. Please check your username and password and try again.", statusCode: 401);
             default:
                 return Results.Problem("Unexpected error. Please try again.", statusCode: 67);
         }
+    }
 
-            
-            
+    [Authorize]
+    [HttpGet("getusername")]
+    public async Task<string> GetUserNameAsync()
+    {
+        try
+        {
+            if (User.Identity?.IsAuthenticated == true)
+                return JsonSerializer.Serialize(this.User.Identity.Name);
+            throw new UnauthorizedAccessException("User is not authenticated.");
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex.ToString());
+            return JsonSerializer.Serialize("Error retrieving username.");
+        }
     }
 }

@@ -45,6 +45,30 @@ export default function MultiworldForm() {
         },
     });
 
+    async function getUserInfo() {
+        try {
+            const response = await fetch("/api/aspidentity/getusername", {
+                method: "GET",
+                credentials: "include", // Essential for cookie-based auth
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                // Data usually contains email, isEmailConfirmed, and custom claims
+                // if configured in the backend to be included in the profile.
+                return data;
+            } else if (response.status === 401) {
+                console.warn("User is not authenticated");
+                throw new Error("user not authenticated");
+            } else {
+                console.error("unknown error");
+                throw new Error("Unknown error" + (await response.json()));
+            }
+        } catch (error) {
+            console.error("Failed to fetch security context:", error);
+        }
+    }
+
     async function onSubmit(data: z.infer<typeof formSchema>) {
         // toast("You submitted the following values:", {
         //     description: (
@@ -62,8 +86,15 @@ export default function MultiworldForm() {
         // });
 
         console.log(data);
+        const retrievedUsername = await getUserInfo();
 
         try {
+            if (!retrievedUsername) {
+                throw new Error("Failed to retrieve username");
+            }
+
+            data.username = retrievedUsername;
+
             const response = await fetch("/api/playerform", {
                 method: "POST",
                 headers: {
@@ -72,8 +103,7 @@ export default function MultiworldForm() {
                 body: JSON.stringify(data),
             });
 
-            if (!response.ok)
-                throw new Error(`${await response.text()}`);
+            if (!response.ok) throw new Error(`${await response.text()}`);
 
             const result = await response.json();
             console.log(result);
@@ -81,7 +111,7 @@ export default function MultiworldForm() {
             toast.success("Form Submitted Successfully!", {
                 description: (
                     <div className="bg-green-500 mt-2 w-[320px] overflow-x-visible rounded-md p-4">
-                        Username: {data.username}  Session: {data.session}
+                        Username: {data.username} Session: {data.session}
                     </div>
                 ),
                 position: "bottom-center",
@@ -95,11 +125,7 @@ export default function MultiworldForm() {
         } catch (error) {
             console.log(error);
             toast.error("Something went wrong...", {
-                description: (
-                    <div>
-                        {String(error)}
-                    </div>
-                ),
+                description: <div>{String(error)}</div>,
                 position: "bottom-center",
                 style: {
                     "--border-radius": "calc(var(--radius) + 4px",
@@ -158,7 +184,7 @@ export default function MultiworldForm() {
                                 </Field>
                             )}
                         />
-                        <Controller
+                        {/* <Controller
                             name="username"
                             control={form.control}
                             render={({ field, fieldState }) => (
@@ -184,7 +210,7 @@ export default function MultiworldForm() {
                                     </FieldDescription>
                                 </Field>
                             )}
-                        />
+                        /> */}
                         <Controller
                             name="additionalComments"
                             control={form.control}

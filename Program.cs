@@ -70,7 +70,6 @@ try
     });
 
     builder.Services.AddScoped<PlayerFormService>();
-    builder.Services.AddScoped<IdentityService>();
     builder.Services.AddScoped<AspIdentityService>();
 
     builder.Services.AddScoped<IUserClaimsPrincipalFactory<MyIdentity>, MyCustomClaimsFactory>();

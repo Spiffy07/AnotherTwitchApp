@@ -63,8 +63,8 @@ export default function LoginForm() {
 
             if (!response.ok) {
                 let errorResult = await response.json();
-                toast.error(`User Creation failed: ${errorResult.detail}`, {
-                    position: "bottom-right",
+                toast.error(`Login Failed: ${errorResult.detail}`, {
+                    position: "top-right",
                     classNames: {
                         content: "bg-green-500 flex flex-col gap-2",
                     },  
