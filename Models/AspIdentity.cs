@@ -19,6 +19,11 @@ namespace Auth.Models
         public string MyTestingProperty { get; set; } = string.Empty;
     }
 
+    public class DataTransferObject
+    {
+        public string username { get; set; } = string.Empty;
+    }
+
     public class AspIdentityService
     {
         private UserManager<MyIdentity> _userManager;

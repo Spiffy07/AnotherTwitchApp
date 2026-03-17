@@ -1,5 +1,6 @@
 
 
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using Auth.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -57,20 +58,23 @@ public class AspIdentityController(AspIdentityService aspIdentityService) : Cont
         }
     }
 
-    [Authorize]
     [HttpGet("getusername")]
-    public async Task<string> GetUserNameAsync()
+    public async Task<ActionResult<DataTransferObject>> GetUserNameAsync()
     {
-        try
+        if (User.Identity?.IsAuthenticated == true)
         {
-            if (User.Identity?.IsAuthenticated == true)
-                return JsonSerializer.Serialize(this.User.Identity.Name);
-            throw new UnauthorizedAccessException("User is not authenticated.");
+            if (!string.IsNullOrEmpty(User.Identity.Name))
+            {
+                return Ok(new DataTransferObject
+                {
+                    username = this.User.Identity.Name
+                });
+            }
+            else
+            {
+                return NotFound(JsonSerializer.Serialize("Username Not Found"));
+            }
         }
-        catch (Exception ex)
-        {
-            Log.Error(ex.ToString());
-            return JsonSerializer.Serialize("Error retrieving username.");
-        }
+        return Unauthorized(JsonSerializer.Serialize("User is not authenticated"));
     }
 }

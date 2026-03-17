@@ -28,11 +28,16 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
+const nextSessionText = "March 21st/22nd, 2026 at 7:00pm Central"; // TODO: use date/time objects
+const nextSessionValue = "3-21-26";
+const followingSessionText = "April 4th/5th, 2026 at 7:00pm Central";
+const followingSessionValue = "4-4-26";
+
 const formSchema = z.object({
     session: z.string().nonempty("Choose a valid multiworld session"),
     additionalComments: z.string(),
     // .min(2, "Comments must be at least 2 characters long"),
-    username: z.string().min(2, "Username must be at least 2 characters long"),
+    username: z.string(),
 });
 
 export default function MultiworldForm() {
@@ -57,15 +62,12 @@ export default function MultiworldForm() {
                 // Data usually contains email, isEmailConfirmed, and custom claims
                 // if configured in the backend to be included in the profile.
                 return data;
-            } else if (response.status === 401) {
-                console.warn("User is not authenticated");
-                throw new Error("user not authenticated");
             } else {
-                console.error("unknown error");
-                throw new Error("Unknown error" + (await response.json()));
+                //console.error("unknown error");
+                throw new Error("Unauthorized " + (await response.json()));
             }
         } catch (error) {
-            console.error("Failed to fetch security context:", error);
+            console.error("Failed to fetch: ", error);
         }
     }
 
@@ -93,7 +95,7 @@ export default function MultiworldForm() {
                 throw new Error("Failed to retrieve username");
             }
 
-            data.username = retrievedUsername;
+            data.username = retrievedUsername.username;
 
             const response = await fetch("/api/playerform", {
                 method: "POST",
@@ -162,13 +164,16 @@ export default function MultiworldForm() {
                                             <SelectValue placeholder="Choose Session" />
                                         </SelectTrigger>
                                         <SelectContent {...field}>
-                                            <SelectItem value="2-7-26">
+                                            <SelectItem
+                                                value={nextSessionValue}
+                                            >
                                                 {" "}
-                                                {/* TODO: variables for dates and Text */}
-                                                February 7th, 2026 (7:00pm CST)
+                                                {nextSessionText}
                                             </SelectItem>
-                                            <SelectItem value="2-21-26">
-                                                February 21st, 2026 (7:00pm CST)
+                                            <SelectItem
+                                                value={followingSessionValue}
+                                            >
+                                                {followingSessionText}
                                             </SelectItem>
                                         </SelectContent>
                                     </Select>
@@ -237,7 +242,9 @@ export default function MultiworldForm() {
                     </FieldGroup>
                 </FieldSet>
                 <br />
-                <Button variant="outline">Submit</Button>
+                <Button onClick={form.handleSubmit(onSubmit)} variant="outline">
+                    Submit
+                </Button>
             </form>
         </div>
     );
