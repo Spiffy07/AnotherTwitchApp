@@ -137,7 +137,7 @@ export default function MultiworldForm() {
     }
 
     return (
-        <div className="w-full max-w-md flex justify-center align-middle">
+        <div className="w-full max-w-md flex justify-center align-middle items-center">
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
                 <FieldSet>
                     <FieldLegend>Multiworld Signup</FieldLegend>
