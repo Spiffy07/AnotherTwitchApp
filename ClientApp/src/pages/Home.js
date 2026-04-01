@@ -16,10 +16,15 @@ export class Home extends Component {
           <li><a className="text-center text-blue-700 dark:text-blue-300" href='/mycomponents'>My other stuff</a> for demonstration</li>
         </ul>
         <br />
-        <div className='flex relative justify-center items-center h-60'>
-          <Avatar className="w-60 h-60">
+        <div className='flex relative justify-center items-center h-60 m-10'>
+          <Avatar className="absolute w-60 h-60 -translate-x-12 z-1 rounded-full">
             <AvatarImage
               src="https://avatars.githubusercontent.com/u/129478296?v=4"
+            />
+          </Avatar>
+          <Avatar className='absolute transition-all w-80 h-80 translate-x-12 rounded-full hover:w-100 hover:h-100 hover:translate-x-0 hover:z-2'>
+            <AvatarImage 
+              src="https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/logo2.png"
             />
           </Avatar>
         </div>
