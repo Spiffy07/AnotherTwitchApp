@@ -16,26 +16,17 @@ export class Home extends Component {
           <li><a className="text-center text-blue-700 dark:text-blue-300" href='/mycomponents'>My other stuff</a> for demonstration</li>
         </ul>
         <br />
-        <div className='flex relative justify-center items-center h-60 m-10'>
-<<<<<<< HEAD
-          <Avatar className="absolute w-60 h-60 -translate-x-12 z-1 rounded-full">
+        <div className='flex relative justify-center items-center h-60 m-10 group'>
+          <Avatar className="absolute transition-all w-50 h-50 -translate-x-10 z-1 peer
+                    hover:w-75 hover:h-75 hover:-translate-x-5 hover:z-2">
             <AvatarImage
               src="https://avatars.githubusercontent.com/u/129478296?v=4"
-=======
-            <Avatar className="absolute transition-all w-60 h-60 -translate-x-12 z-1 hover:w-70 hover:h-70 hover:translate-x-0 hover:z-2">
-              <AvatarImage
-                src="https://avatars.githubusercontent.com/u/129478296?v=4"
-                />
-            </Avatar>
-          <Avatar className='absolute transition-all w-60 h-60 translate-x-12 hover:w-70 hover:h-70 hover:translate-x-0 hover:z-2'>
-            <AvatarImage 
-              src="https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/logo2.png"
->>>>>>> 0692b6c (Add side by side profile pics of me and my twitch)
             />
           </Avatar>
-          <Avatar className='absolute transition-all w-80 h-80 translate-x-12 rounded-full hover:w-100 hover:h-100 hover:translate-x-0 hover:z-2'>
+          <Avatar className='absolute transition-all w-49 h-60 translate-x-10 
+                    hover:w-65 hover:h-80 hover:translate-x-5 hover:z-2 peer-hover:translate-x-20'>
             <AvatarImage 
-              src="https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/logo2.png"
+              src="https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/logo2YT.png"
             />
           </Avatar>
         </div>
