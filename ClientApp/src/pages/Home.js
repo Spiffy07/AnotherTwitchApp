@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import ProfilePics from '@/components/ProfilePics/ProfilePics';
+import HeroCard from '@/components/HeroCard';
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -17,6 +18,7 @@ export class Home extends Component {
         </ul>
         <br />
         <ProfilePics />
+        <HeroCard />
       </div>
     );
   }
