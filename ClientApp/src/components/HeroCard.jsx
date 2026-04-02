@@ -21,7 +21,7 @@ export default function () {
     }
 
     return (
-        <Card className="mx-auto h-56 w-full m-4">
+        <Card className="mx-auto h-56 w-[575px] m-4">
             <CardHeader>
                 <CardTitle>Thomas Tran</CardTitle>
                 <CardTitle>Full-Stack Developer</CardTitle>

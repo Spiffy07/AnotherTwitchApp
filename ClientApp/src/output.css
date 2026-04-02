@@ -475,6 +475,9 @@
   .w-\[320px\] {
     width: 320px;
   }
+  .w-\[575px\] {
+    width: 575px;
+  }
   .w-fit {
     width: fit-content;
   }
@@ -516,10 +519,6 @@
   }
   .origin-\(--radix-select-content-transform-origin\) {
     transform-origin: var(--radix-select-content-transform-origin);
-  }
-  .-translate-x-10 {
-    --tw-translate-x: calc(var(--spacing) * -10);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .-translate-x-12 {
     --tw-translate-x: calc(var(--spacing) * -12);
@@ -1064,22 +1063,6 @@
       transition-duration: 200ms;
     }
   }
-  .peer-hover\:translate-x-15 {
-    &:is(:where(.peer):hover ~ *) {
-      @media (hover: hover) {
-        --tw-translate-x: calc(var(--spacing) * 15);
-        translate: var(--tw-translate-x) var(--tw-translate-y);
-      }
-    }
-  }
-  .peer-hover\:translate-x-20 {
-    &:is(:where(.peer):hover ~ *) {
-      @media (hover: hover) {
-        --tw-translate-x: calc(var(--spacing) * 20);
-        translate: var(--tw-translate-x) var(--tw-translate-y);
-      }
-    }
-  }
   .peer-disabled\:cursor-not-allowed {
     &:is(:where(.peer):disabled ~ *) {
       cursor: not-allowed;
@@ -1161,22 +1144,6 @@
       }
     }
   }
-  .hover\:size-4 {
-    &:hover {
-      @media (hover: hover) {
-        width: calc(var(--spacing) * 4);
-        height: calc(var(--spacing) * 4);
-      }
-    }
-  }
-  .hover\:size-10 {
-    &:hover {
-      @media (hover: hover) {
-        width: calc(var(--spacing) * 10);
-        height: calc(var(--spacing) * 10);
-      }
-    }
-  }
   .hover\:size-12 {
     &:hover {
       @media (hover: hover) {
@@ -1189,13 +1156,6 @@
     &:hover {
       @media (hover: hover) {
         height: calc(var(--spacing) * 70);
-      }
-    }
-  }
-  .hover\:h-75 {
-    &:hover {
-      @media (hover: hover) {
-        height: calc(var(--spacing) * 75);
       }
     }
   }
@@ -1220,33 +1180,10 @@
       }
     }
   }
-  .hover\:w-75 {
-    &:hover {
-      @media (hover: hover) {
-        width: calc(var(--spacing) * 75);
-      }
-    }
-  }
-  .hover\:-translate-x-5 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-translate-x: calc(var(--spacing) * -5);
-        translate: var(--tw-translate-x) var(--tw-translate-y);
-      }
-    }
-  }
   .hover\:-translate-x-15 {
     &:hover {
       @media (hover: hover) {
         --tw-translate-x: calc(var(--spacing) * -15);
-        translate: var(--tw-translate-x) var(--tw-translate-y);
-      }
-    }
-  }
-  .hover\:translate-x-5 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-translate-x: calc(var(--spacing) * 5);
         translate: var(--tw-translate-x) var(--tw-translate-y);
       }
     }
