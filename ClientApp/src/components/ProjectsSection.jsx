@@ -18,9 +18,13 @@ export default function ProjectsSection() {
           <h3 className="text-2xl">SpiffySoft Twitch WebApp</h3>
           <p> Description here</p>
         </div>
-        <Card className="min-w-xs h-auto"></Card>
+        <Card className="min-w-xs h-auto shadow-[0_0_20px_var(--color-blue-500)]">
+          <img src="https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/Media/AnotherTwitchAppDemo.gif" />
+        </Card>
         {/* Project 2 */}
-        <Card className="min-w-xs h-auto"></Card>
+        <Card className="min-w-xs h-auto shadow-[0_0_20px_var(--color-blue-500)]">
+          <img src="https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/Media/BrokebotPreview.png" />
+        </Card>
         <div className="text-center m-4">
           <h3 className="text-2xl font-sans">
             Interactive Twitch Bot "BrokeBot"
@@ -32,7 +36,13 @@ export default function ProjectsSection() {
           <h3 className="text-2xl font-sans">Unreal Engine 5 Castle"</h3>
           <p> Description here</p>
         </div>
-        <YtVideoPreview ytVideoId="F6z8ensqAYg" startTimeInSeconds={155} />
+        <Card className="min-w-xs h-auto shadow-[0_0_20px_var(--color-blue-500)]">
+          <YtVideoPreview
+            className="shadow-[0_0_20px_var(--color-blue-500)]"
+            ytVideoId="F6z8ensqAYg"
+            startTimeInSeconds={155}
+          />
+        </Card>
       </div>
     </>
   );

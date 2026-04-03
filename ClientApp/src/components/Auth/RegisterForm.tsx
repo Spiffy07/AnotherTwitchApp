@@ -84,7 +84,7 @@ export default function RegisterForm() {
                 } as React.CSSProperties,
             });
             console.log(response);
-            navigate("/");
+            navigate("/multiworld");
         } catch (error) {
             console.log(error);
             toast.error(`User Creation failed: ${String(error)}`, {

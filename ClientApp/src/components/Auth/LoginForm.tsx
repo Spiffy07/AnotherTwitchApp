@@ -76,7 +76,7 @@ export default function LoginForm() {
             }
 
             console.log(response);
-            navigate("/");
+            navigate("/multiworld");
         } catch (error) {
             console.log(error);
         }

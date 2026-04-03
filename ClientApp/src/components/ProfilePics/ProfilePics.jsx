@@ -6,7 +6,7 @@ export default function ProfilePics() {
     <div className="flex w-max min-w-[575px] relative justify-center items-center h-60 m-8 group">
       <div
         className="absolute items-center mx-auto max-w-2xs -inset-1 rounded-full
-                    bg-linear-to-br from-white to-blue-500 blur opacity-25 
+                    bg-linear-to-r from-white to-blue-500 blur opacity-25 animate-pulse
                     group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
       ></div>
       <Avatar
@@ -19,7 +19,7 @@ export default function ProfilePics() {
         className="relative transition-all w-49 h-60 -translate-x-15 
                     hover:w-65 hover:h-80 hover:-translate-x-15 hover:z-2 "
       >
-        <AvatarImage src="https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/logo2YT.png" />
+        <AvatarImage src="https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/Media/logo2YT.png" />
       </Avatar>
     </div>
   );
