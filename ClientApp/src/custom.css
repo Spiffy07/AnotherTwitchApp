@@ -144,7 +144,7 @@ ul {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Inter", "ui-sans-serif", "system-ui", sans-serif;
   margin: 20px;
   padding: 0;
 }

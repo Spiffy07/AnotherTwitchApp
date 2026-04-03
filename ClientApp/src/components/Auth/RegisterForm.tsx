@@ -90,7 +90,7 @@ export default function RegisterForm() {
             toast.error(`User Creation failed: ${String(error)}`, {
                 position: "bottom-right",
                 classNames: {
-                    content: "bg-green-500 flex flex-col gap-2",
+                    content: "flex flex-col gap-2",
                 },
                 style: {
                     "--border-radius": "calc(var(--radius)  + 4px)",
