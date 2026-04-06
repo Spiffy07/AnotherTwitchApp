@@ -27,7 +27,7 @@ export default function () {
                     group-hover:opacity-0 transition duration-500 group-hover:duration-200">
             </div> */}
       <CardHeader>
-        <CardTitle>Thomas Tran</CardTitle>
+        <CardTitle>Thomas T.</CardTitle>
         <CardTitle>Full-Stack Developer</CardTitle>
         <CardContent className=" dark:[text-shadow:0_0_5px_#fff,0_0_10px_#fff,0_0_20px_#0ea5e9]">
           Hello, World!

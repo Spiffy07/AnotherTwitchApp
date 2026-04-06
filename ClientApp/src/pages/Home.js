@@ -5,6 +5,7 @@ import ProfilePics from '@/components/ProfilePics/ProfilePics';
 import HeroCard from '@/components/HeroCard';
 import ExpEdu from '@/components/ExpEdu';
 import ProjectsSection from '@/components/ProjectsSection';
+import SkillsSection from '@/components/SkillsSection';
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -26,6 +27,8 @@ export class Home extends Component {
         <ExpEdu />
         <Card />
         <ProjectsSection />
+        <Card />
+        <SkillsSection />
       </div>
     );
   }
