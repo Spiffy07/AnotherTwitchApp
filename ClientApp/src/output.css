@@ -12,6 +12,7 @@
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-blue-800: oklch(42.4% 0.199 265.638);
+    --color-blue-900: oklch(37.9% 0.146 265.522);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-black: #000;
     --color-white: #fff;
@@ -1069,6 +1070,10 @@
   .transition-none {
     transition-property: none;
   }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
@@ -1080,6 +1085,10 @@
   .duration-1000 {
     --tw-duration: 1000ms;
     transition-duration: 1000ms;
+  }
+  .duration-2000 {
+    --tw-duration: 2000ms;
+    transition-duration: 2000ms;
   }
   .outline-none {
     --tw-outline-style: none;
@@ -1106,11 +1115,27 @@
       }
     }
   }
+  .group-hover\:brightness-200 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        --tw-brightness: brightness(200%);
+        filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+      }
+    }
+  }
   .group-hover\:duration-200 {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
         --tw-duration: 200ms;
         transition-duration: 200ms;
+      }
+    }
+  }
+  .group-hover\:duration-1000 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        --tw-duration: 1000ms;
+        transition-duration: 1000ms;
       }
     }
   }
@@ -1280,6 +1305,24 @@
     }
     &::-webkit-details-marker {
       color: var(--color-blue-500);
+    }
+  }
+  .group-hover\:marker\:text-white {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        & *::marker {
+          color: var(--color-white);
+        }
+        &::marker {
+          color: var(--color-white);
+        }
+        & *::-webkit-details-marker {
+          color: var(--color-white);
+        }
+        &::-webkit-details-marker {
+          color: var(--color-white);
+        }
+      }
     }
   }
   .selection\:bg-primary {
@@ -1544,11 +1587,67 @@
       }
     }
   }
+  .hover\:shadow-\[0_0_20px_var\(--color-blue-300\)\] {
+    &:hover {
+      @media (hover: hover) {
+        --tw-shadow: 0 0 20px var(--tw-shadow-color, var(--color-blue-300));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+    }
+  }
+  .hover\:shadow-\[0_0_20px_var\(--color-blue-900\)\] {
+    &:hover {
+      @media (hover: hover) {
+        --tw-shadow: 0 0 20px var(--tw-shadow-color, var(--color-blue-900));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+    }
+  }
+  .hover\:shadow-\[0_0_20px_var\(--color-white\)\] {
+    &:hover {
+      @media (hover: hover) {
+        --tw-shadow: 0 0 20px var(--tw-shadow-color, var(--color-white));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+    }
+  }
+  .hover\:brightness-125 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-brightness: brightness(125%);
+        filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+      }
+    }
+  }
   .hover\:brightness-150 {
     &:hover {
       @media (hover: hover) {
         --tw-brightness: brightness(150%);
         filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+      }
+    }
+  }
+  .hover\:brightness-200 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-brightness: brightness(200%);
+        filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+      }
+    }
+  }
+  .hover\:duration-200 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-duration: 200ms;
+        transition-duration: 200ms;
+      }
+    }
+  }
+  .hover\:duration-1000 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-duration: 1000ms;
+        transition-duration: 1000ms;
       }
     }
   }

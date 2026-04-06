@@ -21,7 +21,8 @@ export default function () {
   }
 
   return (
-    <Card className="mx-auto h-auto min-w-[675px] w-max m-4 shadow-[0_0_20px_var(--color-blue-500)] relative group text-2xl">
+    <Card className="group mx-auto h-auto min-w-[675px] w-max m-4 relative text-2xl transition duration-1000 shadow-[0_0_20px_var(--color-blue-500)]
+              hover:shadow-[0_0_20px_var(--color-white)] hover:duration-200">
       {/* <div className="absolute w-full inset-0 bg-linear-to-br from-gray-800 to-blue-800 
                     rounded-lg blur opacity-10 
                     group-hover:opacity-0 transition duration-500 group-hover:duration-200">
@@ -33,7 +34,8 @@ export default function () {
           Hello, World!
         </CardContent>
         <CardDescription>
-          <p className="text-lg">
+          <p className="text-lg transition-all duration-1000 
+                      group-hover:duration-200 group-hover:marker:text-white group-hover:brightness-200">
             I am an Asian-American full-stack software developer and Twitch
             streamer. My content-creation and development projects has reached a
             wide audience with varying interests.
