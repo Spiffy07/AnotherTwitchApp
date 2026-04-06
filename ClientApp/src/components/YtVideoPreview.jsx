@@ -33,14 +33,14 @@ export default function YtVideoPreview({ ytVideoId, startTimeInSeconds = 0 }) {
   return (
     <div
       className="group relative w-auto aspect-video overflow-hidden rounded-xl bg-black"
-      onMouseEnter={() => {
-        playerRef.current?.seekTo(startTimeInSeconds);
-        playerRef.current?.playVideo();
-      }}
-      onMouseLeave={() => {
-        playerRef.current?.pauseVideo();
-        playerRef.current?.seekTo(startTimeInSeconds); // Optional: Reset to start
-      }}
+      // onMouseEnter={() => {
+      //   playerRef.current?.seekTo(startTimeInSeconds);
+      //   playerRef.current?.playVideo();
+      // }}
+      // onMouseLeave={() => {
+      //   playerRef.current?.pauseVideo();
+      //   playerRef.current?.seekTo(startTimeInSeconds); // Optional: Reset to start
+      // }}
     >
       <YouTube
         videoId={ytVideoId}
