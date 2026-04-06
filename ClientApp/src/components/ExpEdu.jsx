@@ -15,10 +15,10 @@ export default function ExpEdu() {
     >
       <Tabs defaultValue="experience">
         <TabsList variant="line" className="mx-auto">
-          <TabsTrigger value="experience" className="text-2xl">
+          <TabsTrigger value="experience" className="text-2xl hover:cursor-pointer">
             Experience
           </TabsTrigger>
-          <TabsTrigger value="education" className="text-2xl">
+          <TabsTrigger value="education" className="text-2xl hover:cursor-pointer">
             Education
           </TabsTrigger>
         </TabsList>
