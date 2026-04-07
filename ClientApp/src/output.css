@@ -12,7 +12,6 @@
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-blue-800: oklch(42.4% 0.199 265.638);
-    --color-blue-900: oklch(37.9% 0.146 265.522);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-black: #000;
     --color-white: #fff;
@@ -335,9 +334,6 @@
   }
   .-mx-1 {
     margin-inline: calc(var(--spacing) * -1);
-  }
-  .mx-3 {
-    margin-inline: calc(var(--spacing) * 3);
   }
   .mx-5 {
     margin-inline: calc(var(--spacing) * 5);
@@ -1005,6 +1001,10 @@
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
+  .shadow-\[0_0_20px_\#3b82f6\] {
+    --tw-shadow: 0 0 20px var(--tw-shadow-color, #3b82f6);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
   .shadow-\[0_0_20px_var\(--color-blue-500\)\] {
     --tw-shadow: 0 0 20px var(--tw-shadow-color, var(--color-blue-500));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -1070,10 +1070,6 @@
   .transition-none {
     transition-property: none;
   }
-  .duration-200 {
-    --tw-duration: 200ms;
-    transition-duration: 200ms;
-  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
@@ -1086,9 +1082,9 @@
     --tw-duration: 1000ms;
     transition-duration: 1000ms;
   }
-  .duration-2000 {
-    --tw-duration: 2000ms;
-    transition-duration: 2000ms;
+  .ease-in-out {
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
   }
   .outline-none {
     --tw-outline-style: none;
@@ -1128,14 +1124,6 @@
       @media (hover: hover) {
         --tw-duration: 200ms;
         transition-duration: 200ms;
-      }
-    }
-  }
-  .group-hover\:duration-1000 {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        --tw-duration: 1000ms;
-        transition-duration: 1000ms;
       }
     }
   }
@@ -1587,18 +1575,10 @@
       }
     }
   }
-  .hover\:shadow-\[0_0_20px_var\(--color-blue-300\)\] {
+  .hover\:shadow-\[0_0_20px_\#ffffff\] {
     &:hover {
       @media (hover: hover) {
-        --tw-shadow: 0 0 20px var(--tw-shadow-color, var(--color-blue-300));
-        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-      }
-    }
-  }
-  .hover\:shadow-\[0_0_20px_var\(--color-blue-900\)\] {
-    &:hover {
-      @media (hover: hover) {
-        --tw-shadow: 0 0 20px var(--tw-shadow-color, var(--color-blue-900));
+        --tw-shadow: 0 0 20px var(--tw-shadow-color, #ffffff);
         box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
       }
     }
@@ -1611,26 +1591,10 @@
       }
     }
   }
-  .hover\:brightness-125 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-brightness: brightness(125%);
-        filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-      }
-    }
-  }
   .hover\:brightness-150 {
     &:hover {
       @media (hover: hover) {
         --tw-brightness: brightness(150%);
-        filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-      }
-    }
-  }
-  .hover\:brightness-200 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-brightness: brightness(200%);
         filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
       }
     }
@@ -1640,14 +1604,6 @@
       @media (hover: hover) {
         --tw-duration: 200ms;
         transition-duration: 200ms;
-      }
-    }
-  }
-  .hover\:duration-1000 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-duration: 1000ms;
-        transition-duration: 1000ms;
       }
     }
   }
@@ -3067,6 +3023,10 @@ body {
   syntax: "*";
   inherits: false;
 }
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-content {
   syntax: "*";
   initial-value: "";
@@ -3149,6 +3109,7 @@ body {
       --tw-drop-shadow-alpha: 100%;
       --tw-drop-shadow-size: initial;
       --tw-duration: initial;
+      --tw-ease: initial;
       --tw-content: "";
       --tw-animation-delay: 0s;
       --tw-animation-direction: normal;

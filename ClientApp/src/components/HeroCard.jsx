@@ -9,6 +9,16 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
+const cardStyle =
+  "trasition duration-1000 shadow-[0_0_20px_var(--color-blue-500)] hover:shadow-[0_0_20px_var(--color-white)] hover:duration-200";
+const cardChildrenHover =
+  "transtion duration-1000 group-hover:duration-200 group-hover:brightness-200";
+const iconAnimation = "ml-4 mr-4 transition-all absolute hover:size-12 hover:cursor-pointer hover:brightness-150"
+
+const gitIconUrl = "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png";
+const linkedInIconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/3840px-LinkedIn_icon.svg.png";
+const twitchIconUrl = "https://cdn-icons-png.flaticon.com/512/3991/3991943.png";
+
 export default function () {
   function handleGithubClick() {
     window.open("https://github.com/Spiffy07", "_blank");
@@ -21,8 +31,9 @@ export default function () {
   }
 
   return (
-    <Card className="group mx-auto h-auto min-w-[675px] w-max m-4 relative text-2xl transition duration-1000 shadow-[0_0_20px_var(--color-blue-500)]
-              hover:shadow-[0_0_20px_var(--color-white)] hover:duration-200">
+    <Card
+      className={`group mx-auto h-auto min-w-[675px] w-max m-4 relative text-2xl ${cardStyle}`}
+    >
       {/* <div className="absolute w-full inset-0 bg-linear-to-br from-gray-800 to-blue-800 
                     rounded-lg blur opacity-10 
                     group-hover:opacity-0 transition duration-500 group-hover:duration-200">
@@ -34,8 +45,9 @@ export default function () {
           Hello, World!
         </CardContent>
         <CardDescription>
-          <p className="text-lg transition-all duration-1000 
-                      group-hover:duration-200 group-hover:marker:text-white group-hover:brightness-200">
+          <p
+            className={`text-lg ${cardChildrenHover}`}
+          >
             I am an Asian-American full-stack software developer and Twitch
             streamer. My content-creation and development projects has reached a
             wide audience with varying interests.
@@ -44,26 +56,23 @@ export default function () {
         <CardFooter className="flex h-10 items-center justify-center">
           <Avatar
             onClick={handleGithubClick}
-            className="ml-4 mr-4 transition-all absolute -translate-x-12 
-                            hover:size-12 hover:cursor-pointer hover:brightness-150"
+            className={`-translate-x-12 ${iconAnimation}`}
           >
-            <AvatarImage src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" />
+            <AvatarImage src={gitIconUrl} />
             <AvatarFallback>Git</AvatarFallback>
           </Avatar>
           <Avatar
             onClick={handleLinkedInClick}
-            className="ml-4 mr-4 transition-all absolute translate-x-0 
-                            hover:size-12 hover:cursor-pointer hover:brightness-150"
+            className={`translate-x-0 ${iconAnimation}`}
           >
-            <AvatarImage src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/3840px-LinkedIn_icon.svg.png" />
+            <AvatarImage src={linkedInIconUrl} />
             <AvatarFallback>in</AvatarFallback>
           </Avatar>
           <Avatar
             onClick={handleTwitchClick}
-            className="ml-4 mr-4 transition-all absolute translate-x-12 
-                            hover:size-12 hover:cursor-pointer hover:brightness-150"
+            className={`translate-x-12 ${iconAnimation}`}
           >
-            <AvatarImage src="https://cdn-icons-png.flaticon.com/512/3991/3991943.png" />
+            <AvatarImage src={twitchIconUrl} />
             <AvatarFallback>Twitch</AvatarFallback>
           </Avatar>
         </CardFooter>
