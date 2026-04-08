@@ -8,7 +8,7 @@ import {
 import YtVideoPreview from "./YtVideoPreview";
 
 const cardStyle =
-  "trasition duration-1000 shadow-[0_0_20px_var(--color-blue-500)] hover:shadow-[0_0_20px_var(--color-white)] hover:duration-200";
+  "trasition duration-1000 shadow-[0_0_20px_var(--color-blue-500)] hover:shadow-[0_0_20px_var(--color-white)] hover:duration-200 hover:scale-110 hover:z-2";
 const cardChildrenHover =
   "transtion duration-1000 group-hover:duration-200 group-hover:brightness-200";
 
@@ -32,7 +32,7 @@ export default function ProjectsSection() {
           <p> Description here</p>
         </div>
         <Card
-          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle}`}
+          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle} origin-right`}
           onClick={() => {
             window.open(urlTwitchApp, "_blank");
           }}
@@ -41,7 +41,7 @@ export default function ProjectsSection() {
         </Card>
         {/* Project 2 */}
         <Card
-          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle}`}
+          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle} origin-left`}
           onClick={() => {
             window.open(urlBrokeBot, "_blank");
           }}
@@ -60,7 +60,7 @@ export default function ProjectsSection() {
           <p> Description here</p>
         </div>
         <Card
-          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle}`}
+          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle} origin-right`}
           onClick={() => {
             window.open(
               "https://github.com/Spiffy07/CastleEnvironment",
