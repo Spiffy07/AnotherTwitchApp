@@ -10,7 +10,8 @@ import {
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const cardStyle =
-  "trasition duration-1000 shadow-[0_0_20px_var(--color-blue-500)] hover:shadow-[0_0_20px_var(--color-white)] hover:duration-200 hover:scale-110 hover:z-2";
+  `trasition duration-1000 shadow-[0_0_20px_var(--color-blue-500)] hover:shadow-[0_0_20px_var(--color-white)]
+     hover:duration-200 hover:scale-110 hover:z-2 bg-gradient-to-br from-slate-900 via-gray-950 to-slate-900`;
 const cardChildrenHover =
   "transtion duration-1000 group-hover:duration-200 group-hover:brightness-200";
 const iconAnimation = "ml-4 mr-4 transition-all absolute hover:size-12 hover:cursor-pointer hover:brightness-150"

@@ -124,6 +124,12 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: url('../Media/abstract_space_background_with_planet_2905.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: var(--background);
   }
 }
 
