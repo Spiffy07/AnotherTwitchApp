@@ -6,31 +6,14 @@ import {
   CardTitle,
   CardDescription,
   CardFooter,
+  cardStyle,
 } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import SocialIcons from "@/components/SocialIcons";
 
-const cardStyle =
-  `trasition duration-1000 shadow-[0_0_20px_var(--color-blue-500)] hover:shadow-[0_0_20px_var(--color-white)]
-     hover:duration-200 hover:scale-110 hover:z-2 bg-gradient-to-br from-slate-900 via-gray-950 to-slate-900`;
 const cardChildrenHover =
   "transtion duration-1000 group-hover:duration-200 group-hover:brightness-200";
-const iconAnimation = "ml-4 mr-4 transition-all absolute hover:size-12 hover:cursor-pointer hover:brightness-150"
-
-const gitIconUrl = "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png";
-const linkedInIconUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/3840px-LinkedIn_icon.svg.png";
-const twitchIconUrl = "https://cdn-icons-png.flaticon.com/512/3991/3991943.png";
 
 export default function () {
-  function handleGithubClick() {
-    window.open("https://github.com/Spiffy07", "_blank");
-  }
-  function handleLinkedInClick() {
-    window.open("https://www.linkedin.com/in/thomas-tran-spiffy07/", "_blank");
-  }
-  function handleTwitchClick() {
-    window.open("https://www.twitch.tv/spiffythomas", "_blank");
-  }
-
   return (
     <Card
       className={`group mx-auto h-auto min-w-[675px] w-max m-4 relative text-2xl ${cardStyle}`}
@@ -46,36 +29,14 @@ export default function () {
           Hello, World!
         </CardContent>
         <CardDescription>
-          <p
-            className={`text-lg ${cardChildrenHover}`}
-          >
+          <p className={`text-lg ${cardChildrenHover}`}>
             I am an Asian-American full-stack software developer and Twitch
             streamer. My content-creation and development projects has reached a
             wide audience with varying interests.
           </p>
         </CardDescription>
         <CardFooter className="flex h-10 items-center justify-center">
-          <Avatar
-            onClick={handleGithubClick}
-            className={`-translate-x-12 ${iconAnimation}`}
-          >
-            <AvatarImage src={gitIconUrl} />
-            <AvatarFallback>Git</AvatarFallback>
-          </Avatar>
-          <Avatar
-            onClick={handleLinkedInClick}
-            className={`translate-x-0 ${iconAnimation}`}
-          >
-            <AvatarImage src={linkedInIconUrl} />
-            <AvatarFallback>in</AvatarFallback>
-          </Avatar>
-          <Avatar
-            onClick={handleTwitchClick}
-            className={`translate-x-12 ${iconAnimation}`}
-          >
-            <AvatarImage src={twitchIconUrl} />
-            <AvatarFallback>Twitch</AvatarFallback>
-          </Avatar>
+          <SocialIcons />
         </CardFooter>
       </CardHeader>
     </Card>

@@ -4,11 +4,10 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
+  cardStyle,
 } from "@/components/ui/card";
 import YtVideoPreview from "./YtVideoPreview";
 
-const cardStyle =
-  "trasition duration-1000 shadow-[0_0_20px_var(--color-blue-500)] hover:shadow-[0_0_20px_var(--color-white)] hover:duration-200 hover:scale-110 hover:z-2";
 const cardChildrenHover =
   "transtion duration-1000 group-hover:duration-200 group-hover:brightness-200";
 
@@ -25,14 +24,14 @@ export default function ProjectsSection() {
   return (
     <>
       <h1 className="text-6xl text-center m-4">Projects</h1>
-      <div className="min-w-2xl w-5xl mx-auto grid grid-cols-2 gap-16 m-2">
+      <div className="w-5xl mx-auto grid grid-cols-2 gap-16 m-2">
         {/* Project 1 this website, not just the portfolio page */}
         <div className="text-center m-4">
           <h3 className="text-2xl">Twitch WebApp</h3>
           <p> Description here</p>
         </div>
         <Card
-          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle} origin-right`}
+          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle} origin-right hover:scale-120`}
           onClick={() => {
             window.open(urlTwitchApp, "_blank");
           }}
@@ -41,7 +40,7 @@ export default function ProjectsSection() {
         </Card>
         {/* Project 2 */}
         <Card
-          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle} origin-left`}
+          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle} origin-left hover:scale-120`}
           onClick={() => {
             window.open(urlBrokeBot, "_blank");
           }}
@@ -60,7 +59,7 @@ export default function ProjectsSection() {
           <p> Description here</p>
         </div>
         <Card
-          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle} origin-right`}
+          className={`min-w-xs h-auto hover:cursor-pointer ${cardStyle} origin-right hover:scale-120`}
           onClick={() => {
             window.open(
               "https://github.com/Spiffy07/CastleEnvironment",

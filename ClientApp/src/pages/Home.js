@@ -6,6 +6,7 @@ import HeroCard from '@/components/HeroCard';
 import ExpEdu from '@/components/ExpEdu';
 import ProjectsSection from '@/components/ProjectsSection';
 import SkillsSection from '@/components/SkillsSection';
+import ContactCard from '@/components/ContactCard';
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -21,7 +22,9 @@ export class Home extends Component {
           <li><a className="text-center text-blue-700 dark:text-blue-300" href='/mycomponents'>My other stuff</a> for demonstration</li>
         </ul>
         <br />
-        <ProfilePics />
+        <div className='m-6'>
+          <ProfilePics />
+        </div>
         <HeroCard />
         <Card />
         <ExpEdu />
@@ -29,6 +32,8 @@ export class Home extends Component {
         <ProjectsSection />
         <Card />
         <SkillsSection />
+        <Card />
+        <ContactCard />
       </div>
     );
   }
