@@ -154,3 +154,7 @@ body {
   margin: 20px;
   padding: 0;
 }
+
+html {
+  scroll-behavior: smooth;
+}

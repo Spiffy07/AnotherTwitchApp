@@ -7,6 +7,7 @@ import ExpEdu from '@/components/ExpEdu';
 import ProjectsSection from '@/components/ProjectsSection';
 import SkillsSection from '@/components/SkillsSection';
 import ContactCard from '@/components/ContactCard';
+import {FloatingNavbar} from '@/components/ui/floating-navbar';
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -14,26 +15,28 @@ export class Home extends Component {
   render() {
     return (
       <div className="flex flex-col items-center h-screen"> 
-        <p className='text-center'>Welcome to your new single-page application, built with:</p>
-        <ul className='flex flex-col items-center'>
-          <li><a className="text-center text-blue-700 dark:text-blue-300" href='https://get.asp.net/'>ASP.NET Core</a> and <a className="text-blue-700 dark:text-blue-300" href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>
-          <li><a className="text-center text-blue-700 dark:text-blue-300" href='https://facebook.github.io/react/'>React</a> for client-side code</li>
-          <li><a className="text-center text-blue-700 dark:text-blue-300" href='https://tailwindcss.com/docs/installation/tailwind-cli'>Tailwind CSS</a> for layout and styling</li>
-          <li><a className="text-center text-blue-700 dark:text-blue-300" href='/mycomponents'>My other stuff</a> for demonstration</li>
-        </ul>
-        <br />
-        <div className='m-6'>
+        <FloatingNavbar />
+        <div className='m-6 pt-24'>
           <ProfilePics />
         </div>
         <HeroCard />
-        <Card />
+        <section id='experience' />
+          <Card />
         <ExpEdu />
-        <Card />
+        <section id='projects'/>
+         <Card />
         <ProjectsSection />
-        <Card />
+        <section id='skills' />
+          <Card />
         <SkillsSection />
-        <Card />
+        <section id='contact' />          
+          <Card />
         <ContactCard />
+        <footer className='w-lvw items-center'>
+          <div className='pt-6  pb-12 px-4 text-center bg-linear-to-r from-slate-900/0 via-blue-800/80 to-slate-900/0 bg-opacity'>
+            <p>Copyright © 2026 Thomas Tran. All Rights Reserved.</p>
+          </div>
+        </footer>
       </div>
     );
   }
