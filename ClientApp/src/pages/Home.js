@@ -33,7 +33,7 @@ export class Home extends Component {
           <Card />
         <ContactCard />
         <footer className='w-lvw items-center'>
-          <div className='pt-6  pb-12 px-4 text-center bg-linear-to-r from-slate-900/0 via-blue-800/80 to-slate-900/0 bg-opacity'>
+          <div className='pt-6  pb-12 px-4 text-center bg-linear-to-r from-gray-950/0 via-slate-900/60 to-gray-950/0 backdrop-blur-sm'>
             <p>Copyright © 2026 Thomas Tran. All Rights Reserved.</p>
           </div>
         </footer>
