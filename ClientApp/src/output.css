@@ -8,11 +8,8 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-green-500: oklch(72.3% 0.219 149.579);
-    --color-blue-300: oklch(80.9% 0.105 251.813);
     --color-blue-500: oklch(62.3% 0.214 259.815);
-    --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-blue-800: oklch(42.4% 0.199 265.638);
-    --color-blue-900: oklch(37.9% 0.146 265.522);
     --color-slate-900: oklch(20.8% 0.042 265.755);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-gray-950: oklch(13% 0.028 261.692);
@@ -42,7 +39,6 @@
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
-    --font-weight-bold: 700;
     --leading-snug: 1.375;
     --leading-normal: 1.5;
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -578,9 +574,6 @@
   .min-w-\[8rem\] {
     min-width: 8rem;
   }
-  .min-w-\[575px\] {
-    min-width: 575px;
-  }
   .min-w-\[675px\] {
     min-width: 675px;
   }
@@ -629,18 +622,6 @@
   .translate-x-15 {
     --tw-translate-x: calc(var(--spacing) * 15);
     translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .scale-10 {
-    --tw-scale-x: 10%;
-    --tw-scale-y: 10%;
-    --tw-scale-z: 10%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
-  }
-  .scale-15 {
-    --tw-scale-x: 15%;
-    --tw-scale-y: 15%;
-    --tw-scale-z: 15%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
   }
   .scale-20 {
     --tw-scale-x: 20%;
@@ -841,32 +822,8 @@
   .bg-background-color {
     background-color: var(--background-color);
   }
-  .bg-background\/60 {
-    background-color: var(--background);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--background) 60%, transparent);
-    }
-  }
-  .bg-background\/80 {
-    background-color: var(--background);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--background) 80%, transparent);
-    }
-  }
   .bg-black {
     background-color: var(--color-black);
-  }
-  .bg-blue-800 {
-    background-color: var(--color-blue-800);
-  }
-  .bg-blue-900 {
-    background-color: var(--color-blue-900);
-  }
-  .bg-blue-900\/80 {
-    background-color: color-mix(in srgb, oklch(37.9% 0.146 265.522) 80%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-blue-900) 80%, transparent);
-    }
   }
   .bg-border {
     background-color: var(--border);
@@ -894,6 +851,12 @@
   }
   .bg-slate-900 {
     background-color: var(--color-slate-900);
+  }
+  .bg-slate-900\/40 {
+    background-color: color-mix(in srgb, oklch(20.8% 0.042 265.755) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-slate-900) 40%, transparent);
+    }
   }
   .bg-slate-900\/60 {
     background-color: color-mix(in srgb, oklch(20.8% 0.042 265.755) 60%, transparent);
@@ -1113,10 +1076,6 @@
     --tw-leading: var(--leading-snug);
     line-height: var(--leading-snug);
   }
-  .font-bold {
-    --tw-font-weight: var(--font-weight-bold);
-    font-weight: var(--font-weight-bold);
-  }
   .font-medium {
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
@@ -1137,9 +1096,6 @@
   }
   .whitespace-nowrap {
     white-space: nowrap;
-  }
-  .text-blue-700 {
-    color: var(--color-blue-700);
   }
   .text-card-foreground {
     color: var(--card-foreground);
@@ -2462,11 +2418,6 @@
       margin-top: calc(var(--spacing) * -1);
     }
   }
-  .sm\:block {
-    @media (width >= 40rem) {
-      display: block;
-    }
-  }
   .sm\:max-w-md {
     @media (width >= 40rem) {
       max-width: var(--container-md);
@@ -2475,11 +2426,6 @@
   .md\:absolute {
     @media (width >= 48rem) {
       position: absolute;
-    }
-  }
-  .md\:block {
-    @media (width >= 48rem) {
-      display: block;
     }
   }
   .md\:flex {
@@ -2559,11 +2505,6 @@
       @supports (color: color-mix(in lab, red, red)) {
         background-color: color-mix(in oklab, var(--input) 30%, transparent);
       }
-    }
-  }
-  .dark\:text-blue-300 {
-    &:is(.dark *) {
-      color: var(--color-blue-300);
     }
   }
   .dark\:text-muted-foreground {
@@ -3035,7 +2976,7 @@
   }
   body {
     color: var(--foreground);
-    background-image: url('../Media/abstract_space_background_with_planet_2905.jpg');
+    background-image: url('../Media/gradientblur.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
