@@ -14,9 +14,9 @@ export class Home extends Component {
 
   render() {
     return (
-      <div className="flex flex-col items-center h-screen"> 
+      <div className="flex flex-col items-center h-screen max-w-7xl mx-auto"> 
         <FloatingNavbar />
-        <div className='m-6 pt-24'>
+        {/* <div className='m-6 pt-24'>
           <ProfilePics />
         </div>
         <HeroCard />
@@ -36,7 +36,7 @@ export class Home extends Component {
           <div className='pt-6  pb-12 px-4 text-center bg-linear-to-r from-gray-950/0 via-slate-900/60 to-gray-950/0 backdrop-blur-sm'>
             <p>Copyright © 2026 Thomas Tran. All Rights Reserved.</p>
           </div>
-        </footer>
+        </footer> */}
       </div>
     );
   }
