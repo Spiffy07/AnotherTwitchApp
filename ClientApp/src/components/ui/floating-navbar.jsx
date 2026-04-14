@@ -53,7 +53,7 @@ export function FloatingNavbar() {
     <>
       <header
         className={cn(
-          "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl transition-all duration-300",
+          "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(90%-2rem)] max-w-4xl transition-all duration-300",
           isScrolled
             ? "bg-slate-900/60 backdrop-blur-lg shadow-lg border border-border"
             : "bg-slate-900/80 backdrop-blur-md border border-border/50",

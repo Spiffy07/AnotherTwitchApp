@@ -13,42 +13,46 @@ const cardChildrenHover =
 
 export default function ExpEdu() {
   return (
-    <Card className={`group w-5xl min-w-[675px] m-4 ${cardStyle}`}>
+    <Card className={`group md:m-4 ${cardStyle}`}>
       <Tabs defaultValue="experience">
-        <TabsList variant="line" className="mx-auto">
+        <TabsList variant="line" className="flex flex-col md:flex-row w-full mx-auto">
           <TabsTrigger
             value="experience"
-            className="text-2xl hover:cursor-pointer"
+            className="text-2xl md:text-2xl hover:cursor-pointer h-11 pb-6 pt-12 dark:[text-shadow:0_0_5px_#fff,0_0_10px_#fff,0_0_20px_#0ea5e9]
+              md:pb-0 md:pt-0"
           >
             Experience
           </TabsTrigger>
           <TabsTrigger
             value="education"
-            className="text-2xl hover:cursor-pointer"
+            className="text-2xl md:text-2xl hover:cursor-pointer h-11 mb-6 dark:[text-shadow:0_0_5px_#fff,0_0_10px_#fff,0_0_20px_#0ea5e9]
+              md:mb-0"
           >
             Education
           </TabsTrigger>
         </TabsList>
         <TabsContent value="experience">
-          <Card className='bg-transparent'>
+          <Card className='bg-transparent border-0'>
             <CardHeader>
-              <CardTitle className="text-lg">Software Developer</CardTitle>
+              <CardTitle className="text-sm md:text-lg">Software Developer</CardTitle>
               <CardDescription>
                 <ul
-                  className={`list-disc pl-5 marker:text-blue-500 text-lg ${cardChildrenHover}`}
+                  className={`${cardChildrenHover} list-disc list-inside text-sm marker:text-blue-500 md:text-lg
+                   md:list-outside md:pl-5`}
                 >
-                  <li>put experiences here</li>
+                  <li className='pl-0'>put experiences here</li>
                   <li>probably like this?</li>
                 </ul>
               </CardDescription>
             </CardHeader>
             <CardHeader>
-              <CardTitle>Front-End Developer Intern</CardTitle>
+              <CardTitle className="text-sm md:text-lg">Front-End Developer Intern</CardTitle>
               <CardDescription>
                 <ul
-                  className={`list-disc pl-5 marker:text-blue-500 text-lg ${cardChildrenHover}`}
+                  className={`${cardChildrenHover} list-disc list-inside text-sm marker:text-blue-500 px-0
+                  md:text-lg md:list-outside md:pl-5`}
                 >
-                  <li>put experiences here</li>
+                  <li className='px-0'>put experiences here</li>
                   <li>probably like this?</li>
                 </ul>
               </CardDescription>
@@ -56,9 +60,9 @@ export default function ExpEdu() {
           </Card>
         </TabsContent>
         <TabsContent value="education">
-          <Card className='bg-transparent'>
+          <Card className='bg-transparent border-0'>
             <CardHeader>
-              <CardTitle className="text-lg ">
+              <CardTitle className="md:text-lg ">
                 Bachelor of Science in Computer Science
               </CardTitle>
               <CardDescription className={cardChildrenHover}>

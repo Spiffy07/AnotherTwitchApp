@@ -10,7 +10,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="flex justify-center h-screen">
+            <div>
                 <Layout>
                     <Toaster />
                     <Routes>

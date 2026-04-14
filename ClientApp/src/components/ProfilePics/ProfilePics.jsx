@@ -25,7 +25,7 @@ export default function ProfilePics() {
         className="absolute items-center mx-auto -inset-1 rounded-full z-1 max-h-60
                     bg-linear-to-r from-white to-blue-500 blur opacity-25 animate-pulse
                     peer-hover:opacity-100 transition duration-1000 peer-hover:duration-200 peer-hover:scale-115
-                    sm:w-full md:w-2xs"
+                    w-[250px] sm:w-[500px] md:w-2xs"
       ></div>
     </div>
   );
