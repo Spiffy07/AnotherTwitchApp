@@ -14,12 +14,12 @@ export class Home extends Component {
 
   render() {
     return (
-      <div className="flex flex-col items-center h-screen max-w-7xl mx-auto"> 
+      <div className="flex flex-col items-center text-center align-middle h-screen max-w-7xl mx-auto"> 
         <FloatingNavbar />
-        {/* <div className='m-6 pt-24'>
+        <div className='m-6 pt-24'>
           <ProfilePics />
         </div>
-        <HeroCard />
+        {/* <HeroCard />
         <section id='experience' />
           <Card />
         <ExpEdu />

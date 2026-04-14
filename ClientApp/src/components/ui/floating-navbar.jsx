@@ -64,7 +64,7 @@ export function FloatingNavbar() {
           {/* Logo */}
           <a
             href="#"
-            className="flex items-center h-11 w-11 scale-18 lg:scale-20"
+            className="flex items-center h-11 w-11 scale-40 sm:scale-20 lg:scale-20"
           >
             <ProfilePics />
           </a>
