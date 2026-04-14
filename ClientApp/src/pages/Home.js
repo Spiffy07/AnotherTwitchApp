@@ -22,7 +22,7 @@ export class Home extends Component {
         {/* <HeroCard />
         <section id='experience' />
           <Card />
-        <ExpEdu />
+        {/* <ExpEdu />
         <section id='projects'/>
          <Card />
         <ProjectsSection />

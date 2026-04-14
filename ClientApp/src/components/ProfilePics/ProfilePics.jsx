@@ -6,7 +6,7 @@ const profilePicTwo = "https://raw.githubusercontent.com/Spiffy07/AnotherTwitchA
 
 export default function ProfilePics() {
   return (
-    <div className="flex relative justify-center items-center ">
+    <div className="flex relative justify-center items-center max-h-60 my-4">
       <Avatar
         className="relative transition-all z-3 peer w-25 h-25
                     sm:w-50 sm:h-50 md:translate-x-15 
@@ -22,7 +22,7 @@ export default function ProfilePics() {
         <AvatarImage src={profilePicTwo} />
       </Avatar>
       <div
-        className="absolute items-center mx-auto -inset-1 rounded-full z-1
+        className="absolute items-center mx-auto -inset-1 rounded-full z-1 max-h-60
                     bg-linear-to-r from-white to-blue-500 blur opacity-25 animate-pulse
                     peer-hover:opacity-100 transition duration-1000 peer-hover:duration-200 peer-hover:scale-115
                     sm:w-full md:w-2xs"
