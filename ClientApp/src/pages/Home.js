@@ -42,10 +42,14 @@ export class Home extends Component {
           <div className="w-full col-span-12 lg:col-start-2 lg:col-span-10">
             <ProjectsSection />
           </div>
-          {/* <section id='skills' />
-          <Card />
-        <SkillsSection />
-        <section id='contact' />          
+          <section id="skills" />
+          <div className="col-span-12">
+            <Card />
+          </div>
+          <div className="col-span-12 lg:col-start-2 lg:col-span-10">
+            <SkillsSection />
+          </div>
+          {/* <section id='contact' />          
         <Card />
         <ContactCard />*/}
         </div>

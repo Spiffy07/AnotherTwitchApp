@@ -12,9 +12,9 @@ const cardChildrenHover =
 
 export default function SkillsSection() {
   return (
-    <div className="min-w-2xl w-5xl mx-auto grid grid-cols-3 gap-4 m-2">
+    <div className="mx-auto m-2 md:grid md:grid-cols-3 md:gap-4">
       <h1 className="col-span-3 text-center text-6xl m-4">Skills</h1>
-      <Card className={`group ${cardStyle} origin-left`}>
+      <Card className={`group ${cardStyle} md:origin-left`}>
         <CardHeader className={cardChildrenHover}>
           <CardTitle>Front End</CardTitle>
           <CardDescription>JavaScript, React, Tailwind</CardDescription>
@@ -24,7 +24,7 @@ export default function SkillsSection() {
           <CardDescription>Git, Github, Visual Studios/VS Code</CardDescription>
         </CardHeader>
       </Card>
-      <Card className={`group col-span-2 ${cardStyle} origin-right`}>
+      <Card className={`group col-span-2 ${cardStyle} md:origin-right`}>
         <div className={`mx-5 ${cardChildrenHover}`}>
           <p>
             My primary focus is developing this full-stack webapp for a better
@@ -32,11 +32,11 @@ export default function SkillsSection() {
           </p>
           <br />
           <p>
-            I have myriad other skills like C++, Unreal Engine 5, MySQL, SQLite,
-            etc.
+            I have myriad other skills like C++, Unreal Engine 5, SQL, OpenShots, 
+            PC building, and more!
           </p>
           <br />
-          <p>My full resume is available upon request.</p>
+          <p>Full resume is available upon request.</p>
         </div>
       </Card>
     </div>

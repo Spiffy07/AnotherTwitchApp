@@ -26,8 +26,8 @@ export default function ProjectsSection() {
   // I want this to be a grid format with demo/preview images that have hover animations
 
   return (
-    <div className="bg-slate-900/40 backdrop-blur-md rounded-xl">
-      <h1 className="text-6xl text-center pt-4">Projects</h1>
+    <div className="bg-slate-900/40 backdrop-blur-md rounded-xl py-2">
+      <h1 className="text-6xl text-center pt-4 pb-2">Projects</h1>
       <div className="w-auto m-8 gap-8 flex-col lg:grid lg:grid-cols-2">
         {/* Project 1 this website, not just the portfolio page */}
         <div className="text-center m-4">
