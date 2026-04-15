@@ -20,7 +20,7 @@ const demoBrokeBot =
 const urlBrokeBot = "https://github.com/Spiffy07/brokeBot";
 
 const demoCastleId = "G0PgG11vyC4";
-const demoCastleGif = "https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/Media/CastleToGif.gif";
+const demoCastleGif = "https://github.com/Spiffy07/AnotherTwitchApp/blob/responsiveDesign/ClientApp/Media/CastleToGif.gif?raw=true";
 
 export default function ProjectsSection() {
   // I want this to be a grid format with demo/preview images that have hover animations
