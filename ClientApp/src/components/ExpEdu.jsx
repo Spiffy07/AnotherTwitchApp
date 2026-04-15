@@ -18,14 +18,14 @@ export default function ExpEdu() {
         <TabsList variant="line" className="flex flex-col md:flex-row w-full mx-auto">
           <TabsTrigger
             value="experience"
-            className="text-2xl md:text-2xl hover:cursor-pointer h-11 pb-6 pt-12 dark:[text-shadow:0_0_5px_#fff,0_0_10px_#fff,0_0_20px_#0ea5e9]
+            className="text-2xl md:text-2xl hover:cursor-pointer h-11 pb-6 pt-12
               md:pb-0 md:pt-0"
           >
             Experience
           </TabsTrigger>
           <TabsTrigger
             value="education"
-            className="text-2xl md:text-2xl hover:cursor-pointer h-11 mb-6 dark:[text-shadow:0_0_5px_#fff,0_0_10px_#fff,0_0_20px_#0ea5e9]
+            className="text-2xl md:text-2xl hover:cursor-pointer h-11 mb-6 
               md:mb-0"
           >
             Education

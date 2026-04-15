@@ -1,13 +1,13 @@
 import YouTube from "react-youtube";
 import { useRef } from "react";
 
-export default function YtVideoPreview({ ytVideoId, startTimeInSeconds = 0 }) {
+export default function YtVideoPreview({ ytVideoId, startTimeInSeconds = 0, playbackSpeed = 1}) {
   const playerRef = useRef(null);
 
   // 1. Capture the player instance when it's ready
   const onReady = (event) => {
     playerRef.current = event.target;
-    playerRef.current.setPlaybackRate(2);
+    playerRef.current.setPlaybackRate(playbackSpeed);
     playerRef.current.mute(); // Autoplay requires muting
     playerRef.current.seekTo(startTimeInSeconds);
   };
