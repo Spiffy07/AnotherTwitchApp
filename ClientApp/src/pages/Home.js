@@ -22,7 +22,7 @@ export class Home extends Component {
           <div className="col-span-12">
             <FloatingNavbar />
           </div>
-          <div className="pt-24 col-span-12">
+          <div className="pt-16 pb-8 col-span-12">
             <ProfilePics />
           </div>
           <div className="col-span-12 md:w-2xl md:mx-auto text-center w-full">
@@ -49,16 +49,13 @@ export class Home extends Component {
           <div className="col-span-12 lg:col-start-2 lg:col-span-10">
             <SkillsSection />
           </div>
-          {/* <section id='contact' />          
-        <Card />
-        <ContactCard />*/}
-        </div>
-        <div
-          className="col-span-12 w-[full] text-center text-sm pt-6 pb-12 -mx-4 -mb-4
-                   bg-linear-to-r from-gray-950/0 via-slate-900/80 to-gray-950/0 backdrop-blur-sm"
-        >
-          <p>Copyright © 2026 Thomas Tran</p>
-          <p>All Rights Reserved</p>
+          <section id="contact" />
+          <div className="col-span-12">
+            <Card />
+          </div>
+          <div className="col-span-12 md:w-2xl md:mx-auto">
+            <ContactCard />
+          </div>
         </div>
       </>
     );

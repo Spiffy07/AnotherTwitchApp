@@ -25,7 +25,7 @@ export default function ExpEdu() {
           </TabsTrigger>
           <TabsTrigger
             value="education"
-            className="text-2xl md:text-2xl hover:cursor-pointer h-11 mb-6 
+            className="text-2xl hover:cursor-pointer h-11 mb-6 
               md:mb-0"
           >
             Education

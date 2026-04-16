@@ -24,7 +24,7 @@ export default function () {
             </div> */}
       <CardHeader>
         <CardTitle>Thomas Tran</CardTitle>
-        <CardTitle>Full-Stack Developer</CardTitle>
+        <CardContent>Full-Stack Developer</CardContent>
         <CardContent className=" dark:[text-shadow:0_0_5px_#fff,0_0_10px_#fff,0_0_20px_#0ea5e9]">
           Hello, World!
         </CardContent>

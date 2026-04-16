@@ -12,23 +12,29 @@ import SocialIcons from "@/components/SocialIcons";
 
 export default function ContactCard() {
   return (
-    <Card className={`w-5xl ${cardStyle} items-center`}>
-      <div className="scale-80">
+    <Card className={`${cardStyle} items-center`}>
+      <div
+        className="h-30 scale-80 -translate-y-3
+            sm:h-30 sm:scale-40 sm:-translate-y-6"
+      >
         <ProfilePics />
       </div>
-      <CardHeader className="justify-center p-0 text-center text-nowrap">
-        <CardTitle className="text-3xl">
-          Thomas Tran
-        </CardTitle>
-        <CardContent className="text-2xl">
-            Software Developer and Content Creator
-        </CardContent>
+      <CardHeader className="justify-center p-0 text-center w-full">
+        <CardTitle className="text-2xl">Thomas Tran</CardTitle>
+        <CardContent className="text-xl">Full-Stack Developer</CardContent>
       </CardHeader>
       <CardDescription>
-        <div className="grid grid-cols-[1fr_auto_1fr] gap-4 items-center">
-            <p>Stuff here</p>
+        <div
+          className="items-center text-center 
+              md:grid md:grid-cols-[1fr_auto_1fr] md:gap-4 md:text-left"
+        >
+          <p>Stuff here</p>
+          <div className="hidden md:block">
             <Card />
+          </div>
+          <div className="pt-4 md:pt-0">
             <SocialIcons />
+          </div>
         </div>
       </CardDescription>
     </Card>

@@ -14,7 +14,7 @@ export default function SkillsSection() {
   return (
     <div className="mx-auto m-2 md:grid md:grid-cols-3 md:gap-4">
       <h1 className="col-span-3 text-center text-6xl m-4">Skills</h1>
-      <Card className={`group ${cardStyle} md:origin-left`}>
+      <Card className={`group col-span-1 ${cardStyle} md:origin-left`}>
         <CardHeader className={cardChildrenHover}>
           <CardTitle>Front End</CardTitle>
           <CardDescription>JavaScript, React, Tailwind</CardDescription>
