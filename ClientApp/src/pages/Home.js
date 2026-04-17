@@ -30,28 +30,28 @@ export class Home extends Component {
           </div>
           <section id="experience" />
           <div className="col-span-12">
-            <Card />
+            <br />
           </div>
           <div className="col-span-12 md:w-2xl md:mx-auto">
             <ExpEdu />
           </div>
           <section id="projects" />
           <div className="col-span-12">
-            <Card />
+            <br />
           </div>
           <div className="w-full col-span-12 lg:col-start-2 lg:col-span-10">
             <ProjectsSection />
           </div>
           <section id="skills" />
           <div className="col-span-12">
-            <Card />
+            <br />
           </div>
           <div className="col-span-12 lg:col-start-2 lg:col-span-10">
             <SkillsSection />
           </div>
           <section id="contact" />
           <div className="col-span-12">
-            <Card />
+            <br />
           </div>
           <div className="col-span-12 md:w-2xl md:mx-auto">
             <ContactCard />

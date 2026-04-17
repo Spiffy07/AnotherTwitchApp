@@ -3,8 +3,8 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 export const cardStyle =
-  `transition duration-1000 shadow-[0_0_20px_var(--color-blue-500)] hover:shadow-[0_0_20px_var(--color-white)]
-     hover:duration-200 hover:scale-110 hover:z-2 bg-gradient-to-r from-gray-950 via-slate-900 to-gray-950 opacity-97`;
+  `transition duration-500 shadow-[0_0_20px_var(--color-blue-500)] hover:shadow-[0_0_20px_var(--color-white)]
+     hover:duration-200 hover:z-2 bg-gradient-to-r from-gray-950 via-slate-900 to-gray-950 opacity-97`;
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
