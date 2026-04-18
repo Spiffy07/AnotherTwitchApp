@@ -20,7 +20,8 @@ const demoBrokeBot =
 const urlBrokeBot = "https://github.com/Spiffy07/brokeBot";
 
 const demoCastleId = "G0PgG11vyC4";
-const demoCastleGif = "https://github.com/Spiffy07/AnotherTwitchApp/blob/responsiveDesign/ClientApp/Media/CastleToGif.gif?raw=true";
+const demoCastleGif =
+  "https://github.com/Spiffy07/AnotherTwitchApp/blob/responsiveDesign/ClientApp/Media/CastleToGif.gif?raw=true";
 
 export default function ProjectsSection() {
   // I want this to be a grid format with demo/preview images that have hover animations
@@ -57,7 +58,7 @@ export default function ProjectsSection() {
           </h3>
           <p> Description here</p>
         </div>
-                <Card
+        <Card
           className={`lg:hidden h-auto hover:cursor-pointer ${cardStyle} hover:scale-120`}
           onClick={() => {
             window.open(urlBrokeBot, "_blank");
@@ -79,11 +80,15 @@ export default function ProjectsSection() {
             );
           }}
         >
-          <div className="hidden lg:block"> 
-          {/* <div> */}
-            <YtVideoPreview ytVideoId={demoCastleId} startTimeInSeconds={0} playbackSpeed={1.5} />
+          <div className="hidden lg:block">
+            {/* <div> */}
+            <YtVideoPreview
+              ytVideoId={demoCastleId}
+              startTimeInSeconds={0}
+              playbackSpeed={1.5}
+            />
           </div>
-          <div className='lg:hidden'>
+          <div className="lg:hidden">
             <img src={demoCastleGif} />
           </div>
         </Card>

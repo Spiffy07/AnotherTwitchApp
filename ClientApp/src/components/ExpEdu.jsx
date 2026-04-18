@@ -12,14 +12,16 @@ import { useIntersection } from "@/hooks/useIntersection";
 const cardChildrenHover =
   "transtion duration-1000 group-hover:duration-200 group-hover:brightness-200";
 
-export default function ExpEdu() {
-  const [ref, inView] = useIntersection({ threshold: .3 }, true);
+export default forwardRef(function ExpEdu(props, ref) {
+  const { isVisible, children, ...rest } = props;
 
   return (
-    <div ref={ref}>
-      <Card
-        className={`group md:m-4 ${cardStyle} ${inView ? "opacity-100 translate-y-0 scale-100" : "opacity-0  scale-0"}`}
-      >
+    <div
+      ref={ref}
+      {...rest}
+      className={`transition duration-500 ${props.isVisible ? "opacity-100" : "opacity-0"}`}
+    >
+      <Card className={`group md:m-4 ${cardStyle}  ${props.isVisible ? "scale-100" : "scale-0"}`}>
         <Tabs defaultValue="experience">
           <TabsList
             variant="line"
@@ -88,4 +90,4 @@ export default function ExpEdu() {
       </Card>
     </div>
   );
-}
+});

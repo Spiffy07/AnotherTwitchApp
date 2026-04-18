@@ -18,7 +18,6 @@ if (window.matchMedia) {
     document.body.classList.add("dark");
   } else {
     document.body.classList.remove("dark");
-    alert("So, you've chosen blindness... Light theme ACTIVATE!");
   }
 
   // Listen for changes in preference
