@@ -11,7 +11,7 @@ import { FloatingNavbar } from "@/components/ui/floating-navbar";
 import { useIntersection } from "@/hooks/useIntersection";
 
 export function Home() {
-  const [ref, inView] = useIntersection({ threshold: .3 }, false);
+  const [inViewSet, registerCallback] = useIntersection({ threshold: .3 }, false);
 
     return (
       <div
@@ -32,7 +32,7 @@ export function Home() {
           <br />
         </div>
         <div className="col-span-12 md:w-2xl md:mx-auto">
-          <ExpEdu  ref={ref} isVisible={inView}/>
+          <ExpEdu ref={registerCallback} inViewSet={inViewSet} dataid='expedu'/>
         </div>
         <section id="projects" />
         <div className="col-span-12">
@@ -41,12 +41,13 @@ export function Home() {
         <div className="w-full col-span-12 lg:col-start-2 lg:col-span-10">
           <ProjectsSection />
         </div>
-        <section id="skills" />
         <div className="col-span-12">
+        <section id="skills" />
+          <br />
           <br />
         </div>
         <div className="col-span-12 lg:col-start-2 lg:col-span-10">
-          <SkillsSection />
+          <SkillsSection ref={registerCallback} inViewSet={inViewSet} dataid='skills'/>
         </div>
         <section id="contact" />
         <div className="col-span-12">

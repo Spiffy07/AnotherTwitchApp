@@ -530,11 +530,23 @@
   .max-h-60 {
     max-height: calc(var(--spacing) * 60);
   }
+  .min-h-10 {
+    min-height: calc(var(--spacing) * 10);
+  }
   .min-h-16 {
     min-height: calc(var(--spacing) * 16);
   }
   .min-h-24 {
     min-height: calc(var(--spacing) * 24);
+  }
+  .min-h-25 {
+    min-height: calc(var(--spacing) * 25);
+  }
+  .min-h-50 {
+    min-height: calc(var(--spacing) * 50);
+  }
+  .min-h-100 {
+    min-height: calc(var(--spacing) * 100);
   }
   .min-h-screen {
     min-height: 100vh;
@@ -620,11 +632,6 @@
   .origin-left {
     transform-origin: 0;
   }
-  .translate-0 {
-    --tw-translate-x: calc(var(--spacing) * 0);
-    --tw-translate-y: calc(var(--spacing) * 0);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .-translate-x-1 {
     --tw-translate-x: calc(var(--spacing) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -649,24 +656,14 @@
     --tw-translate-y: calc(var(--spacing) * 0);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
-  .translate-y-20 {
-    --tw-translate-y: calc(var(--spacing) * 20);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .translate-y-100 {
-    --tw-translate-y: calc(var(--spacing) * 100);
+  .translate-y-10 {
+    --tw-translate-y: calc(var(--spacing) * 10);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .scale-0 {
     --tw-scale-x: 0%;
     --tw-scale-y: 0%;
     --tw-scale-z: 0%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
-  }
-  .scale-10 {
-    --tw-scale-x: 10%;
-    --tw-scale-y: 10%;
-    --tw-scale-z: 10%;
     scale: var(--tw-scale-x) var(--tw-scale-y);
   }
   .scale-40 {
@@ -679,6 +676,12 @@
     --tw-scale-x: 50%;
     --tw-scale-y: 50%;
     --tw-scale-z: 50%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
+  .scale-70 {
+    --tw-scale-x: 70%;
+    --tw-scale-y: 70%;
+    --tw-scale-z: 70%;
     scale: var(--tw-scale-x) var(--tw-scale-y);
   }
   .scale-80 {
@@ -1212,9 +1215,6 @@
   .opacity-10 {
     opacity: 10%;
   }
-  .opacity-20 {
-    opacity: 20%;
-  }
   .opacity-25 {
     opacity: 25%;
   }
@@ -1323,10 +1323,6 @@
   }
   .transition-none {
     transition-property: none;
-  }
-  .duration-200 {
-    --tw-duration: 200ms;
-    transition-duration: 200ms;
   }
   .duration-300 {
     --tw-duration: 300ms;

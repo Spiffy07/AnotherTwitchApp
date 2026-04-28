@@ -23,10 +23,10 @@ export default function YtVideoPreview({ ytVideoId, startTimeInSeconds = 0, play
     playerVars: {
       autoplay: 1,
       controls: 0, // Hides YouTube UI
-      modestbranding: 1,
       rel: 0,
       mute: 1,
       loop: 1,
+      fs: 0,
     },
   };
 

@@ -13,15 +13,15 @@ const cardChildrenHover =
   "transtion duration-1000 group-hover:duration-200 group-hover:brightness-200";
 
 export default forwardRef(function ExpEdu(props, ref) {
-  const { isVisible, children, ...rest } = props;
+  const isVisible = props.inViewSet.has(props.dataid);
 
   return (
-    <div
-      ref={ref}
-      {...rest}
-      className={`transition duration-500 ${props.isVisible ? "opacity-100" : "opacity-0"}`}
-    >
-      <Card className={`group md:m-4 ${cardStyle}  ${props.isVisible ? "scale-100" : "scale-0"}`}>
+    <Card className={`group md:m-4 ${cardStyle} `}>
+      <div
+        ref={ref}
+        dataid={props.dataid}
+        className={`transition duration-500 ${isVisible ? "scale-100 opacity-100" : "scale-70 opacity-10"}`}
+      >
         <Tabs defaultValue="experience">
           <TabsList
             variant="line"
@@ -87,7 +87,7 @@ export default forwardRef(function ExpEdu(props, ref) {
             </Card>
           </TabsContent>
         </Tabs>
-      </Card>
-    </div>
+      </div>
+    </Card>
   );
 });

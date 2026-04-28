@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import {
   Card,
   CardHeader,
@@ -10,9 +10,14 @@ import {
 const cardChildrenHover =
   "transtion duration-1000 group-hover:duration-200 group-hover:brightness-200";
 
-export default function SkillsSection() {
+export default forwardRef(function SkillsSection(props, ref) {
+  const isVisible = props.inViewSet.has(props.dataid);
+
   return (
-    <div className="mx-auto m-2 md:grid md:grid-cols-3 md:gap-4">
+    <div 
+      ref={ref}
+      dataid={props.dataid}
+      className={`mx-auto m-2 md:grid md:grid-cols-3 md:gap-4 transition duration-500 ${isVisible ? "scale-100 opacity-100" : "scale-70 opacity-10"}`}>
       <h1 className="col-span-3 text-center text-6xl m-4">Skills</h1>
       <Card className={`group col-span-1 ${cardStyle} md:origin-left`}>
         <CardHeader className={cardChildrenHover}>
@@ -41,4 +46,4 @@ export default function SkillsSection() {
       </Card>
     </div>
   );
-}
+});

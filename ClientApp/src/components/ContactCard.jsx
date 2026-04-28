@@ -20,7 +20,7 @@ export default function ContactCard() {
         <ProfilePics />
       </div>
       <CardHeader className="justify-center p-0 text-center w-full">
-        <CardTitle className="text-2xl">Thomas Tran</CardTitle>
+        <CardTitle className="text-2xl">Thomas T.</CardTitle>
         <CardContent className="text-xl">Full-Stack Developer</CardContent>
       </CardHeader>
       <CardDescription>

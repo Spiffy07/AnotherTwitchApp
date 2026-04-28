@@ -1,31 +1,89 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
-export const useIntersection = (options = { threshold: 0.1 }, animateOnce = false) => {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const elementRef = useRef(null);
+export const useIntersection = (
+  options = { threshold: 0.1 },
+  animateOnce = false,
+) => {
+  const [isIntersectingSet, setIsIntersectingSet] = useState(new Set());
+  const observerRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!animateOnce)
-        // Update state when element enters/leaves view
-        setIsIntersecting(entry.isIntersecting);
-      else {
-        // One time animations
-        if (entry.isIntersecting) {
-          setIsIntersecting(true);
+    observerRef.current = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute("dataId");
+        console.log(id);
 
-          if (elementRef.current) observer.unobserve(elementRef.current);
+        if (!animateOnce) {
+          // Update state when element enters/leaves view
+          //setIsIntersecting(entry.isIntersecting);
+
+          if (entry.isIntersecting) {
+            setIsIntersectingSet((prev) => new Set(prev).add(id));
+          } else {
+            setIsIntersectingSet((prev) => {
+              const next = new Set(prev);
+              next.delete(id);
+              return next;
+            });
+          }
         }
-      }
+        // else {               // One time animations
+        //   if (entry.isIntersecting) {
+        //     setIsIntersecting(true);
+
+        //     if (elementRef.current)
+        //       observerRef.current.unobserve(elementRef.current);
+        //   }
+        // }
+      });
     }, options);
 
-    const currentElement = elementRef.current;
-    if (currentElement) observer.observe(currentElement);
+    // if (elementRef.current) observerRef.current.observe(elementRef.current);
 
     return () => {
-      if (currentElement) observer.unobserve(currentElement);
+      //if (elementRef.current) observerRef.current.unobserve(elementRef.current);
+      observerRef.current.disconnect();
+      console.log("observer disconnected");
     };
-  }, [options]);
+  }, []);
 
-  return [elementRef, isIntersecting];
+  const setItemRef = useCallback((node) => {
+    if (!node) return;
+
+    if (observerRef.current == null) {
+      observerRef.current = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute("dataId");
+
+          if (!animateOnce) {
+            // Update state when element enters/leaves view
+            //setIsIntersecting(entry.isIntersecting);
+
+            if (entry.isIntersecting) {
+              setIsIntersectingSet((prev) => new Set(prev).add(id));
+            } else {
+              setIsIntersectingSet((prev) => {
+                const next = new Set(prev);
+                next.delete(id);
+                return next;
+              });
+            }
+          }
+          // else {               // One time animations
+          //   if (entry.isIntersecting) {
+          //     setIsIntersecting(true);
+
+          //     if (elementRef.current)
+          //       observerRef.current.unobserve(elementRef.current);
+          //   }
+          // }
+        });
+      }, options);
+    }
+    
+    if (node && observerRef.current) observerRef.current.observe(node);
+    console.log("observing new target:", node, isIntersectingSet);
+  });
+
+  return [isIntersectingSet, setItemRef];
 };
