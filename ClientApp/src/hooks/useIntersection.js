@@ -22,21 +22,11 @@ export const useIntersection = (
               return next;
             });
           }
-        // else {               // One time animations
-        //   if (entry.isIntersecting) {
-        //     setIsIntersecting(true);
-
-        //     if (elementRef.current)
-        //       observerRef.current.unobserve(elementRef.current);
-        //   }
-        // }
       });
     }, options);
 
-    // if (elementRef.current) observerRef.current.observe(elementRef.current);
 
     return () => {
-      //if (elementRef.current) observerRef.current.unobserve(elementRef.current);
       observerRef.current.disconnect();
     };
   }, []);
@@ -59,14 +49,6 @@ export const useIntersection = (
               return next;
             });
           }
-          // else {               // One time animations
-          //   if (entry.isIntersecting) {
-          //     setIsIntersecting(true);
-
-          //     if (elementRef.current)
-          //       observerRef.current.unobserve(elementRef.current);
-          //   }
-          // }
         });
       }, options);
     }
