@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 export const useIntersection = (
   options = { threshold: 0.1 },
-  animateOnce = false,
+  animateOnce = true,
 ) => {
   const [isIntersectingSet, setIsIntersectingSet] = useState(new Set());
   const observerRef = useRef(null);
@@ -13,20 +13,15 @@ export const useIntersection = (
         const id = entry.target.getAttribute("dataId");
         console.log(id);
 
-        if (!animateOnce) {
-          // Update state when element enters/leaves view
-          //setIsIntersecting(entry.isIntersecting);
-
           if (entry.isIntersecting) {
             setIsIntersectingSet((prev) => new Set(prev).add(id));
-          } else {
+          } else if (!animateOnce) {
             setIsIntersectingSet((prev) => {
               const next = new Set(prev);
               next.delete(id);
               return next;
             });
           }
-        }
         // else {               // One time animations
         //   if (entry.isIntersecting) {
         //     setIsIntersecting(true);
@@ -43,7 +38,6 @@ export const useIntersection = (
     return () => {
       //if (elementRef.current) observerRef.current.unobserve(elementRef.current);
       observerRef.current.disconnect();
-      console.log("observer disconnected");
     };
   }, []);
 
@@ -51,23 +45,19 @@ export const useIntersection = (
     if (!node) return;
 
     if (observerRef.current == null) {
-      observerRef.current = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          const id = entry.target.getAttribute("dataId");
+    observerRef.current = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute("dataId");
+        console.log(id);
 
-          if (!animateOnce) {
-            // Update state when element enters/leaves view
-            //setIsIntersecting(entry.isIntersecting);
-
-            if (entry.isIntersecting) {
-              setIsIntersectingSet((prev) => new Set(prev).add(id));
-            } else {
-              setIsIntersectingSet((prev) => {
-                const next = new Set(prev);
-                next.delete(id);
-                return next;
-              });
-            }
+          if (entry.isIntersecting) {
+            setIsIntersectingSet((prev) => new Set(prev).add(id));
+          } else if (!animateOnce) {
+            setIsIntersectingSet((prev) => {
+              const next = new Set(prev);
+              next.delete(id);
+              return next;
+            });
           }
           // else {               // One time animations
           //   if (entry.isIntersecting) {
@@ -82,7 +72,6 @@ export const useIntersection = (
     }
     
     if (node && observerRef.current) observerRef.current.observe(node);
-    console.log("observing new target:", node, isIntersectingSet);
   });
 
   return [isIntersectingSet, setItemRef];
