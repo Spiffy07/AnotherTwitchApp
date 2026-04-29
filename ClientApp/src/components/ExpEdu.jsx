@@ -20,7 +20,7 @@ export default forwardRef(function ExpEdu(props, ref) {
       <div
         ref={ref}
         dataid={props.dataid}
-        className={`transition duration-500 ${isVisible ? "scale-100 opacity-100" : "scale-70 opacity-10"}`}
+        className={`transition duration-500 ${isVisible ? "scale-100 opacity-100" : "scale-70 opacity-0"}`}
       >
         <Tabs defaultValue="experience">
           <TabsList
