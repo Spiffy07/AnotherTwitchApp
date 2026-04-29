@@ -47,7 +47,7 @@ export function Home() {
           <br />
         </div>
         <div className="col-span-12 lg:col-start-2 lg:col-span-10">
-          <SkillsSection ref={registerCallback} inViewSet={inViewSet} dataid='skills'/>
+          <SkillsSection ref={registerCallback} inViewSet={inViewSet}/>
         </div>
         <section id="contact" />
         <div className="col-span-12">
