@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
+import Footer from "@/components/Footer";
 
 import MyNavMenu from "./MyNavMenu/MyNavMenu";
 
@@ -14,13 +15,7 @@ export class Layout extends Component {
           <MyNavMenu />
           <Container tag="main">{this.props.children}</Container>
         </div>
-        <div
-          className="col-span-12 w-[full] text-center text-sm pt-6 pb-12 -mx-4 -mb-4
-                   bg-linear-to-r from-gray-950/0 via-slate-900/80 to-gray-950/0 backdrop-blur-sm"
-        >
-          <p>Copyright © 2026 Thomas T.</p>
-          <p>All Rights Reserved</p>
-        </div>
+        <Footer />
       </>
     );
   }
