@@ -43,7 +43,10 @@ export function FloatingNavbar() {
       size="sm"
       variant="outline"
       className="rounded-full"
-      onClick={() => (window.location.href = "/mycomponents")}
+      onClick={() => {
+        navigate("/mycomponents");
+        window.scrollTo(0,0);
+      }}
     >
       Other Stuff
     </Button>

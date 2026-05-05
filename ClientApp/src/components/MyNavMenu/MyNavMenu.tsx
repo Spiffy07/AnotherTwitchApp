@@ -14,9 +14,6 @@ import {
 //import "@/output.module.css"
 
 export default function MyNavMenu() {
-  if (window.location.pathname === '/')
-    return <></>
-  else
     return (
       // padding end 'pe-[40px] in order to offset the <ul> default 20px padding start
       <div className="[dark]:dark flex pe-[40px] justify-center m-4 w-full">

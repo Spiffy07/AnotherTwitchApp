@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import MultiworldForm from "@/components/Forms/Multiworld/MultiworldForm";
-
+import MyNavMenu
+ from "@/components/MyNavMenu/MyNavMenu";
 export class Multiworld extends Component {
     render() {
         return (
+            <>
+            <MyNavMenu />
             <div className="flex flex-col items-center h-screen">
                 <br />
                 <p className="text-center">
@@ -18,6 +21,7 @@ export class Multiworld extends Component {
                 <br />
                 <MultiworldForm />
             </div>
+            </>
         );
     }
 }
