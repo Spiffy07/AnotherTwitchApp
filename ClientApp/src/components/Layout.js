@@ -8,10 +8,9 @@ export class Layout extends Component {
   render() {
     return (
       <>
-        <div className="flex flex-col items-center justify-center mx-auto">
+        <div>
           <Container tag="main">{this.props.children}</Container>
         </div>
-        <Footer />
       </>
     );
   }
