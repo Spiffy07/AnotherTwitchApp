@@ -34,7 +34,7 @@ export function MyComponents() {
         {/* Slow Background Layer */}
         <motion.div
           style={{ y: yBg }}
-          className="absolute inset-0 h-full w-full -z-2 bg-[url('..\\ClientApp\\Media\\background3.png')] bg-cover"
+          className="absolute inset-0 h-full w-full -z-2 bg-[url('..\\ClientApp\\Media\\background.png')] bg-cover"
         />
 
         {/* Faster Midground Layer */}
