@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -24,9 +26,9 @@ export default function MyNavMenu() {
                 asChild
                 className={navigationMenuTriggerStyle()}
               >
-                <a color="color-my-color" href="/">
+                <Link color="color-my-color" to="/">
                   Home
-                </a>
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
@@ -34,9 +36,9 @@ export default function MyNavMenu() {
                 asChild
                 className={navigationMenuTriggerStyle()}
               >
-                <a href="/mycomponents">
+                <Link to="/mycomponents">
                   My Components
-                </a>
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
@@ -44,9 +46,9 @@ export default function MyNavMenu() {
                 asChild
                 className={navigationMenuTriggerStyle()}
               >
-                <a href="/fetch-data">
+                <Link to="/fetch-data">
                   Weather Data
-                </a>
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
@@ -54,9 +56,9 @@ export default function MyNavMenu() {
                 asChild
                 className={navigationMenuTriggerStyle()}
               >
-                <a href="/multiworld">
+                <Link to="/multiworld">
                   Multiworld
-                </a>
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem className="justify-end">
@@ -64,9 +66,9 @@ export default function MyNavMenu() {
                 asChild
                 className={navigationMenuTriggerStyle()}
               >
-                <a href="/account/registration">    {/* url *REQUIRES* an uppercase 'R' if url begins with "/register"  */}
+                <Link to="/account/registration">    {/* url *REQUIRES* an uppercase 'R' if url begins with "/register"  */}
                   Register
-                </a>
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem className="justify-end">
@@ -74,9 +76,9 @@ export default function MyNavMenu() {
                 asChild
                 className={navigationMenuTriggerStyle()}
               >
-                <a href="/account/login">
+                <Link to="/account/login">
                   Login
-                </a>
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
