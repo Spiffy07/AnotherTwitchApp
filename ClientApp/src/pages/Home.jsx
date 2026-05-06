@@ -17,8 +17,7 @@ export function Home() {
     { threshold: 0.5 },
     false,
   );
-    const containerRef = useRef(null);
-
+  const containerRef = useRef(null);
 
   // 1. Track scroll progress relative to this specific container
   const { scrollYProgress } = useScroll({
@@ -29,24 +28,34 @@ export function Home() {
   // 2. Map scroll progress (0 to 1) to different "speeds" (pixel offsets)
   // Background moves slowly, Foreground moves faster
   const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "80%"]);
-  const yMid = useTransform(scrollYProgress, [0, 1], ["0%", "75%"]);
-
+  const yShip = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const yCeres = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
+  const yRidley = useTransform(scrollYProgress, [0, 1], ["0%", "70%"]);
+  const yZebes = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   return (
     <div ref={containerRef} className="relative h-auto w-full overflow-hidden">
-      {/* Slow Background Layer */}
       <motion.div
         style={{ y: yBg }}
         className="absolute inset-0 h-full w-full -z-2 bg-[url('..\\ClientApp\\Media\\background.png')] bg-top bg-no-repeat"
       />
-
-      {/* Faster Midground Layer */}
       <motion.div
-        style={{ y: yMid }}
-        className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\planetTest.png')]  bg-no-repeat bg-position-[5%_20%]"
+        style={{ y: yCeres }}
+        className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\Ceres.png')]  bg-no-repeat bg-position-[90%_10%]"
+      />
+      <motion.div
+        style={{ y: yShip }}
+        className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\Ship.png')]  bg-no-repeat bg-position-[85%_19%]"
+      />
+      <motion.div
+        style={{ y: yRidley }}
+        className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\RidleyBaby.png')]  bg-no-repeat bg-position-[3%_20%]"
+      />
+      <motion.div
+        style={{ y: yZebes }}
+        className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\ZebesLg.png')]  bg-no-repeat bg-position-[3%_35%]"
       />
 
-      {/* Normal Scrolling Content */}
       <div
         className="grid grid-cols-1 gap-y-4 items-center align-middle min-h-screen mx-auto w-[full]
                md:gap-4 lg:px-0 px-4 md:grid-cols-2 lg:grid-cols-12 m-6 lg:m-0"

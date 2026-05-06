@@ -66,8 +66,6 @@ export function MyComponents() {
         <br />
         <MyProductTable />
         <Footer />
-        <br/>
-        <br/>
       </div>
   );
 }

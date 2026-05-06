@@ -124,7 +124,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: url('../Media/gradientblur.png');
+    background-image: url('../Media/background.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
