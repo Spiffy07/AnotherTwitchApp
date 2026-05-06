@@ -29,7 +29,7 @@ export function Home() {
   // 2. Map scroll progress (0 to 1) to different "speeds" (pixel offsets)
   // Background moves slowly, Foreground moves faster
   const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "80%"]);
-  const yMid = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const yMid = useTransform(scrollYProgress, [0, 1], ["0%", "75%"]);
 
 
   return (
@@ -43,13 +43,13 @@ export function Home() {
       {/* Faster Midground Layer */}
       <motion.div
         style={{ y: yMid }}
-        className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\planetTest.png')]  bg-no-repeat bg-center"
+        className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\planetTest.png')]  bg-no-repeat bg-position-[5%_20%]"
       />
 
       {/* Normal Scrolling Content */}
       <div
         className="grid grid-cols-1 gap-y-4 items-center align-middle min-h-screen mx-auto w-[full]
-               md:gap-4 md:px-0 px-4 md:grid-cols-2 lg:grid-cols-12 m-6 lg:m-0"
+               md:gap-4 lg:px-0 px-4 md:grid-cols-2 lg:grid-cols-12 m-6 lg:m-0"
       >
         <div className="col-span-12">
           <FloatingNavbar />

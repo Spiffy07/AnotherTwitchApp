@@ -14,16 +14,17 @@ import { useNavigate } from "react-router-dom";
 import ProfilePics from "@/components/ProfilePics/ProfilePics";
 
 const navLinks = [
-  { label: "Home", href: "#", scrollY: 0 },
-  { label: "Experience", href: "#experience", scrollY: 847 },
-  { label: "Projects", href: "#projects", scrollY: 1434 },
-  { label: "Skills", href: "#skills", scrollY: 3312 },
-  { label: "Contact", href: "#contact", scrollY: 3632 },
+  { label: "Home",        href: "#",            xlScrollY: 0,     lgScrollY: 0,     mdScrollY: 0,     smScrollY: 0,     scrollY: 0 },
+  { label: "Experience",  href: "#experience",  xlScrollY: 847,   lgScrollY: 864,   mdScrollY: 893,   smScrollY: 900,   scrollY: 773 },
+  { label: "Projects",    href: "#projects",    xlScrollY: 1434,  lgScrollY: 1439,  mdScrollY: 1463,  smScrollY: 1403,  scrollY: 1271 },
+  { label: "Skills",      href: "#skills",      xlScrollY: 3312,  lgScrollY: 3362,  mdScrollY: 3755,  smScrollY: 3375,  scrollY: 2753 },
+  { label: "Contact",     href: "#contact",     xlScrollY: 3632,  lgScrollY: 3667,  mdScrollY: 4118,  smScrollY: 3911,  scrollY: 3388 },
 ];
 
 export function FloatingNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [size, setSize] = useState('base');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,9 +36,30 @@ export function FloatingNavbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  {
-    /* CTA Button */
-  }
+  useEffect(() => {
+    // Tailwind default breakpoints
+    const queries = {
+      sm: "(min-width: 800px)",
+      md: "(min-width: 960px)",
+      lg: "(min-width: 1280px)",
+      xl: "(min-width: 1600px)"
+    };
+    
+    const updateSize = () => {
+      if (window.matchMedia(queries.lg).matches) setSize("lg");
+      else if (window.matchMedia(queries.md).matches) setSize("md");
+      else if (window.matchMedia(queries.sm).matches) setSize("sm");
+      else if (window.matchMedia(queries.xl).matches) setSize("xl");
+      else setSize("base"); // mobile/default
+    };
+
+    window.addEventListener('resize', updateSize);
+    updateSize();
+
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
+  {/* CTA Button */}
   const buttonOtherStuff = (
     <Button
       size="sm"
@@ -45,7 +67,7 @@ export function FloatingNavbar() {
       className="rounded-full"
       onClick={() => {
         navigate("/mycomponents");
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
       }}
     >
       Other Stuff
@@ -60,7 +82,7 @@ export function FloatingNavbar() {
           isScrolled
             ? "bg-slate-900/60 backdrop-blur-lg shadow-lg border border-border"
             : "bg-slate-900/80 backdrop-blur-md border border-border/50",
-        "rounded-full px-4 py-2 md:px-6 md:py-3"
+          "rounded-full px-4 py-2 md:px-6 md:py-3",
         )}
       >
         <nav className="flex items-center justify-between">
@@ -73,18 +95,17 @@ export function FloatingNavbar() {
           </a>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center gap-1 mx-auto">
+          <ul className="hidden lg:flex items-center gap-1 mx-auto">
             {navLinks.map((link) => (
               <li key={link.label}>
                 <a
                   onClick={() => {
-                    navigate(link.href)
                     window.scrollTo({
-                      top: link.scrollY,
-                      behavior: 'smooth'
-                    }); 
-                    console.log(window.scrollY)}
-                  }
+                      top: size === "lg" ? link.lgScrollY : link.xlScrollY,
+                      behavior: "smooth",
+                    });
+                    navigate(link.href);
+                  }}
                   className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-accent"
                 >
                   {link.label}
@@ -93,7 +114,7 @@ export function FloatingNavbar() {
             ))}
           </ul>
 
-          <div className="hidden md:block">{buttonOtherStuff}</div>
+          <div className="hidden lg:block">{buttonOtherStuff}</div>
 
           {/* Mobile Menu Button */}
           <Popover>
@@ -101,7 +122,7 @@ export function FloatingNavbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden rounded-full"
+                className="lg:hidden rounded-full"
                 onClick={() =>
                   isMobileMenuOpen
                     ? setIsMobileMenuOpen(false)
@@ -115,27 +136,32 @@ export function FloatingNavbar() {
                 )}
               </Button>
             </PopoverTrigger>
-            <PopoverContent onInteractOutside={(e) => e.preventDefault()}>
+            <PopoverContent
+              className="lg:hidden"
+              onInteractOutside={(e) => e.preventDefault()}
+            >
               {/* Mobile Menu */}
-              {
-                <div className="md:hidden border-border text-center">
+                <div className="lg:hidden border-border text-center">
                   <ul className="flex flex-col gap-2">
                     {navLinks.map((link) => (
                       <li key={link.label}>
                         <a
-                          href={link.href}
-                          className="block px-4 py-2 h-11 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-accent"
+                          onClick={() => {
+                            window.scrollTo({
+                              top: size === "base" ? link.scrollY : size === "sm" ? link.smScrollY : link.mdScrollY,
+                              behavior: "smooth",
+                            });
+                            navigate(link.href);
+                          }}
+                          className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-accent"
                         >
                           {link.label}
                         </a>
                       </li>
                     ))}
-                    <li className="mt-2">
-                      {buttonOtherStuff}
-                    </li>
+                    <li className="mt-2">{buttonOtherStuff}</li>
                   </ul>
                 </div>
-              }
             </PopoverContent>
           </Popover>
         </nav>

@@ -138,7 +138,7 @@ export default forwardRef(function ProjectsSection(props, ref) {
                 playbackSpeed={1.5}
               />
             </div>
-            <div className="lg:hidden">
+            <div className="mx-auto lg:hidden">
               <img src={demoCastleGif} />
             </div>
           </Card>
