@@ -25,8 +25,8 @@ export function MyComponents() {
 
   // 2. Map scroll progress (0 to 1) to different "speeds" (pixel offsets)
   // Background moves slowly, Foreground moves faster
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "80%"]);
-  const yMid = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "90%"]);
+  const yMid = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   return (
       <div ref={containerRef} className="relative h-auto w-full overflow-hidden">
@@ -39,7 +39,7 @@ export function MyComponents() {
         {/* Faster Midground Layer */}
         <motion.div
           style={{ y: yMid }}
-          className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\planetTest.png')]  bg-no-repeat bg-center"
+          className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\RidleyBaby.png')]  bg-no-repeat bg-position-[80%_30%]"
         />
 
         {/* Normal Scrolling Content */}

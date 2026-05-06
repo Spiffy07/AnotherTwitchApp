@@ -63,7 +63,7 @@ export function Home() {
         <div className="col-span-12">
           <FloatingNavbar />
         </div>
-        <div className="pt-16 pb-8 col-span-12">
+        <div className="pt-24 pb-8 col-span-12">
           <ProfilePics />
         </div>
         <div className="col-span-12 md:w-2xl md:mx-auto text-center w-full">
