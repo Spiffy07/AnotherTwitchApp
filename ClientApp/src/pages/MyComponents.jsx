@@ -29,7 +29,6 @@ export function MyComponents() {
   const yMid = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   return (
-    <div>
       <div ref={containerRef} className="relative h-auto w-full overflow-hidden">
         {/* Slow Background Layer */}
         <motion.div
@@ -70,6 +69,5 @@ export function MyComponents() {
         <br/>
         <br/>
       </div>
-    </div>
   );
 }

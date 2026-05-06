@@ -8,7 +8,7 @@ export class Layout extends Component {
   render() {
     return (
       <>
-        <div>
+        <div className="flex flex-col items-center justify-center mx-auto">
           <Container tag="main">{this.props.children}</Container>
         </div>
       </>

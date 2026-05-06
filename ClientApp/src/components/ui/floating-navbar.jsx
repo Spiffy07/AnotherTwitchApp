@@ -14,11 +14,11 @@ import { useNavigate } from "react-router-dom";
 import ProfilePics from "@/components/ProfilePics/ProfilePics";
 
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "#", scrollY: 0 },
+  { label: "Experience", href: "#experience", scrollY: 847 },
+  { label: "Projects", href: "#projects", scrollY: 1434 },
+  { label: "Skills", href: "#skills", scrollY: 3312 },
+  { label: "Contact", href: "#contact", scrollY: 3632 },
 ];
 
 export function FloatingNavbar() {
@@ -77,7 +77,14 @@ export function FloatingNavbar() {
             {navLinks.map((link) => (
               <li key={link.label}>
                 <a
-                  href={link.href}
+                  onClick={() => {
+                    navigate(link.href)
+                    window.scrollTo({
+                      top: link.scrollY,
+                      behavior: 'smooth'
+                    }); 
+                    console.log(window.scrollY)}
+                  }
                   className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-accent"
                 >
                   {link.label}

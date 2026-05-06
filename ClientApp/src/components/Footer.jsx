@@ -8,6 +8,7 @@ export default function Footer() {
     >
       <p>Copyright © 2026 Thomas T.</p>
       <p>All Rights Reserved</p>
+      <br />
     </footer>
   );
 }

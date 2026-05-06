@@ -7,30 +7,6 @@ export const useIntersection = (
   const [isIntersectingSet, setIsIntersectingSet] = useState(new Set());
   const observerRef = useRef(null);
 
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.getAttribute("dataId");
-        console.log(id);
-
-          if (entry.isIntersecting) {
-            setIsIntersectingSet((prev) => new Set(prev).add(id));
-          } else if (!animateOnce) {
-            setIsIntersectingSet((prev) => {
-              const next = new Set(prev);
-              next.delete(id);
-              return next;
-            });
-          }
-      });
-    }, options);
-
-
-    return () => {
-      observerRef.current.disconnect();
-    };
-  }, []);
-
   const setItemRef = useCallback((node) => {
     if (!node) return;
 
@@ -38,7 +14,6 @@ export const useIntersection = (
     observerRef.current = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const id = entry.target.getAttribute("dataId");
-        console.log(id);
 
           if (entry.isIntersecting) {
             setIsIntersectingSet((prev) => new Set(prev).add(id));
