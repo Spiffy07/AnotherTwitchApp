@@ -118,6 +118,10 @@
   --color-my-color: var(--my-button-color);
 }
 
+@theme {
+  --breakpoint-qhd: 128rem;  /* putting 2560px didnt work */
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

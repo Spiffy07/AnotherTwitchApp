@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer
       className="col-span-12 w-full text-center text-sm py-4 
-                   bg-linear-to-r from-gray-950/0 via-slate-900/80 to-gray-950/0 backdrop-blur-sm"
+                   bg-linear-to-r from-gray-950/60 via-slate-900/80 to-gray-950/60 backdrop-blur-sm"
     >
       <p>Copyright © 2026 Thomas T.</p>
       <p>All Rights Reserved</p>
