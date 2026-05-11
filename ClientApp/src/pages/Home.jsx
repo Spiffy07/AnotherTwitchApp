@@ -15,7 +15,7 @@ import { useIntersection } from "@/hooks/useIntersection";
 export function Home() {
   const [inViewSet, registerCallback] = useIntersection(
     { threshold: 0.5 },
-    false,
+    true,
   );
   const containerRef = useRef(null);
 
@@ -37,7 +37,7 @@ export function Home() {
     <div ref={containerRef} className="relative h-auto w-full overflow-hidden">
       <motion.div
         style={{ y: yBg }}
-        className="absolute inset-0 h-full w-full -z-2 bg-[url('..\\ClientApp\\Media\\background.png')] bg-top bg-no-repeat"
+        className="absolute inset-0 h-full w-[2560px] -z-2 bg-[url('..\\ClientApp\\Media\\background1440.png')] bg-top bg-no-repeat"
       />
       <motion.div
         style={{ y: yCeres }}

@@ -359,6 +359,9 @@
     @media (width >= 96rem) {
       max-width: 96rem;
     }
+    @media (width >= 128rem) {
+      max-width: 128rem;
+    }
   }
   .m-2 {
     margin: calc(var(--spacing) * 2);
@@ -570,6 +573,12 @@
   }
   .w-\[320px\] {
     width: 320px;
+  }
+  .w-\[1440px\] {
+    width: 1440px;
+  }
+  .w-\[2560px\] {
+    width: 2560px;
   }
   .w-\[calc\(90\%-2rem\)\] {
     width: calc(90% - 2rem);
@@ -964,6 +973,9 @@
   .bg-\[url\(\'\.\.\\\\ClientApp\\\\Media\\\\background\.png\'\)\] {
     background-image: url('..\\ClientApp\\Media\\background.png');
   }
+  .bg-\[url\(\'\.\.\\\\ClientApp\\\\Media\\\\background1440\.png\'\)\] {
+    background-image: url('..\\ClientApp\\Media\\background1440.png');
+  }
   .from-gray-800 {
     --tw-gradient-from: var(--color-gray-800);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -1017,9 +1029,6 @@
   }
   .bg-cover {
     background-size: cover;
-  }
-  .bg-center {
-    background-position: center;
   }
   .bg-position-\[3\%_20\%\] {
     background-position: 3% 20%;
@@ -1095,9 +1104,6 @@
   }
   .pt-12 {
     padding-top: calc(var(--spacing) * 12);
-  }
-  .pt-16 {
-    padding-top: calc(var(--spacing) * 16);
   }
   .pt-24 {
     padding-top: calc(var(--spacing) * 24);
