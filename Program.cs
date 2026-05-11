@@ -136,6 +136,7 @@ try
 
     }
     app.UseStaticFiles();
+    app.UseDefaultFiles();
     app.UseHttpsRedirection();
 
     app.UseRouting();

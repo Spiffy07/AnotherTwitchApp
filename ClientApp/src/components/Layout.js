@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import Footer from "@/components/Footer";
 
 export class Layout extends Component {
   static displayName = Layout.name;

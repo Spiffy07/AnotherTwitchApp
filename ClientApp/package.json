@@ -70,8 +70,9 @@
   },
   "scripts": {
     "prestart": "node aspnetcore-https && node aspnetcore-react",
-    "start": "rimraf ./build && craco start",
-    "build": "craco build",
+    "start": "rimraf ./build && craco start && npm run build:tailwind && react-scripts start",
+    "build:tailwind": "tailwindcss -i ./src/custom.css -o ./src/output.css --minify",
+    "build": "craco build && npm run build:tailwind",
     "test": "cross-env CI=true craco test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint ./src/"
