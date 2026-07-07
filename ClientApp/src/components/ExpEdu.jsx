@@ -8,8 +8,7 @@ import {
   CardDescription,
   cardStyle,
 } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useIntersection } from "@/hooks/useIntersection";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const cardChildrenHover =
   "transtion duration-1000 group-hover:duration-200 group-hover:brightness-200";

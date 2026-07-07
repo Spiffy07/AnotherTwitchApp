@@ -7,7 +7,7 @@ export const useIntersection = (
   const [isIntersectingSet, setIsIntersectingSet] = useState(new Set());
   const observerRef = useRef(null);
 
-  const setItemRef = useCallback((node) => {
+  const setItemRef = useCallback((node, options = {}, animateOnce = true) => {
     if (!node) return;
 
     if (observerRef.current == null) {

@@ -2,12 +2,11 @@
 
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm, SubmitHandler } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
     Field,
     FieldDescription,
@@ -15,10 +14,8 @@ import {
     FieldGroup,
     FieldLabel,
     FieldLegend,
-    FieldSeparator,
     FieldSet,
 } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
 import {
     Select,
     SelectContent,

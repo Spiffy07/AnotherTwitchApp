@@ -14,17 +14,57 @@ import { useNavigate } from "react-router-dom";
 import ProfilePics from "@/components/ProfilePics/ProfilePics";
 
 const navLinks = [
-  { label: "Home",        href: "#",            xlScrollY: 0,     lgScrollY: 0,     mdScrollY: 0,     smScrollY: 0,     scrollY: 0 },
-  { label: "Experience",  href: "#experience",  xlScrollY: 847,   lgScrollY: 864,   mdScrollY: 893,   smScrollY: 900,   scrollY: 773 },
-  { label: "Projects",    href: "#projects",    xlScrollY: 1434,  lgScrollY: 1439,  mdScrollY: 1463,  smScrollY: 1403,  scrollY: 1271 },
-  { label: "Skills",      href: "#skills",      xlScrollY: 3312,  lgScrollY: 3362,  mdScrollY: 3755,  smScrollY: 3375,  scrollY: 2753 },
-  { label: "Contact",     href: "#contact",     xlScrollY: 3632,  lgScrollY: 3667,  mdScrollY: 4118,  smScrollY: 3911,  scrollY: 3388 },
+  {
+    label: "Home",
+    href: "#",
+    xlScrollY: 0,
+    lgScrollY: 0,
+    mdScrollY: 0,
+    smScrollY: 0,
+    scrollY: 0,
+  },
+  {
+    label: "Experience",
+    href: "#experience",
+    xlScrollY: 847,
+    lgScrollY: 864,
+    mdScrollY: 893,
+    smScrollY: 900,
+    scrollY: 773,
+  },
+  {
+    label: "Projects",
+    href: "#projects",
+    xlScrollY: 1434,
+    lgScrollY: 1439,
+    mdScrollY: 1463,
+    smScrollY: 1403,
+    scrollY: 1271,
+  },
+  {
+    label: "Skills",
+    href: "#skills",
+    xlScrollY: 3312,
+    lgScrollY: 3362,
+    mdScrollY: 3755,
+    smScrollY: 3375,
+    scrollY: 2753,
+  },
+  {
+    label: "Contact",
+    href: "#contact",
+    xlScrollY: 3632,
+    lgScrollY: 3667,
+    mdScrollY: 4118,
+    smScrollY: 3911,
+    scrollY: 3388,
+  },
 ];
 
 export function FloatingNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [size, setSize] = useState('base');
+  const [size, setSize] = useState("base");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,9 +82,9 @@ export function FloatingNavbar() {
       sm: "(min-width: 800px)",
       md: "(min-width: 960px)",
       lg: "(min-width: 1280px)",
-      xl: "(min-width: 1600px)"
+      xl: "(min-width: 1600px)",
     };
-    
+
     const updateSize = () => {
       if (window.matchMedia(queries.lg).matches) setSize("lg");
       else if (window.matchMedia(queries.md).matches) setSize("md");
@@ -53,12 +93,11 @@ export function FloatingNavbar() {
       else setSize("base"); // mobile/default
     };
 
-    window.addEventListener('resize', updateSize);
+    window.addEventListener("resize", updateSize);
     updateSize();
 
-    return () => window.removeEventListener('resize', updateSize);
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
-
 
   const buttonOtherStuff = (
     <Button
@@ -88,7 +127,7 @@ export function FloatingNavbar() {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <a
-            href="#"
+            href="/"
             className="flex items-center h-11 w-11 scale-40 sm:scale-20 lg:scale-20"
           >
             <ProfilePics />
@@ -99,6 +138,7 @@ export function FloatingNavbar() {
             {navLinks.map((link) => (
               <li key={link.label}>
                 <a
+                  href="/"
                   onClick={() => {
                     window.scrollTo({
                       top: size === "lg" ? link.lgScrollY : link.xlScrollY,
@@ -141,27 +181,33 @@ export function FloatingNavbar() {
               onInteractOutside={(e) => e.preventDefault()}
             >
               {/* Mobile Menu */}
-                <div className="lg:hidden border-border text-center">
-                  <ul className="flex flex-col gap-2">
-                    {navLinks.map((link) => (
-                      <li key={link.label}>
-                        <a
-                          onClick={() => {
-                            window.scrollTo({
-                              top: size === "base" ? link.scrollY : size === "sm" ? link.smScrollY : link.mdScrollY,
-                              behavior: "smooth",
-                            });
-                            navigate(link.href);
-                          }}
-                          className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-accent"
-                        >
-                          {link.label}
-                        </a>
-                      </li>
-                    ))}
-                    <li className="mt-2">{buttonOtherStuff}</li>
-                  </ul>
-                </div>
+              <div className="lg:hidden border-border text-center">
+                <ul className="flex flex-col gap-2">
+                  {navLinks.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href="/"
+                        onClick={() => {
+                          window.scrollTo({
+                            top:
+                              size === "base"
+                                ? link.scrollY
+                                : size === "sm"
+                                  ? link.smScrollY
+                                  : link.mdScrollY,
+                            behavior: "smooth",
+                          });
+                          navigate(link.href);
+                        }}
+                        className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-accent"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                  <li className="mt-2">{buttonOtherStuff}</li>
+                </ul>
+              </div>
             </PopoverContent>
           </Popover>
         </nav>
