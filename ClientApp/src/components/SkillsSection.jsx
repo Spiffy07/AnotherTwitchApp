@@ -24,15 +24,15 @@ export default forwardRef(function SkillsSection(props, ref) {
         dataid={summaryDataId}
         className={`group col-span-1 transition duration-500 ${summaryIsVisible ? "opacity-100" : "opacity-0 -translate-x-10"}`}
       >
-        <Card className={`${cardStyle} md:min-h-60`}>
+        <Card className={`${cardStyle} md:min-h-60 text-xl`}>
           <CardHeader className={cardChildrenHover}>
             <CardTitle>Front End</CardTitle>
-            <CardDescription>JavaScript, React, Tailwind</CardDescription>
+            <CardDescription>JavaScript, React, TailwindCSS, WCAG accessibility</CardDescription>
             <CardTitle>Back End</CardTitle>
-            <CardDescription>C# .NET, Node.js</CardDescription>
+            <CardDescription>C#, Asp.NET, Node.js, websockets, SQLite</CardDescription>
             <CardTitle>Tools and etc.</CardTitle>
             <CardDescription>
-              Github, Visual Studios/VS Code, Figma, Twitch
+              Github version control, Visual Studios/VS Code, Figma, Twitch, SquareSpace
             </CardDescription>
           </CardHeader>
         </Card>
@@ -43,15 +43,15 @@ export default forwardRef(function SkillsSection(props, ref) {
         className={`group col-span-2 transition duration-500 md:delay-200 ${detailIsVisible ? "opacity-100" : "opacity-0 -translate-x-10 md:-translate-x-80"}`}
       >
         <Card className={`group col-span-2 ${cardStyle} md:min-h-60`}>
-          <div className={`mx-5 ${cardChildrenHover}`}>
+          <div className={`mx-5 text-xl ${cardChildrenHover}`}>
             <p>
-              My primary focus is developing this full-stack webapp for a better
+              My primary project focus is developing this full-stack webapp for a better
               Twitch experience.
             </p>
             <br />
             <p>
-              I have myriad other skills like C++, Unreal Engine 5, SQL,
-              OpenShots, PC building, and more!
+              I have myriad other skills like C++, Unreal Engine 5,
+              OpenShots video editing, PC building, Streamerbot, and more!
             </p>
             <br />
             <p>Full resume is available upon request.</p>

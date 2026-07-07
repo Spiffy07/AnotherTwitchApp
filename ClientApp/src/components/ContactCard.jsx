@@ -28,7 +28,8 @@ export default function ContactCard() {
           className="items-center text-center 
               md:grid md:grid-cols-[1fr_auto_1fr] md:gap-4 md:text-left"
         >
-          <p>Stuff here</p>
+          <p>Email: <a href="mailto:thuantran07@gmail.com" className="text-primary hover:underline font-medium">thuantran07@hotmail.com</a></p>
+          
           <div className="hidden md:block">
             <Card />
           </div>

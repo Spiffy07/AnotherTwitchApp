@@ -49,10 +49,19 @@ export default forwardRef(function ProjectsSection(props, ref) {
         <div
           ref={ref}
           dataid={projOneId}
-          className={`text-center m-4 transition duration-500 ${projOneIsVisible ? "opacity-100" : "opacity-0 -translate-x-10"}`}
+          className={`text-xl m-4 transition duration-500 ${projOneIsVisible ? "opacity-100" : "opacity-0 -translate-x-10"}`}
         >
-          <h3 className="text-2xl">Twitch WebApp</h3>
-          <p> Description here</p>
+          <h3 className="text-center text-3xl">Twitch WebApp</h3>
+          <br/>
+          <p> 
+            This Asp.NET app with React and TailwindCSS project! It uses authentication
+             and authorization to for user accounts and is connected to an SQlite database.
+             Also features multiple seperate controllers and models for AspIdentity and my forms.
+          </p>
+          <br/>
+          <p>
+             More features coming soon!
+          </p>
         </div>
         <div
           ref={ref}
@@ -86,12 +95,15 @@ export default forwardRef(function ProjectsSection(props, ref) {
         <div
           ref={ref}
           dataid={projTwoId}
-          className={`text-center m-4 transition duration-500 ${projTwoIsVisible ? "opacity-100" : "opacity-0 translate-x-10"}`}
+          className={`text-xl m-4 transition duration-500 ${projTwoIsVisible ? "opacity-100" : "opacity-0 translate-x-10"}`}
         >
-          <h3 className="text-2xl font-sans">
+          <h3 className="text-center text-3xl font-sans">
             Interactive Twitch Bot "BrokeBot"
           </h3>
-          <p> Description here</p>
+          <br/>
+          <p>My very own custom twitch chatbot using Node.js with express websockets. 
+            Used for chat commands, channel redemptions and connected with Twitch's API for back-end subscription-based event handling.
+            Also connected to Google Cloud's Web API for it's Text-To-Speech feature.</p>
         </div>
         <div
           ref={ref}
@@ -111,10 +123,13 @@ export default forwardRef(function ProjectsSection(props, ref) {
         <div
           ref={ref}
           dataid={projThreeId}
-          className={`text-center m-4 transition duration-500 ${projThreeIsVisible ? "opacity-100" : "opacity-0 -translate-x-10"}`}
+          className={`text-xl m-4 transition duration-500 ${projThreeIsVisible ? "opacity-100" : "opacity-0 -translate-x-10"}`}
         >
-          <h3 className="text-2xl font-sans">Unreal Engine 5 Castle"</h3>
-          <p> Description here</p>
+          <h3 className="text-center text-3xl font-sans">Unreal Engine 5 Castle</h3>
+          <br/>
+          <p>A first-person prototype that implements UE5's expansive framework. 
+            Landscape, foliage, target physics, and modular castle assets build into a blank project.
+            Featuring custom menus, HUD, prototype mechanics.</p>
         </div>
         <div
           ref={ref}
