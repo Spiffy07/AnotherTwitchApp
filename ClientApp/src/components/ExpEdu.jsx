@@ -168,6 +168,7 @@ export default forwardRef(function ExpEdu(props, ref) {
                         <li>Algorithms and Complexity</li>
                         <li>Databases</li>
                         <li>Client-Server Programming</li>
+                        <li>Many more!</li>
                       </ul>
                     </CardDescription>
                   </CardHeader>
