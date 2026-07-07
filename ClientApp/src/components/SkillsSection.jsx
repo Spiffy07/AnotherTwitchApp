@@ -43,7 +43,7 @@ export default forwardRef(function SkillsSection(props, ref) {
         className={`group col-span-2 transition duration-500 md:delay-200 ${detailIsVisible ? "opacity-100" : "opacity-0 -translate-x-10 md:-translate-x-80"}`}
       >
         <Card className={`group col-span-2 ${cardStyle} md:min-h-60`}>
-          <div className={`mx-5 text-xl ${cardChildrenHover}`}>
+          <div className={`text-base mx-5 md:text-xl ${cardChildrenHover}`}>
             <p>
               My primary project focus is developing this full-stack webapp for a better
               Twitch experience.

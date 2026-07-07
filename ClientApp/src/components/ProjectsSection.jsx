@@ -49,7 +49,7 @@ export default forwardRef(function ProjectsSection(props, ref) {
         <div
           ref={ref}
           dataid={projOneId}
-          className={`text-xl m-4 transition duration-500 ${projOneIsVisible ? "opacity-100" : "opacity-0 -translate-x-10"}`}
+          className={`text-base md:text-xl md:m-4 transition duration-500 ${projOneIsVisible ? "opacity-100" : "opacity-0 -translate-x-10"}`}
         >
           <h3 className="text-center text-3xl">Twitch WebApp</h3>
           <br/>
@@ -95,7 +95,7 @@ export default forwardRef(function ProjectsSection(props, ref) {
         <div
           ref={ref}
           dataid={projTwoId}
-          className={`text-xl m-4 transition duration-500 ${projTwoIsVisible ? "opacity-100" : "opacity-0 translate-x-10"}`}
+          className={`text-base md:text-xl md:m-4 transition duration-500 ${projTwoIsVisible ? "opacity-100" : "opacity-0 translate-x-10"}`}
         >
           <h3 className="text-center text-3xl font-sans">
             Interactive Twitch Bot "BrokeBot"
@@ -123,7 +123,7 @@ export default forwardRef(function ProjectsSection(props, ref) {
         <div
           ref={ref}
           dataid={projThreeId}
-          className={`text-xl m-4 transition duration-500 ${projThreeIsVisible ? "opacity-100" : "opacity-0 -translate-x-10"}`}
+          className={`text-base md:text-xl md:m-4 transition duration-500 ${projThreeIsVisible ? "opacity-100" : "opacity-0 -translate-x-10"}`}
         >
           <h3 className="text-center text-3xl font-sans">Unreal Engine 5 Castle</h3>
           <br/>

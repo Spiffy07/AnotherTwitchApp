@@ -12,7 +12,7 @@ export default function Footer() {
       <p>Copyright © 2026 Thomas T.</p>
       <p>All Rights Reserved</p>
       <div className="grid grid-cols-2">
-        <div className="col-span-1 text-left ml-10 text-sm text-blue-300">
+        <div className="col-span-2 md:col-span-1 text-center md:text-left md:ml-10 text-sm text-blue-300">
           <Link
             to="https://www.vecteezy.com/free-vector/blue-space"
             target="_blank"
@@ -21,6 +21,7 @@ export default function Footer() {
           >
             Blue Space Vectors by Vecteezy
           </Link>
+          <br />
           <br />
           <Link
             to="https://www.vecteezy.com/free-vector/space-background"
