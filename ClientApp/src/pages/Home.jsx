@@ -12,6 +12,12 @@ import { Card } from "@/components/ui/card";
 import { FloatingNavbar } from "@/components/ui/floating-navbar";
 import { useIntersection } from "@/hooks/useIntersection";
 
+import bgImage from "@/Media/background1440.png";
+import shipImage from "@/Media/Ship.png";
+import ceresImage from "@/Media/Ceres.png";
+import ridleyImage from "@/Media/RidleyBaby.png";
+import zebesImage from "@/Media/ZebesLg.png";
+
 export function Home() {
   const [inViewSet, registerCallback] = useIntersection(
     { threshold: 0.5 },
@@ -36,24 +42,24 @@ export function Home() {
   return (
     <div ref={containerRef} className="relative h-auto w-full overflow-hidden">
       <motion.div
-        style={{ y: yBg }}
-        className="absolute inset-0 h-full w-full -z-2 bg-[url('..\\ClientApp\\Media\\background1440.png')] bg-top bg-no-repeat"
+        style={{ y: yBg, backgroundImage: `url(${bgImage})`  }}
+        className="absolute inset-0 h-full w-full -z-2 bg-top bg-no-repeat"
       />
       <motion.div
-        style={{ y: yCeres }}
-        className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\Ceres.png')]  bg-no-repeat bg-position-[90%_10%]"
+        style={{ y: yCeres, backgroundImage: `url(${ceresImage})`  }}
+        className="absolute inset-0 -z-1 w-full bg-no-repeat bg-position-[90%_10%]"
       />
       <motion.div
-        style={{ y: yShip }}
-        className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\Ship.png')]  bg-no-repeat bg-position-[85%_19%]"
+        style={{ y: yShip, backgroundImage: `url(${shipImage})` }}
+        className="absolute inset-0 -z-1 w-full  bg-no-repeat bg-position-[85%_19%]"
       />
       <motion.div
-        style={{ y: yRidley }}
-        className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\RidleyBaby.png')]  bg-no-repeat bg-position-[3%_20%]"
+        style={{ y: yRidley, backgroundImage: `url(${ridleyImage})`  }}
+        className="absolute inset-0 -z-1 w-full bg-no-repeat bg-position-[3%_20%]"
       />
       <motion.div
-        style={{ y: yZebes }}
-        className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\ZebesLg.png')]  bg-no-repeat bg-position-[3%_35%]"
+        style={{ y: yZebes, backgroundImage: `url(${zebesImage})`  }}
+        className="absolute inset-0 -z-1 w-full bg-no-repeat bg-position-[3%_35%]"
       />
 
       <div
