@@ -31,16 +31,16 @@ export function MyComponents() {
   return (
       <div ref={containerRef} className="relative h-auto w-full overflow-hidden">
         {/* Slow Background Layer */}
-        <motion.div
+        {/* <motion.div
           style={{ y: yBg }}
           className="absolute inset-0 h-full w-full -z-2 bg-[url('..\\ClientApp\\Media\\background.png')] bg-cover"
-        />
+        /> */}
 
         {/* Faster Midground Layer */}
-        <motion.div
+        {/* <motion.div
           style={{ y: yMid }}
           className="absolute inset-0 -z-1 w-full bg-[url('..\\ClientApp\\Media\\RidleyBaby.png')]  bg-no-repeat bg-position-[80%_30%]"
-        />
+        /> */}
 
         {/* Normal Scrolling Content */}
 
