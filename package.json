@@ -1,6 +1,8 @@
 {
   "devDependencies": {
     "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2"
+    "@types/react-dom": "^19.2.2",
+    "cssnano": "^8.0.2",
+    "postcss-calc": "^10.1.1"
   }
 }
