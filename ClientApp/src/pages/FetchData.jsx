@@ -59,7 +59,7 @@ export function FetchData() {
   async function populateWeatherData() {
     const response = await fetch("/api/weatherforecast");
 
-    if (response.status == "401") {
+    if (response.status === "401") {
       setForecasts({ forecasts: [], loading: false });
       return;
     }

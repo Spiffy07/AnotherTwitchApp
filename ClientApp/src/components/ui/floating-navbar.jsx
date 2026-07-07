@@ -59,7 +59,7 @@ export function FloatingNavbar() {
     return () => window.removeEventListener('resize', updateSize);
   }, []);
 
-  {/* CTA Button */}
+
   const buttonOtherStuff = (
     <Button
       size="sm"

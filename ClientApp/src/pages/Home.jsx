@@ -8,7 +8,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import ContactCard from "@/components/ContactCard";
 import Footer from "@/components/Footer";
-import { Card } from "@/components/ui/card";
+// import { Card } from "@/components/ui/card";
 import { FloatingNavbar } from "@/components/ui/floating-navbar";
 import { useIntersection } from "@/hooks/useIntersection";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 const profilePicOne = "https://avatars.githubusercontent.com/u/129478296?v=4";
-const profilePicTwo = "https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/Media/logo2YT.png";
+const profilePicTwo = "https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/src/Media/logo2YT.png";
 
 export default function ProfilePics() {
   return (

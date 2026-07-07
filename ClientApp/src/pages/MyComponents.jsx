@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+// import { motion, useScroll, useTransform } from "motion/react";
 
 import { Button } from "@/components/ui/button";
 import MyComponent from "../components/Test";
@@ -18,15 +18,15 @@ export function MyComponents() {
   }
 
   // 1. Track scroll progress relative to this specific container
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
+  // const { scrollYProgress } = useScroll({
+  //   target: containerRef,
+  //   offset: ["start start", "end start"],
+  // });
 
   // 2. Map scroll progress (0 to 1) to different "speeds" (pixel offsets)
   // Background moves slowly, Foreground moves faster
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "90%"]);
-  const yMid = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  // const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "90%"]);
+  // const yMid = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   return (
       <div ref={containerRef} className="relative h-auto w-full overflow-hidden">

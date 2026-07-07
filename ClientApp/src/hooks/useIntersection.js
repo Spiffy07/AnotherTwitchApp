@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 
 export const useIntersection = (
   options = { threshold: 0.1 },
@@ -31,7 +31,7 @@ export const useIntersection = (
     }
     
     if (node && observerRef.current) observerRef.current.observe(node);
-  });
+  }, []);
 
   return [isIntersectingSet, setItemRef];
 };

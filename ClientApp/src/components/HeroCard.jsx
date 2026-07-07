@@ -13,7 +13,7 @@ import SocialIcons from "@/components/SocialIcons";
 const cardChildrenHover =
   "transtion duration-1000 group-hover:duration-200 group-hover:brightness-200";
 
-export default function () {
+export default function HeroCard() {
   return (
     <Card
       className={`group relative text-2xl ${cardStyle}`}

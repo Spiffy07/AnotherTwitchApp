@@ -1,24 +1,19 @@
 import React, { forwardRef } from "react";
 import {
   Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
   cardStyle,
 } from "@/components/ui/card";
 import YtVideoPreview from "./YtVideoPreview";
 
-const cardChildrenHover =
-  "transtion duration-1000 group-hover:duration-200 group-hover:brightness-200";
 const demoTwitchApp =
-  "https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/Media/AnotherTwitchAppDemo.gif";
+  "https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/src/Media/AnotherTwitchAppDemo.gif";
 const urlTwitchApp = "https://github.com/Spiffy07/AnotherTwitchApp";
 const demoBrokeBot =
-  "https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/Media/BrokebotPreview.png";
+  "https://raw.githubusercontent.com/Spiffy07/AnotherTwitchApp/refs/heads/main/ClientApp/src/Media/BrokebotPreview.png";
 const urlBrokeBot = "https://github.com/Spiffy07/brokeBot";
 const demoCastleId = "G0PgG11vyC4";
 const demoCastleGif =
-  "https://github.com/Spiffy07/AnotherTwitchApp/blob/responsiveDesign/ClientApp/Media/CastleToGif.gif?raw=true";
+  "https://github.com/Spiffy07/AnotherTwitchApp/blob/responsiveDesign/ClientApp/src/Media/CastleToGif.gif?raw=true";
 
 export default forwardRef(function ProjectsSection(props, ref) {
   const projOneId = "projectone";
@@ -74,7 +69,7 @@ export default forwardRef(function ProjectsSection(props, ref) {
               window.open(urlTwitchApp, "_blank");
             }}
           >
-            <img src={demoTwitchApp} />
+            <img src={demoTwitchApp} alt="Another Twitch app demonstration."/>
           </Card>
         </div>
         {/* Project 2 */}
@@ -89,7 +84,7 @@ export default forwardRef(function ProjectsSection(props, ref) {
               window.open(urlBrokeBot, "_blank");
             }}
           >
-            <img src={demoBrokeBot} />
+            <img src={demoBrokeBot} alt="BrokeBot demonstration."/>
           </Card>
         </div>
         <div
@@ -116,7 +111,7 @@ export default forwardRef(function ProjectsSection(props, ref) {
               window.open(urlBrokeBot, "_blank");
             }}
           >
-            <img src={demoBrokeBot} />
+            <img src={demoBrokeBot} alt="BrokeBot Demonstration."/>
           </Card>
         </div>
         {/* Project 3 */}
@@ -154,7 +149,7 @@ export default forwardRef(function ProjectsSection(props, ref) {
               />
             </div>
             <div className="mx-auto lg:hidden">
-              <img src={demoCastleGif} />
+              <img src={demoCastleGif} alt="Unreal Engine 5 Castle demonstration."/>
             </div>
           </Card>
         </div>
